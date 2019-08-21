@@ -1,0 +1,170 @@
+<html>
+<head>
+  <title>The Gaming Saloon Network - Home Page</title>
+
+  <!-- update the version number as needed -->
+  <script defer src="/__/firebase/6.3.4/firebase-app.js"></script>
+  <!-- include only the Firebase features as you need -->
+  <script defer src="/__/firebase/6.3.4/firebase-auth.js"></script>
+  <script defer src="/__/firebase/6.3.4/firebase-firestore.js"></script>
+  <script defer src="/__/firebase/6.3.4/firebase-messaging.js"></script>
+  <script defer src="/__/firebase/6.3.4/firebase-storage.js"></script>
+  <!-- initialize the SDK after all desired features are loaded -->
+  <script defer src="/__/firebase/init.js"></script>
+
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+   <link href="https://fonts.googleapis.com/css?family=Raleway:600|Sancreek&display=swap" rel="stylesheet">
+   <link rel='icon' href='images/tgsn.jpg' type='image/jpg' sizes='16x16'>
+
+   <style type="text/css">
+     html, body, table, #body{
+       height: 98%;
+     }
+     body{
+       background: url(images/background.jpg);
+       font-family: 'Raleway', sans-serif;
+       /*font-family: 'Sancreek', cursive;*/
+     }
+     #siteName{
+       font-family: 'Sancreek', cursive;
+       font-size: 30px;
+       color: white;
+       text-shadow: 1px 1px #333333;
+     }
+     #videos{
+       text-align: center;
+     }
+     #nav {
+       vertical-align: middle;
+     }
+     #top {
+       position: fixed;
+       top: 0;
+       left: 0;
+       width: 100%;
+       background-color: rgba(0,0,0,0.75);
+       height: 120px;
+       z-index: -100;
+     }
+     #bottom {
+       position: fixed;
+       bottom: 0;
+       left: 0;
+       width: 100%;
+       background-color: rgba(0,0,0,0.75);
+       height: 20px;
+       text-align: center;
+       vertical-align: middle;
+       color:white;
+     }
+     #linkStyle {
+       color: white;
+       text-shadow: 1px 1px #333333;
+       text-align: left;
+       font-size: 18px;
+     }
+     #linkButton {
+       background-color: black;
+       color: white;
+       text-shadow: 1px 1px #333333;
+       font-size: 18px;
+       height: 88px;
+       text-align: center;
+       padding: 10px;
+       vertical-align: middle;
+       width: 150px;
+     }
+     #rvTitle {
+       color: white;
+       text-shadow: 1px 1px #333333;
+       font-size: 18px;
+       text-align: center;
+     }
+     a, a:hover, a:visited{
+       color: white;
+       text-decoration: none;
+     }
+   </style>
+ </head>
+
+<body>
+  <table width="90%" align="center">
+    <div id="top">&nbsp;</div>
+    <div id="bottom">
+      Follow Us On
+      <a href='https://discord.gg/0n4kMmEMe1B1ZHuw' target='_blank'><img src='images/discord.png' width='18px' height='18px' /></a>
+      <a href='https://twitter.com/tgsaloon' target='_blank'><img src='images/twitter.png' width='18px' height='18px' /></a>
+      <a href='https://twitch.tv/thegamingsaloonnetwork' target='_blank'><img src='images/twitch.png' width='18px' height='18px' /></a>
+      <a href='https://thegamingsaloonnetwork.tumblr.com' target='_blank'><img src='images/tumblr.png' width='18px' height='18px' /></a>
+      <a href='https://youtube.com/tgsaloon' target='_blank'><img src='images/youtube.png' width='18px' height='18px' /></a>
+    </div>
+    <tr id='nav'>
+      <td colspan='2'>
+        <table>
+          <tr>
+            <td width="86px"><a href="./index.html"><img src='images/tgsn.jpg' height="86px" width="86px"></a></td>
+            <td id='siteName' align="center" width="240px"><a href="./index.html">The Gaming<br>Saloon Network</a></td>
+            <td id='linkStyle'>
+              <table id='linkBar'>
+                  <tr>
+                    <!--<td id='linkButton' onmouseover='linkHover(this)' onmouseout="linkExit(this)" onclick="
+  window.location='./mm.html'">SMM/SMM2 Level Submissions</td>-->
+                    <td id='linkButton' onmouseover='linkHover(this)' onmouseout="linkExit(this)" onclick="
+window.open('https://streamlabs.com/thegamingsaloonnetwork/v2/tip?sl=169&t=42', '_blank')">Tips</td>
+                    <td id='linkButton' onmouseover='linkHover(this)' onmouseout="linkExit(this)" onclick="
+window.open('https://calendar.google.com/calendar/embed?title=The%20Gaming%20Saloon%20Network%20Schedule&showPrint=0&mode=AGENDA&height=600&wkst=1&src=t9553bm8c9mjid70rrre2225fk%40group.calendar.google.com&color=%23711616&ctz=America%2FChicago#_=_', '_blank')">Schedule</td>
+                    <td id='linkButton' onmouseover='linkHover(this)' onmouseout="linkExit(this)"><a href='https://tgsnetwork.org/tgsarticles.html' target='_blank'>TGS Articles</a></td>
+                    <td id='linkButton' onmouseover='linkHover(this)' onmouseout="linkExit(this)" onclick="
+window.open('http://site.tgsnetwork.org', '_blank')">TGS Archives</td>
+                  </tr>
+              </table>
+            </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+    <tr id='body'>
+      <td id="videos">
+        &nbsp;<br>
+        <div id="twitch-embed" style="height: 99%"></div>
+
+        <script src="https://embed.twitch.tv/embed/v1.js"></script>
+
+        <!-- Create a Twitch.Embed object that will render within the "twitch-embed" root element. -->
+        <script type="text/javascript">
+            var embed = new Twitch.Embed("twitch-embed", {
+                width: '100%',
+                height: '100%',
+                channel: 'thegamingsaloonnetwork',
+                chat: "default",
+                allowfullscreen: "true",
+                theme: "dark",
+                autoplay: "true",
+            });
+
+            embed.addEventListener(Twitch.Embed.VIDEO_READY, () => {
+                var player = embed.getPlayer();
+                player.setVolume(0.9);
+                player.setMuted(false);
+                player.play();
+            });
+            function linkHover(x){
+              x.style.backgroundColor = 'orange';
+              x.style.cursor = "pointer";
+            }
+            function linkExit(x){
+              x.style.backgroundColor = 'black';
+              x.style.cursor = "pointer";
+            }
+        </script>
+      </td>
+      <td width="350px" rowspan='2'>
+        &nbsp;<br>
+
+        <div id='rvTitle'>Recent Videos</div>
+        <iframe src="./videos.html" frameborder='0' width="350px" height="96.5%" />
+      </td>
+    </tr>
+  </table>
+<body>
+</html>

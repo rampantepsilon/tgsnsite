@@ -1,0 +1,102 @@
+<html>
+<head>
+  <title>TGSN Followers</title>
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+   <link href="https://fonts.googleapis.com/css?family=Raleway:800" rel="stylesheet">
+   <style type="text/css">
+     html, body{
+       background-color: rgba(0,0,0,0);
+     }
+     a, a:visited{
+       color: white;
+     }
+     a:hover{
+       color: orange;
+     }
+     body{
+       font-family: 'Raleway', sans-serif;
+       color: white;
+       background-color: rgba(255,255,255,0);
+       /*background-image: url('./images/woodbckgrnd.png');*/
+       /*font-family: 'Sancreek', cursive;*/
+     }
+     #videos{
+       text-align: center;
+     }
+     html {
+       overflow: scroll;
+       overflow-x: hidden;
+       overflow: -moz-scrollbars-none;
+       scrollbar-width: none;
+     }
+     ::-webkit-scrollbar {
+       width: 0px; /* remove scrollbar space /
+       background: transparent; / optional: just make scrollbar invisible /
+     }
+     / optional: show position indicator in red */
+     ::-webkit-scrollbar-thumb {
+       background: #FF0000;
+     }
+   </style>
+   <script>
+     var loop = 1;
+     function getFollowers(){setInterval("api()",60000)}
+     function listGoals(){setInterval('goals()', 10000)}
+     function init(){
+       api();
+       setInterval('goals()', 10000);
+       getFollowers();
+     }
+     function api(){
+       console.log("Begin Script");
+       $.ajax({
+         datatype: 'json',
+         url: 'https://api.twitch.tv/helix/users/follows?to_id=43584807',
+         headers: {
+           "Client-ID": 'o118lfy65junb52nuye0weh4xbvn11',
+         },
+         success: function(channel)
+         {
+           console.log("Results:");
+           console.log(channel);
+           var title = channel.total;
+           var latest = channel.data[0].from_name;
+           $("#videos").html(title + '/180');
+           $("#latestFollower").html('Latest Follower: ' + latest);
+           console.log(channel.total);
+         },
+         error: function(){
+           console.log("The Request Failed");
+         }
+       });
+       console.log("End Script");
+     };
+     function goals(){
+       if (loop == 0){
+         loop = 1;
+         $("#goals").html("Rampant's Speed-A-Thon");
+       }
+       else if (loop == 1){
+         loop = 0;
+         $("#goals").html("Peace Plays Bad Wrestlemania");
+       }
+       else {
+         loop = 0;
+       }
+     }
+   </script>
+ </head>
+
+<body onload='init()'>
+  <table width="500px" align="center">
+    <tr>
+      <td align='left' width="142px">Follower Goals:</td>
+      <td align='center' id='goals'>Rampant's Speed-A-Thon</td>
+      <td align='left' id="videos" width='78px'></td>
+    </tr>
+    <tr>
+      <td colspan='3' align='center' id='latestFollower'></td>
+    </tr>
+  </table>
+<body>
+</html>

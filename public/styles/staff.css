@@ -1,0 +1,103 @@
+body{
+  background: url(../images/background.jpg);
+  font-family: 'Raleway', sans-serif;
+  /*font-family: 'Sancreek', cursive;*/
+}
+#siteName{
+  font-family: 'Sancreek', cursive;
+  font-size: 30px;
+  color: white;
+  text-shadow: 1px 1px #333333;
+}
+#title{
+  font-size:20px;
+}
+#videos{
+  text-align: center;
+}
+#nav {
+  vertical-align: middle;
+}
+#bodyContent {
+  background-color: rgba(255,255,255,0.75);
+}
+#top {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: rgba(0,0,0,0.75);
+  height: 118px;
+  z-index: -100;
+  color: white;
+}
+#bottom {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background-color: rgba(0,0,0,0.75);
+  height: 20px;
+  text-align: center;
+  vertical-align: middle;
+  color:white;
+}
+#linkStyle {
+  color: white;
+  text-shadow: 1px 1px #333333;
+  text-align: left;
+  font-size: 18px;
+}
+#linkButton {
+  background-color: black;
+  color: white;
+  text-shadow: 1px 1px #333333;
+  font-size: 18px;
+  height: 88px;
+  text-align: center;
+  padding: 10px;
+  vertical-align: middle;
+  width: 150px;
+}
+#linkButton2 {
+  background-color: black;
+  color: white;
+  text-shadow: 1px 1px #333333;
+  font-size: 12px;
+  height: 18px;
+  text-align: center;
+  padding: 10px;
+  vertical-align: middle;
+  width: 100px;
+}
+#linkButton2:hover {
+  background-color: orange;
+  color: white;
+  text-shadow: 1px 1px #333333;
+  font-size: 12px;
+  height: 18px;
+  text-align: center;
+  padding: 10px;
+  vertical-align: middle;
+  width: 100px;
+}
+#linkButton2 a{
+  color: white;
+}
+#rvTitle {
+  color: white;
+  text-shadow: 1px 1px #333333;
+  font-size: 18px;
+  text-align: center;
+}
+a, a:hover, a:visited{
+  color: #999999;
+  text-shadow: 1px 1px #333333;
+  text-decoration: none;
+}
+a#topLink, a#topLink:hover, a#topLink:visited{
+  color: #ffffff;
+}
+#profilePic{
+  border-radius: 50%;
+}
