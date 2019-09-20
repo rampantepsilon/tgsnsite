@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <!--<meta name="viewport" content="width=device-width, initial-scale=1">-->
+
+    <!-- update the version number as needed -->
+    <script defer src="/__/firebase/6.3.4/firebase-app.js"></script>
+    <!-- include only the Firebase features as you need -->
+    <script defer src="/__/firebase/6.3.4/firebase-auth.js"></script>
+    <script defer src="/__/firebase/6.3.4/firebase-firestore.js"></script>
+    <script defer src="/__/firebase/6.3.4/firebase-messaging.js"></script>
+    <script defer src="/__/firebase/6.3.4/firebase-storage.js"></script>
+    <!-- initialize the SDK after all desired features are loaded -->
+    <script defer src="/__/firebase/init.js"></script>
+
+    <!--All Non-Firebase Scripts-->
+    <script src="scripts/staffPage.js"></script>
+    <script src='https://embed.twitch.tv/embed/v1.js'></script>
+
+    <title>The Gaming Saloon Network - Schedule</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Raleway:600|Sancreek&display=swap" rel="stylesheet">
+    <link rel='icon' href='images/tgsn.jpg' type='image/jpg' sizes='16x16'>
+    <link href='styles/staff.css' rel='stylesheet'>
+  </head>
+  <body>
+    <!--Start Nav Bar-->
+    <table width='100%' height='95px' align='center' style='background-color: rgba(0,0,0,0.75);'>
+      <tr id='siteName' height='95px'>
+        <td width='86px' valign='middle'><a href='../' id='topLink'><img src='../images/tgsn.jpg' width='86px' height='86px'></a></td>
+        <td valign='middle' align='center' width='240px'><a href='../' id='topLink'>The Gaming<br>Saloon Network</a></td>
+        <td valign='middle' align='center'><div id='topTitle'><a href='../schedule' id='topLink'>Schedule</a></div></td>
+      </tr>
+    </table>
+    <!--End Nav Bar-->
+    <table width='100%' id='bodyContent' border='1px'>
+      <tr><tr>
+        <td align='center' colspan='3'>
+          <h3><u>Current Week's Schedule</u></h3>
+          <div id='weekOf'>Week Of </div>
+          <table width='85%' align='center'>
+            <tr>
+              <td width='20%' align='center'><u>Day</u></td>
+              <td width='20%' align='center'><u>Start Time</u></td>
+              <td width='20%' align='center'><u>Pre-Show Game/Stream</u></td>
+              <td width='20%' align='center'><u>Game/Stream</u></td>
+            </tr>
+            <tr>
+              <td width='20%' align='center'>Monday</td>
+              <td width='20%' align='center' id='mTime'></td>
+              <td width='20%' align='center' id='mPre'></td>
+              <td width='20%' align='center' id='mShow'></td>
+            </tr>
+            <tr>
+              <td width='20%' align='center'>Tuesday</td>
+              <td width='20%' align='center' id='tuTime'></td>
+              <td width='20%' align='center' id='tuPre'></td>
+              <td width='20%' align='center' id='tuShow'></td>
+            </tr>
+            <tr>
+              <td width='20%' align='center'>Wednesday</td>
+              <td width='20%' align='center' id='wTime'></td>
+              <td width='20%' align='center' id='wPre'></td>
+              <td width='20%' align='center' id='wShow'></td>
+            </tr>
+            <tr>
+              <td width='20%' align='center'>Thursday</td>
+              <td width='20%' align='center' id='thTime'></td>
+              <td width='20%' align='center' id='thPre'></td>
+              <td width='20%' align='center' id='thShow'></td>
+            </tr>
+            <tr>
+              <td width='20%' align='center'>Friday</td>
+              <td width='20%' align='center' id='fTime'></td>
+              <td width='20%' align='center' id='fPre'></td>
+              <td width='20%' align='center' id='fShow'></td>
+            </tr>
+            <tr>
+              <td width='20%' align='center'>Saturday</td>
+              <td width='20%' align='center' id='saTime'></td>
+              <td width='20%' align='center' id='saPre'></td>
+              <td width='20%' align='center' id='saShow'></td>
+            </tr>
+            <tr>
+              <td width='20%' align='center'>Sunday</td>
+              <td width='20%' align='center' id='suTime'></td>
+              <td width='20%' align='center' id='suPre'></td>
+              <td width='20%' align='center' id='suShow'></td>
+            </tr>
+            <tr id='scheduleEdit'>
+              <td colspan='4' align='center'><u>Update Schedule</u>
+                <table>
+                  <tr>
+                    <td>
+                      <input type='radio' name='day' value='monday'> Monday<br>
+                      <input type='radio' name='day' value='tuesday'> Tuesday<br>
+                      <input type='radio' name='day' value='wednesday'> Wednesday<br>
+                      <input type='radio' name='day' value='thursday'> Thursday<br>
+                      <input type='radio' name='day' value='friday'> Friday<br>
+                      <input type='radio' name='day' value='saturday'> Saturday<br>
+                      <input type='radio' name='day' value='sunday'> Sunday<br>
+                    </td>
+                    <td>
+                      &nbsp;
+                    </td>
+                    <td valign='top' align='right'>
+                      Start Time: (Pre-Show Start If Applicable): <input type="text" id='sTime'><br>
+                      Pre-Show: <input type="text" id='pShow'><br>
+                      Game: <input type='text' id='showGame'><br>
+                      Week Of: <input type='text' id='weekOfEdit'><br>
+                      <button onclick='updateSchedule()'>Update W2D Values</button>
+                  </tr>
+                </table>
+              </td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+    </table>
+
+    <!--Attach Firebase JS-->
+    <script src='../scripts/fbaseConnect.js'></script>
+  </body>
+</html>

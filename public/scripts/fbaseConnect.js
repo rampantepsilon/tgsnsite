@@ -7,6 +7,41 @@ document.addEventListener("DOMContentLoaded", event =>{
   const tgsnStats = db.collection('stats').doc('tgsn');
   const tgsnPrev = db.collection('stats').doc('lastweek');
   const botDashboard = db.collection('bot').doc('links');
+  const schedule = db.collection('schedule').doc('tgsn');
+
+  //Get Current schedule
+  schedule.onSnapshot(doc => {
+    const field = doc.data();
+
+    document.querySelector('#weekOf').innerHTML = 'Week Of ' + field.wo;
+
+    //Set Start Times
+    document.querySelector('#mTime').innerHTML = field.mTime;
+    document.querySelector('#tuTime').innerHTML = field.tuTime;
+    document.querySelector('#wTime').innerHTML = field.wTime;
+    document.querySelector('#thTime').innerHTML = field.thTime;
+    document.querySelector('#fTime').innerHTML = field.fTime;
+    document.querySelector('#saTime').innerHTML = field.saTime;
+    document.querySelector('#suTime').innerHTML = field.suTime;
+
+    //Set Pre-Show
+    document.querySelector('#mPre').innerHTML = field.mPS;
+    document.querySelector('#tuPre').innerHTML = field.tuPS;
+    document.querySelector('#wPre').innerHTML = field.wPS;
+    document.querySelector('#thPre').innerHTML = field.thPS;
+    document.querySelector('#fPre').innerHTML = field.fPS;
+    document.querySelector('#saPre').innerHTML = field.saPS;
+    document.querySelector('#suPre').innerHTML = field.suPS;
+
+    //Set Stream
+    document.querySelector('#mShow').innerHTML = field.mS;
+    document.querySelector('#tuShow').innerHTML = field.tuS;
+    document.querySelector('#wShow').innerHTML = field.wS;
+    document.querySelector('#thShow').innerHTML = field.thS;
+    document.querySelector('#fShow').innerHTML = field.fS;
+    document.querySelector('#saShow').innerHTML = field.saS;
+    document.querySelector('#suShow').innerHTML = field.suS;
+  })
 
   //Get Bot Dashboard link
   botDashboard.onSnapshot(doc => {
@@ -52,6 +87,7 @@ document.addEventListener("DOMContentLoaded", event =>{
 
   //Hide all Staff Tools
   $("#loggedIn").hide();
+  $('#scheduleEdit').hide();
   $("#updateLW").hide();
   $('#streamPrefixUpdate').hide();
   $('#botDashCont').hide();
@@ -108,6 +144,7 @@ function googleLogin() {
         $('#updateDashboard').show();
         $('#currentDashboard').attr('colspan', 1);
         $('#chatBox').show();
+        $('#scheduleEdit').show();
       } else if (tgsnStaff.includes(user.email)) {
         $('#updateDashboard').show();
         $('#currentDashboard').attr('colspan', 1);
@@ -227,4 +264,106 @@ function prefixChange(){
   var newPrefix = document.getElementById('prefixChange').value;
 
   tgsnPrefix.update ({ TGSN: newPrefix});
+}
+
+function updateSchedule(){
+  const db = firebase.firestore();
+  const tgsnSchedule = db.collection('schedule').doc('tgsn');
+
+  var day = "";
+  var time = document.getElementById('sTime').value;
+  var preShow = document.getElementById('pShow').value;
+  var show = document.getElementById('showGame').value;
+  var wo = document.getElementById('weekOfEdit').value;
+
+  if (wo != ''){
+    tgsnSchedule.update({wo: wo});
+  }
+
+  var dayRadio = document.getElementsByName('day');
+  for (i = 0; i < dayRadio.length; i++){
+    if (dayRadio[i].checked){
+      day = dayRadio[i].value;
+    }
+  }
+
+  if (day != ""){
+    if (day == 'monday'){
+      if (time != ""){
+        tgsnSchedule.update ({ mTime: time});
+      }
+      if (preShow != ''){
+        tgsnSchedule.update ({ mPS: preShow});
+      }
+      if (show != ''){
+        tgsnSchedule.update ({ mS: show});
+      }
+    }
+    if (day == 'tuesday'){
+      if (time != ""){
+        tgsnSchedule.update ({ tuTime: time});
+      }
+      if (preShow != ''){
+        tgsnSchedule.update ({ tuPS: preShow});
+      }
+      if (show != ''){
+        tgsnSchedule.update ({ tuS: show});
+      }
+    }
+    if (day == 'wednesday'){
+      if (time != ""){
+        tgsnSchedule.update ({ wTime: time});
+      }
+      if (preShow != ''){
+        tgsnSchedule.update ({ wPS: preShow});
+      }
+      if (show != ''){
+        tgsnSchedule.update ({ wS: show});
+      }
+    }
+    if (day == 'thursday'){
+      if (time != ""){
+        tgsnSchedule.update ({ thTime: time});
+      }
+      if (preShow != ''){
+        tgsnSchedule.update ({ thPS: preShow});
+      }
+      if (show != ''){
+        tgsnSchedule.update ({ thS: show});
+      }
+    }
+    if (day == 'friday'){
+      if (time != ""){
+        tgsnSchedule.update ({ fTime: time});
+      }
+      if (preShow != ''){
+        tgsnSchedule.update ({ fPS: preShow});
+      }
+      if (show != ''){
+        tgsnSchedule.update ({ fS: show});
+      }
+    }
+    if (day == 'saturday'){
+      if (time != ""){
+        tgsnSchedule.update ({ saTime: time});
+      }
+      if (preShow != ''){
+        tgsnSchedule.update ({ saPS: preShow});
+      }
+      if (show != ''){
+        tgsnSchedule.update ({ saS: show});
+      }
+    }
+    if (day == 'sunday'){
+      if (time != ""){
+        tgsnSchedule.update ({ suTime: time});
+      }
+      if (preShow != ''){
+        tgsnSchedule.update ({ suPS: preShow});
+      }
+      if (show != ''){
+        tgsnSchedule.update ({ suS: show});
+      }
+    }
+  }
 }
