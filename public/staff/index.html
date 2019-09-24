@@ -258,7 +258,7 @@
           <table width='85%' align='center'>
             <tr>
               <td width='20%' align='center'><u>Day</u></td>
-              <td width='20%' align='center'><u>Start Time</u></td>
+              <td width='20%' align='center'><u>Start Time <font color='red'>*</font></u></td>
               <td width='20%' align='center'><u>Pre-Show Game/Stream</u></td>
               <td width='20%' align='center'><u>Game/Stream</u></td>
             </tr>
@@ -321,14 +321,17 @@
                       &nbsp;
                     </td>
                     <td valign='top' align='right'>
-                      Start Time: (Pre-Show Start If Applicable): <input type="text" id='sTime'><br>
-                      Pre-Show: <input type="text" id='pShow'><br>
-                      Game: <input type='text' id='showGame'><br>
+                      Start Time (Pre-Show Start If Applicable): <input type="text" id='sTime'><br>
+                      Pre-Show Game/Stream: <input type="text" id='pShow'><br>
+                      Game/Stream: <input type='text' id='showGame'><br>
                       Week Of: <input type='text' id='weekOfEdit'><br>
                       <button onclick='updateSchedule()'>Update W2D Values</button>
                   </tr>
                 </table>
               </td>
+            </tr>
+            <tr>
+              <td align='center' colspan='4'><font color='red'>* = Start Time will be for Pre-Show if Applicable</font></td>
             </tr>
           </table>
         </td>
