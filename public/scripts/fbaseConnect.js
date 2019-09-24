@@ -97,6 +97,7 @@ document.addEventListener("DOMContentLoaded", event =>{
 
   //Initalize Follower and Dashboard Information
   init();
+  initNotices();
   dashboardGet();
 
 });

@@ -15,6 +15,7 @@
     <script defer src="/__/firebase/init.js"></script>
 
     <!--All Non-Firebase Scripts-->
+    <script src='../scripts/staffNotices.js'></script>
     <script src="../scripts/staffPage.js"></script>
     <script src='https://embed.twitch.tv/embed/v1.js'></script>
 
@@ -48,8 +49,7 @@
       <tr>
         <td align='center' colspan="3">
           <h2>Notices</h2>
-          <p>Welcome to The Gaming Saloon Network Staff HQ!<br>This location will hold important information regarding TGSN Staff</p>
-          <p><font color='red'>Please Note: All Staff must log into this page at least once and contact RampantEpsilon on Discord to get proper permissions.</font></p>
+          <div id='notices'><p>Welcome to The Gaming Saloon Network Staff HQ!<br>This location will hold important information regarding TGSN Staff</p> <p><font color='red'>Please Note: All Staff must log into this page at least once and contact RampantEpsilon on Discord to get proper permissions.</font></p></div>
         </td>
       </tr>
 
@@ -77,10 +77,10 @@
             </tr>
           </table>
         </td>
-        <td align='center' id='chatBox' rowspan = '2'>
+        <!--<td align='center' id='chatBox' rowspan = '2'>
           <div id='twitch-embed'></div>
           <!--<iframe src='https://player.twitch.tv/?channel=TheGamingSaloonNetwork' height='197' width='350' frameborder='0' scrolling='no' allowfullscreen='false'></iframe>
-          <iframe frameborder="0" scrolling="no" id="chat_embed" src="https://www.twitch.tv/embed/TheGamingSaloonNetwork/chat?darkpopout=" height="500" width="350"></iframe>-->
+          <iframe frameborder="0" scrolling="no" id="chat_embed" src="https://www.twitch.tv/embed/TheGamingSaloonNetwork/chat?darkpopout=" height="500" width="350"></iframe>
         </td>
         <script>
           var embed = new Twitch.Embed("twitch-embed", {
@@ -94,7 +94,7 @@
             var player = embed.getPlayer();
             player.pause();
           });
-        </script>
+        </script>-->
       </tr>
 
       <!--Dashboard-->
