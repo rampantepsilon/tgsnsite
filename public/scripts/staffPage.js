@@ -26,7 +26,7 @@ function api(){
       //console.log(channel);
       var title = channel.total;
       var latest = channel.data[0].from_name;
-      $("#videos").html(title + '/180');
+      $("#videos").html(title + '/200');
       $("#latestFollower").html('Latest Follower: ' + latest);
       //console.log(channel.total);
     },
