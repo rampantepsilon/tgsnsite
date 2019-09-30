@@ -1,12 +1,15 @@
 //Inital Load Resources
 var loop = 1;
 function getFollowers(){setInterval("api()",60000)}
+function getFollowers2(){setInterval("api2()",60000)}
 function getLive(){setInterval('live()', 60000)}
 function getDash(){setInterval('dashboardGet()', 60000)}
 function init(){
   api();
+  api2();
   live();
   getFollowers();
+  getFollowers2();
   getLive();
   getDash();
 }
@@ -26,8 +29,34 @@ function api(){
       //console.log(channel);
       var title = channel.total;
       var latest = channel.data[0].from_name;
-      $("#videos").html(title + '/200');
-      $("#latestFollower").html('Latest Follower: ' + latest);
+      $("#videos").html('TGSN Follower Goal: ' + title + '/200 (Or Affiliate)');
+      $("#latestFollower").html('Latest TGSN Follower: ' + latest);
+      //console.log(channel.total);
+    },
+    error: function(){
+      console.log("The Request Failed");
+    }
+  });
+  //console.log("End Script");
+};
+
+//API for Followers
+function api2(){
+  //console.log("Begin Script");
+  $.ajax({
+    datatype: 'json',
+    url: 'https://api.twitch.tv/helix/users/follows?to_id=268637223',
+    headers: {
+      "Client-ID": 'o118lfy65junb52nuye0weh4xbvn11',
+    },
+    success: function(channel)
+    {
+      //console.log("Results:");
+      //console.log(channel);
+      var title = channel.total;
+      var latest = channel.data[0].from_name;
+      $("#videos2").html('TVS Follower Goal: ' + title + '/20');
+      $("#latestFollower2").html('Latest TVS Follower: ' + latest);
       //console.log(channel.total);
     },
     error: function(){
