@@ -106,7 +106,9 @@ function googleLogin() {
   const provider = new firebase.auth.GoogleAuthProvider();
 
   var tgsnCoordinators = ['tomjware@gmail.com', 'peacemaker24482@gmail.com'];
-  var tgsnStaff = ['tgs.rampantepsilon@gmail.com'];//[];
+  var tvsCoordinators = ['tomjware@gmail.com']
+  var tgsnStaff = ['tgs.rampantepsilon@gmail.com'];
+  var tvsStaff = [];
 
   firebase.auth().signInWithPopup(provider)
     .then(result => {
@@ -123,10 +125,18 @@ function googleLogin() {
       }
 
       var position = '';
-      if (tgsnCoordinators.includes(user.email)){
+      if (tgsnCoordinators.includes(user.email) && tvsCoordinators.includes(user.email)){
+        position = 'TGSN/TVS Coordinator';
+      } else if (tgsnStaff.includes(user.email) && tvsStaff.includes(user.email)){
+        position = 'TGSN/TVS Staff';
+      } else if (tgsnCoordinators.includes(user.email)){
         position = 'TGSN Coordinator';
+      } else if (tvsCoordinators.includes(user.email)){
+        position = 'TVS Coordinator';
       } else if (tgsnStaff.includes(user.email)) {
         position = 'TGSN Staff';
+      } else if (tvsStaff.includes(user.email)) {
+        position = 'TVS Staff';
       } else {
         position = 'Staff';
       }
