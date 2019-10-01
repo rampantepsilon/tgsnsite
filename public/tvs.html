@@ -1,0 +1,22 @@
+<html>
+<head>
+</head>
+
+<body>
+  <div id='twitch-embed'></div>
+
+  <script>
+    var embed = new Twitch.Embed("twitch-embed", {
+      width: 450,
+      height: 650,
+      theme: 'dark',
+      channel: "TheVoicelessSaloon"
+    });
+
+    embed.addEventListener(Twitch.Embed.VIDEO_READY, () => {
+      var player = embed.getPlayer();
+      player.pause();
+    });
+  </script>
+</body>
+</html>

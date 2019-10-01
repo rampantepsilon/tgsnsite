@@ -3,15 +3,22 @@ var loop = 1;
 function getFollowers(){setInterval("api()",60000)}
 function getFollowers2(){setInterval("api2()",60000)}
 function getLive(){setInterval('live()', 60000)}
+function getLiveTVS(){setInterval('liveTVS()', 60000)}
 function getDash(){setInterval('dashboardGet()', 60000)}
+function getDash2(){setInterval('dashboardGetTVS()', 60000)}
 function init(){
   api();
   api2();
   live();
+  liveTVS();
+  showTGSN();
+  dashboardGetTVS();
   getFollowers();
   getFollowers2();
   getLive();
+  getLiveTVS();
   getDash();
+  getDash2();
 }
 
 //API for Followers
@@ -88,12 +95,53 @@ function live(){
           liveStatus = channel.data[0].type;
         }
         if (liveStatus == 'live'){
-          liveStatus = '<a href="https://twitch.tv/TheGamingSaloonNetwork"><font color="red">LIVE</font></a>';
+          liveStatus = '<a href="https://twitch.tv/TheGamingSaloonNetwork"><font color="red">TGSN LIVE</font></a>';
           $('#chatBox').show();
         } else {
-          liveStatus = 'OFFLINE';
+          liveStatus = 'TGSN OFFLINE';
         }
         $("#liveStatus").html(liveStatus);
+        /*if (typeof channel.data[0] === 'undefined'){
+          console.log('offline');
+        } else {
+          console.log(channel.data[0].type);
+        }*/
+      },
+      error: function(){
+        console.log("The Request Failed");
+      }
+    });
+    //console.log("End Script");
+}
+
+//API for Channel Live
+function liveTVS(){
+      //console.log("Begin Script");
+    $.ajax({
+      datatype: 'json',
+      //url: 'https://api.twitch.tv/helix/streams?user_login=BackgroundGaming_',
+      url: 'https://api.twitch.tv/helix/streams?user_login=TheVoicelessSaloon',
+      headers: {
+        "Client-ID": 'o118lfy65junb52nuye0weh4xbvn11',
+      },
+      success: function(channel)
+      {
+        //console.log("Results:");
+        //console.log(channel);
+        var livestatus = '';
+
+        if (typeof channel.data[0] === 'undefined'){
+          liveStatus = "";
+        } else {
+          liveStatus = channel.data[0].type;
+        }
+        if (liveStatus == 'live'){
+          liveStatus = '<a href="https://twitch.tv/TheGamingSaloonNetwork"><font color="red"> TVS LIVE</font></a>';
+          $('#chatBox').show();
+        } else {
+          liveStatus = 'TVS OFFLINE';
+        }
+        $("#liveStatusTVS").html(liveStatus);
         /*if (typeof channel.data[0] === 'undefined'){
           console.log('offline');
         } else {
@@ -140,6 +188,28 @@ function dashboardPut(){
   })
 }
 
+//Dashboard Posting
+function dashboardPutTVS(){
+  //Attach Prefix and Send to Twitch
+  var titleStr = document.getElementById('titleChange').value;
+  var game = document.getElementById('gameChange').value;
+  var token = 'a2kb4vzvesmn5vt0e2btw622eez0a1';
+  $.ajax({
+    url: 'https://api.twitch.tv/kraken/channels/TheVoicelessSaloon',
+    headers: {
+      'Authorization': ['OAuth ' + token],
+    },
+    type: 'PUT',
+    contentType: 'application/json',
+    data: '{"channel": {"status": "' + titleStr + '", "game": "' + game + '"}}',
+    success: function(data) {
+      //console.log(data.status);
+      //console.log(data.game);
+      dashboardGetTVS();
+    }
+  });
+}
+
 //Get Current Dashboard Info
 function dashboardGet(){
   const db = firebase.firestore();
@@ -156,6 +226,27 @@ function dashboardGet(){
   var game = document.getElementById('streamGame');
   $.ajax({
     url: 'https://api.twitch.tv/kraken/channels/TheGamingSaloonNetwork',
+    headers: {
+      'Authorization': ['OAuth ' + token],
+    },
+    type: 'GET',
+    contentType: 'application/json',
+    success: function(data) {
+      title.innerHTML = data.status;
+      game.innerHTML = data.game;
+      //console.log(data.status);
+      //console.log(data.game);
+    }
+  });
+}
+
+//Get Current Dashboard Info
+function dashboardGetTVS(){
+  var token = 'a2kb4vzvesmn5vt0e2btw622eez0a1';
+  var title = document.getElementById('streamTitleTVS');
+  var game = document.getElementById('streamGameTVS');
+  $.ajax({
+    url: 'https://api.twitch.tv/kraken/channels/TheVoicelessSaloon',
     headers: {
       'Authorization': ['OAuth ' + token],
     },

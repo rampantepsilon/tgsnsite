@@ -378,3 +378,9 @@ function updateSchedule(){
     }
   }
 }
+function showTGSN(){
+  $('#player').load('tgsn.html');
+}
+function showTVS(){
+  $('#player').load('tvs.html');
+}

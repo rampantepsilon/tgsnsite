@@ -92,23 +92,16 @@
           </table>
         </td>
         <td align='center' id='chatBox' rowspan = '2'>
-          <div id='twitch-embed'></div>
-          <!--<iframe src='https://player.twitch.tv/?channel=TheGamingSaloonNetwork' height='197' width='350' frameborder='0' scrolling='no' allowfullscreen='false'></iframe>
-          <iframe frameborder="0" scrolling="no" id="chat_embed" src="https://www.twitch.tv/embed/TheGamingSaloonNetwork/chat?darkpopout=" height="500" width="350"></iframe>-->
+          <table>
+            <tr>
+              <td id='linkButton2' onclick='showTGSN()'>TGSN</td>
+              <td id='linkButton2' onclick='showTVS()'>TVS</td>
+            </tr>
+            <tr>
+              <td id='player' colspan="2"></td>
+            </tr>
+          </table>
         </td>
-        <script>
-          var embed = new Twitch.Embed("twitch-embed", {
-            width: 450,
-            height: 650,
-            theme: 'dark',
-            channel: "TheGamingSaloonNetwork"
-          });
-
-          embed.addEventListener(Twitch.Embed.VIDEO_READY, () => {
-            var player = embed.getPlayer();
-            player.pause();
-          });
-        </script>
       </tr>
 
       <!--Dashboard-->
@@ -134,20 +127,40 @@
               </td>
             </tr>
           </table>
+          <div>&nbsp;</div>
+          <div id='liveStatusTVS'></div>
+          <table>
+            <tr>
+              <td align='right'>
+                Stream Title:&nbsp;
+              </td>
+              <td align='left'>
+                <div id='streamTitleTVS'></div>
+              </td>
+            </tr>
+            <tr>
+              <td align='right'>
+                Game:&nbsp;
+              </td>
+              <td align='left'>
+                <div id='streamGameTVS'></div>
+              </td>
+            </tr>
+          </table>
         </td>
         <td align='center' id='updateDashboard'>
           <h3><u>Update Dashboard</u></h3>
           <h5>Please do NOT add the Prefix (i.e. '!180 || ') when updating.<br> The prefix will be updated as needed by TGSN Coordinators</h5>
           <table>
             <tr>
-              <td align='center' colspan='2' id='botDashCont'>
-                <div id='botDash'></div><br>&nbsp;
+              <td align='center' colspan='3' id='botDashCont'>
+                <div id='botDash'></div>
               </td>
             <tr>
               <td align='right'>
                 Current Prefix:
               </td>
-              <td align='left'>
+              <td align='left' colspan='2'>
                 <div id='streamPrefix'></div>
               </td>
             </tr>
@@ -156,14 +169,16 @@
                 Update Prefix:
               </td>
               <td align='left'>
-                <input id='prefixChange' size='3'><table><tr><td id='linkButton2' onclick='prefixChange()'>Change Prefix</a></td></tr></table>
+                <input id='prefixChange' size='3'>
+              </td>
+              <td align='left'><table><tr><td id='linkButton2' onclick='prefixChange()'>Change Prefix</td></tr></table>
               </td>
             </tr>
             <tr>
               <td align='right'>
                 Stream Title:&nbsp;
               </td>
-              <td align='left'>
+              <td align='left' colspan='2'>
               <input id='titleChange'>
               </td>
             </tr>
@@ -171,12 +186,13 @@
               <td align='right'>
                 Game:&nbsp;
               </td>
-              <td align='left'>
+              <td align='left' colspan='2'>
               <input id='gameChange'>
               </td>
             </tr>
           </table>
-          <button onclick='dashboardPut()'>Update Dashboard</button>
+          <button onclick='dashboardPut()'>Update TGSN</button>
+          <button onclick='dashboardPutTVS()'>Update TVS</button>
         </td>
       </tr>
 
@@ -245,7 +261,7 @@
                 Unique Viewers: <input id='uniqueutw' size='1'><br>
                 New Followers: <input id='newFollowsutw' size='1'><br>
                 Total Followers: <input id='followsutw' size='1'><br>
-                <table><tr><td id='linkButton2' onclick='updateTWValues()'>Update W2D Values</a></td></tr></table>
+                <table><tr><td id='linkButton2' onclick='updateTWValues()'>Update W2D Values</td></tr></table>
               </td>
               <td align='center' valign='top' rowspan="8" id='updateLW' width='175px'>
                 <u>Update LW</u><br>
@@ -256,7 +272,7 @@
                 <input id='uniqueulw' size='1'><br>
                 <input id='newFollowsulw' size='1'><br>
                 <input id='followsulw' size='1'><br>
-                <table><tr><td id='linkButton2' onclick='updateLWValues()'>Update LW Values</a></td></tr></table>
+                <table><tr><td id='linkButton2' onclick='updateLWValues()'>Update LW Values</td></tr></table>
               </td>
             </tr>
           </table>
