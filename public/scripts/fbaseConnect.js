@@ -108,7 +108,7 @@ function googleLogin() {
   var tgsnCoordinators = ['tomjware@gmail.com', 'peacemaker24482@gmail.com'];
   var tvsCoordinators = ['tomjware@gmail.com']
   var tgsnStaff = ['tgs.rampantepsilon@gmail.com'];
-  var tvsStaff = [];
+  var tvsStaff = ['tgs.rampantepsilon@gmail.com'];
 
   firebase.auth().signInWithPopup(provider)
     .then(result => {
@@ -146,7 +146,7 @@ function googleLogin() {
       document.querySelector('#title').innerHTML = (`Hello ` + userName + `<br><button onclick='googleLogout()'>Logout</button>`);
       document.querySelector('#userPic').innerHTML = (`<img src='` + user.photoURL + `' width='60px' height='60px' id='profilePic' />`);
 
-      if (tgsnCoordinators.includes(user.email)){
+      if (position == 'TGSN/TVS Coordinator' || user.email == 'peacemaker24482@gmail.com'){
         document.querySelector('#body').innerHTML = (`Enter the new link for TGS Articles<br><input id='tgsArticleLink'><table><tr><td id='linkButton2' onclick='updateTGSArticles()'>Update TGS Articles</a></td><td id='linkButton2' onclick='clearTGSArticles()'>Clear Link Field</td></tr></table>`);
         $("#loggedIn").show();
         $("#updateLW").show();
@@ -156,7 +156,33 @@ function googleLogin() {
         $('#currentDashboard').attr('colspan', 1);
         $('#chatBox').show();
         $('#scheduleEdit').show();
-      } else if (tgsnStaff.includes(user.email)) {
+      } else if (position == 'TGSN Coordinator'){
+        document.querySelector('#body').innerHTML = (`Enter the new link for TGS Articles<br><input id='tgsArticleLink'><table><tr><td id='linkButton2' onclick='updateTGSArticles()'>Update TGS Articles</a></td><td id='linkButton2' onclick='clearTGSArticles()'>Clear Link Field</td></tr></table>`);
+        $("#loggedIn").show();
+        $("#updateLW").show();
+        $('#botDashCont').show();
+        $("#streamPrefixUpdate").show();
+        $('#updateDashboard').show();
+        $('#tvsDash').hide();
+        $('#currentDashboard').attr('colspan', 1);
+        $('#chatBox').show();
+        $('#scheduleEdit').show();
+      } else if (position == 'TVS Coordinator'){
+        $('#updateDashboard').show();
+        $('#tgsnDash').hide();
+        $('#currentDashboard').attr('colspan', 1);
+        $('#chatBox').show();
+      } else if (position == 'TGSN Staff') {
+        $('#updateDashboard').show();
+        $('#tvsDash').hide();
+        $('#currentDashboard').attr('colspan', 1);
+        $('#chatBox').show();
+      } else if (position == 'TVS Staff') {
+        $('#updateDashboard').show();
+        $('#tgsnDash').hide();
+        $('#currentDashboard').attr('colspan', 1);
+        $('#chatBox').show();
+      } else if (position == 'TGSN/TVS Staff') {
         $('#updateDashboard').show();
         $('#currentDashboard').attr('colspan', 1);
         $('#chatBox').show();
