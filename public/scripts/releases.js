@@ -1,18 +1,26 @@
 function getReleases(){
+  var title = [], date = [], platform = [];
+  var title1 = [], date1 = [], platform1 = [];
+
   var start = document.getElementById('startYear').value + '-' + document.getElementById('startMonth').value + '-' + document.getElementById('startDate').value;
+  var offset = document.getElementById('offset').value;
   var numReleases = results(api, start);
-  var t1 = `<table width='100%'><tr><td id='name'>`;
+  var t1 = `<tr><td id='name'>`;
   var t2 = `</td><td id='date' align='center'>`;
   var t3 = `</td></tr><tr><td id='platform' colspan='2'>`;
-  var t4 = `</td></tr><tr><td>=========================================================</td></tr></table>`;
+  var t4 = `</td></tr><tr><td>=========================================================</td></tr>`;
 
   $.ajax({
     datatype: 'json',
-    url: 'https://cors-anywhere.herokuapp.com/https://www.gamespot.com/api/releases/?api_key=' + api + '&sort=release_date:asc&filter=release_date:' + start + '&format=json',
+    url: 'https://cors-anywhere.herokuapp.com/https://www.gamespot.com/api/releases/?api_key=' + api + '&offset=' + offset +'&sort=release_date:asc&filter=release_date:' + start + '&format=json',
     success: function(data)
     {
-      if (data.number_of_total_results < 100){
-        for (i = 0; i < data.number_of_total_results; i ++ ){
+      var offsetCheck = offset;
+      var results = parseInt(data.number_of_total_results, 10);
+      var max = results - offsetCheck;
+      console.log(max);
+      if (max < 100){
+        for (i = 0; i < max; i ++ ){
           if (data.results[i].region == 'North America'){
             if (data.results[i].platform != 'PC'){
               if (data.results[i].platform != 'Macintosh'){
@@ -50,7 +58,7 @@ function getReleases(){
         }
       }
       for (j = 0; j < title.length; j++){
-        document.getElementById('releases').innerHTML += t1 + title[j] + t2 + date[j] + t3 + platform[j] + t4;
+        document.getElementById('releases').innerHTML += t1 + title[j] + " (" + platform[j] + ")" + t2 + date[j] + t4;
       }
     },
     error: function(){
