@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <!--<meta name="viewport" content="width=device-width, initial-scale=1">-->
+
+    <!-- update the version number as needed -->
+    <script defer src="/__/firebase/6.3.4/firebase-app.js"></script>
+    <!-- include only the Firebase features as you need -->
+    <script defer src="/__/firebase/6.3.4/firebase-auth.js"></script>
+    <script defer src="/__/firebase/6.3.4/firebase-firestore.js"></script>
+    <script defer src="/__/firebase/6.3.4/firebase-messaging.js"></script>
+    <script defer src="/__/firebase/6.3.4/firebase-storage.js"></script>
+    <!-- initialize the SDK after all desired features are loaded -->
+    <script defer src="/__/firebase/init.js"></script>
+
+    <!--All Non-Firebase Scripts-->
+    <script src='../scripts/staffNotices.js'></script>
+    <script src="../scripts/staffPage.js"></script>
+    <script src='https://embed.twitch.tv/embed/v1.js'></script>
+
+    <title>The Gaming Saloon Network - Staff HQ</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Raleway:600|Sancreek&display=swap" rel="stylesheet">
+    <link rel='icon' href='images/tgsn.jpg' type='image/jpg' sizes='16x16'>
+    <link href='../styles/staff.css' rel='stylesheet'>
+    <style>
+    body, html{
+      height: 99%;
+    }
+    #bodyContent{
+      height: 87%;
+    }
+    </style>
+  </head>
+  <body>
+    <!--Start Nav Bar-->
+    <table width='100%' height='95px' align='center' style='background-color: rgba(0,0,0,0.75);'>
+      <tr id='siteName' height='95px'>
+        <td width='86px' valign='middle'><a href='../' id='topLink'><img src='../images/tgsn.jpg' width='86px' height='86px'></a></td>
+        <td valign='middle' align='center' width='240px'><a href='../' id='topLink'>The Gaming<br>Saloon Network</a></td>
+        <td valign='middle' align='center'><div id='topTitle'><a href='../staff' id='topLink'>Staff HQ</a></div></td>
+        <td valign='middle' align='right'>
+          <table>
+            <tr>
+              <td align='center'><p id='title'>Not Signed In <br><button onclick='googleLogin()'>Login with Google</button></p></td>
+            </tr>
+          </table>
+        </td>
+        <td valign='middle' align='center' width='86px' id='userPic'></td>
+      </tr>
+    </table>
+    <!--End Nav Bar-->
+
+    <!--Start Body-->
+    <table width='100%' id='bodyContent' border='1px'>
+      <tr height='90%'>
+        <td align='center' valign='top'>
+          <table width='100%'border='1px'>
+            <tr>
+              <td align='center' valign='top'>
+                <h2>Notices</h2>
+                <div id='notices'></div>
+              </td>
+              <td align='center' width='35%' valign='top'>
+                <h2>Goals</h2>
+                <table width='80%'>
+                  <tr>
+                    <td align='center' id="videos" width='78px'></td>
+                  </tr>
+                  <tr>
+                    <td align='center'>
+                      Rampant Plays Halo Custom Campaigns<br>
+                      Peace Plays All Kamen Rider: Rider Revolution
+                    </td>
+                  </tr>
+                  <tr>
+                    <td align='center' id='latestFollower'></td>
+                  </tr>
+                </table>
+              </td>
+            <tr>
+          </table>
+        </td>
+      </tr>
+      <tr height="10%">
+        <td align='center' colspan="2">
+          <table width='100%'>
+            <tr>
+              <td align='center' width='17%'>
+                Notices/Goals
+              </td>
+              <td align='center' width='17%'>
+                TGS Articles
+              </td>
+              <td align='center' width='16%'>
+                Dashboard
+              </td>
+              <td align='center' width='16%'>
+                Twitch Stream
+              </td>
+              <td align='center' width='17%'>
+                Stats
+              </td>
+              <td align='center' width='17%'>
+                Schedule
+              </td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+    </table>
+
+    <!--Attach Firebase JS-->
+    <script src='../scripts/fbaseConnect.js'></script>
+  </body>
+</html>

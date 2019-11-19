@@ -106,9 +106,7 @@ function googleLogin() {
   const provider = new firebase.auth.GoogleAuthProvider();
 
   var tgsnCoordinators = ['tomjware@gmail.com', 'peacemaker24482@gmail.com'];
-  var tvsCoordinators = ['tomjware@gmail.com']
   var tgsnStaff = ['tgs.rampantepsilon@gmail.com'];
-  var tvsStaff = ['tgs.rampantepsilon@gmail.com'];
 
   firebase.auth().signInWithPopup(provider)
     .then(result => {
@@ -125,18 +123,10 @@ function googleLogin() {
       }
 
       var position = '';
-      if (tgsnCoordinators.includes(user.email) && tvsCoordinators.includes(user.email)){
-        position = 'TGSN/TVS Coordinator';
-      } else if (tgsnStaff.includes(user.email) && tvsStaff.includes(user.email)){
-        position = 'TGSN/TVS Staff';
-      } else if (tgsnCoordinators.includes(user.email)){
+      if (tgsnCoordinators.includes(user.email)){
         position = 'TGSN Coordinator';
-      } else if (tvsCoordinators.includes(user.email)){
-        position = 'TVS Coordinator';
       } else if (tgsnStaff.includes(user.email)) {
         position = 'TGSN Staff';
-      } else if (tvsStaff.includes(user.email)) {
-        position = 'TVS Staff';
       } else {
         position = 'Staff';
       }
@@ -146,7 +136,7 @@ function googleLogin() {
       document.querySelector('#title').innerHTML = (`Hello ` + userName + `<br><button onclick='googleLogout()'>Logout</button>`);
       document.querySelector('#userPic').innerHTML = (`<img src='` + user.photoURL + `' width='60px' height='60px' id='profilePic' />`);
 
-      if (position == 'TGSN/TVS Coordinator' || user.email == 'peacemaker24482@gmail.com'){
+      if (position == 'TGSN Coordinator'){
         document.querySelector('#body').innerHTML = (`Enter the new link for TGS Articles<br><input id='tgsArticleLink'><table><tr><td id='linkButton2' onclick='updateTGSArticles()'>Update TGS Articles</a></td><td id='linkButton2' onclick='clearTGSArticles()'>Clear Link Field</td></tr></table>`);
         $("#loggedIn").show();
         $("#updateLW").show();
@@ -156,34 +146,9 @@ function googleLogin() {
         $('#currentDashboard').attr('colspan', 1);
         $('#chatBox').show();
         $('#scheduleEdit').show();
-      } else if (position == 'TGSN Coordinator'){
-        document.querySelector('#body').innerHTML = (`Enter the new link for TGS Articles<br><input id='tgsArticleLink'><table><tr><td id='linkButton2' onclick='updateTGSArticles()'>Update TGS Articles</a></td><td id='linkButton2' onclick='clearTGSArticles()'>Clear Link Field</td></tr></table>`);
-        $("#loggedIn").show();
-        $("#updateLW").show();
-        $('#botDashCont').show();
-        $("#streamPrefixUpdate").show();
-        $('#updateDashboard').show();
-        $('#tvsDash').hide();
-        $('#currentDashboard').attr('colspan', 1);
-        $('#chatBox').show();
-        $('#scheduleEdit').show();
-      } else if (position == 'TVS Coordinator'){
-        $('#updateDashboard').show();
-        $('#tgsnDash').hide();
-        $('#currentDashboard').attr('colspan', 1);
-        $('#chatBox').show();
       } else if (position == 'TGSN Staff') {
         $('#updateDashboard').show();
         $('#tvsDash').hide();
-        $('#currentDashboard').attr('colspan', 1);
-        $('#chatBox').show();
-      } else if (position == 'TVS Staff') {
-        $('#updateDashboard').show();
-        $('#tgsnDash').hide();
-        $('#currentDashboard').attr('colspan', 1);
-        $('#chatBox').show();
-      } else if (position == 'TGSN/TVS Staff') {
-        $('#updateDashboard').show();
         $('#currentDashboard').attr('colspan', 1);
         $('#chatBox').show();
       }
