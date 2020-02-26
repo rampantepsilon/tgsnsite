@@ -203,6 +203,7 @@ function requestAccess(){
 
 //Modules
 function showHome(){
+  api();
   //Determine what to show
   var uEmail = sessionStorage.getItem('userEmail');
   var position = '';
