@@ -705,6 +705,70 @@ function showSchedule(){
           </td>
         </tr>
       </table>`];
+  } else {
+    document.getElementById('staffBody').innerHTML = [`
+      <!--Start Schedule-->
+      <table width='100%'>
+        <tr>
+          <td align='center' colspan='3'>
+            <h3><u>Current Week's Schedule</u></h3>
+            <div id='weekOf'>Week Of </div>
+            <table width='85%' align='center'>
+              <tr>
+                <td width='20%' align='center'><u>Day</u></td>
+                <td width='20%' align='center'><u>Start Time <font color='red'>*</font></u></td>
+                <td width='20%' align='center'><u>Pre-Show Game/Stream</u></td>
+                <td width='20%' align='center'><u>Game/Stream</u></td>
+              </tr>
+              <tr>
+                <td width='20%' align='center'>Monday</td>
+                <td width='20%' align='center' id='mTime'></td>
+                <td width='20%' align='center' id='mPre'></td>
+                <td width='20%' align='center' id='mShow'></td>
+              </tr>
+              <tr>
+                <td width='20%' align='center'>Tuesday</td>
+                <td width='20%' align='center' id='tuTime'></td>
+                <td width='20%' align='center' id='tuPre'></td>
+                <td width='20%' align='center' id='tuShow'></td>
+              </tr>
+              <tr>
+                <td width='20%' align='center'>Wednesday</td>
+                <td width='20%' align='center' id='wTime'></td>
+                <td width='20%' align='center' id='wPre'></td>
+                <td width='20%' align='center' id='wShow'></td>
+              </tr>
+              <tr>
+                <td width='20%' align='center'>Thursday</td>
+                <td width='20%' align='center' id='thTime'></td>
+                <td width='20%' align='center' id='thPre'></td>
+                <td width='20%' align='center' id='thShow'></td>
+              </tr>
+              <tr>
+                <td width='20%' align='center'>Friday</td>
+                <td width='20%' align='center' id='fTime'></td>
+                <td width='20%' align='center' id='fPre'></td>
+                <td width='20%' align='center' id='fShow'></td>
+              </tr>
+              <tr>
+                <td width='20%' align='center'>Saturday</td>
+                <td width='20%' align='center' id='saTime'></td>
+                <td width='20%' align='center' id='saPre'></td>
+                <td width='20%' align='center' id='saShow'></td>
+              </tr>
+              <tr>
+                <td width='20%' align='center'>Sunday</td>
+                <td width='20%' align='center' id='suTime'></td>
+                <td width='20%' align='center' id='suPre'></td>
+                <td width='20%' align='center' id='suShow'></td>
+              </tr>
+              <tr>
+                <td align='center' colspan='4'><font color='red'>* = Start Time will be for Pre-Show if Applicable</font></td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+      </table>`];
   }
 
   loadSchedule();
