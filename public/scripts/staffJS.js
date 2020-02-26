@@ -346,7 +346,7 @@ function showBotDash(){
   //Get Bot Dashboard link
   botDashboard.onSnapshot(doc => {
     const data = doc.data();
-    window.open(`<a href='` + data.TGSN + `' target='_blank'>TGSNBot Dashboard</a>`);
+    window.open(data.TGSN);
   })
 }
 
