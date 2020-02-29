@@ -5,6 +5,9 @@ function init(){
   getFollowers();
 }
 
+//vars for releases
+var apiReleases, startDate;
+
 //API for Followers
 function api(){
   //console.log("Begin Script");
@@ -35,13 +38,39 @@ function api(){
 
 /* ----- BODY SCRIPTING ----- */
 //Notices
-const notice1a = `<p>Welcome to The Gaming Saloon Network Staff HQ!<br />This location will hold important information regarding TGSN Staff</p>`;
-const notice1b = `<p><font color='red'>Please Note: All Staff must log into this page at least once and contact RampantEpsilon#7868 on Discord to get proper permissions.</font></p>`;
-const notice2a = `<p><font color='red'>ATTENTION TGS STAFF!</font> I'm currently working on a Releases Page for Staff Use Only. If you have this link for any reason, you are NOT to share it with viewers. This is an internal page for the moment with the potential to allow users to view in the future.</p>`;
-const notice2b = `<p>The page can be found <a href='./releases'>here</a> -RampantEpsilon</p>`;
+const notice1 = `<p>Welcome to The Gaming Saloon Network Staff HQ!<br />This location will hold important information regarding TGSN Staff</p><p><font color='red'>Please Note: All Staff must log into this page at least once and contact RampantEpsilon#7868 on Discord to get proper permissions.</font></p>`;
+const notice2 = `<p><font color='red'>ATTENTION TGS STAFF!</font><br>The Releases Page has now been implemented in the Staff HQ.<br>Click Releases down below to see yourself!</p>`;
+const notice3 = [`<p>Want to provide feedback for the Staff HQ page?<br>Use the form <a href='https://forms.gle/PescTWy6oEDd6e6R7' target='_blank'>HERE</a>`];
 
 //Bottom Links
 function showAll(){
+  document.getElementById('botLinks').innerHTML = [`<td align='center' width='12%' onmouseover="this.style.backgroundColor = 'orange'" onmouseout="this.style.backgroundColor = 'rgba(0,0,0,0)'" onclick="showHome()">
+    Notices/Goals
+  </td>
+  <td align='center' width='12%' onmouseover="this.style.backgroundColor = 'orange'" onmouseout="this.style.backgroundColor = 'rgba(0,0,0,0)'" onclick='showTGSArticles()'>
+    TGS Articles
+  </td>
+  <td align='center' width='12%' onmouseover="this.style.backgroundColor = 'orange'" onmouseout="this.style.backgroundColor = 'rgba(0,0,0,0)'" onclick='showDashboard()'>
+    Dashboard
+  </td>
+  <td align='center' width='13%' onmouseover="this.style.backgroundColor = 'orange'" onmouseout="this.style.backgroundColor = 'rgba(0,0,0,0)'" onclick='showBotDash()'>
+    TGSNBot Dashboard
+  </td>
+  <td align='center' width='13%' onmouseover="this.style.backgroundColor = 'orange'" onmouseout="this.style.backgroundColor = 'rgba(0,0,0,0)'" onclick='showTwitch()'>
+    Twitch Stream
+  </td>
+  <td align='center' width='12%' onmouseover="this.style.backgroundColor = 'orange'" onmouseout="this.style.backgroundColor = 'rgba(0,0,0,0)'" onclick='showStats()'>
+    Stats
+  </td>
+  <td align='center' width='13%' onmouseover="this.style.backgroundColor = 'orange'" onmouseout="this.style.backgroundColor = 'rgba(0,0,0,0)'" onclick='showSchedule()'>
+    Schedule
+  </td>
+  <td align='center' width='13%' onmouseover="this.style.backgroundColor = 'orange'" onmouseout="this.style.backgroundColor = 'rgba(0,0,0,0)'" onclick='showReleases()'>
+    Releases
+  </td>`]
+}
+
+function showAllRO(){
   document.getElementById('botLinks').innerHTML = [`<td align='center' width='14%' onmouseover="this.style.backgroundColor = 'orange'" onmouseout="this.style.backgroundColor = 'rgba(0,0,0,0)'" onclick="showHome()">
     Notices/Goals
   </td>
@@ -51,10 +80,7 @@ function showAll(){
   <td align='center' width='14%' onmouseover="this.style.backgroundColor = 'orange'" onmouseout="this.style.backgroundColor = 'rgba(0,0,0,0)'" onclick='showDashboard()'>
     Dashboard
   </td>
-  <td align='center' width='16%' onmouseover="this.style.backgroundColor = 'orange'" onmouseout="this.style.backgroundColor = 'rgba(0,0,0,0)'" onclick='showBotDash()'>
-    TGSNBot Dashboard
-  </td>
-  <td align='center' width='14%' onmouseover="this.style.backgroundColor = 'orange'" onmouseout="this.style.backgroundColor = 'rgba(0,0,0,0)'" onclick='showTwitch()'>
+  <td align='center' width='16%' onmouseover="this.style.backgroundColor = 'orange'" onmouseout="this.style.backgroundColor = 'rgba(0,0,0,0)'" onclick='showTwitch()'>
     Twitch Stream
   </td>
   <td align='center' width='14%' onmouseover="this.style.backgroundColor = 'orange'" onmouseout="this.style.backgroundColor = 'rgba(0,0,0,0)'" onclick='showStats()'>
@@ -62,39 +88,24 @@ function showAll(){
   </td>
   <td align='center' width='14%' onmouseover="this.style.backgroundColor = 'orange'" onmouseout="this.style.backgroundColor = 'rgba(0,0,0,0)'" onclick='showSchedule()'>
     Schedule
-  </td>`]
-}
-
-function showAllRO(){
-  document.getElementById('botLinks').innerHTML = [`<td align='center' width='17%' onmouseover="this.style.backgroundColor = 'orange'" onmouseout="this.style.backgroundColor = 'rgba(0,0,0,0)'" onclick="showHome()">
-    Notices/Goals
   </td>
-  <td align='center' width='17%' onmouseover="this.style.backgroundColor = 'orange'" onmouseout="this.style.backgroundColor = 'rgba(0,0,0,0)'" onclick='showTGSArticles()'>
-    TGS Articles
-  </td>
-  <td align='center' width='14%' onmouseover="this.style.backgroundColor = 'orange'" onmouseout="this.style.backgroundColor = 'rgba(0,0,0,0)'" onclick='showDashboard()'>
-    Dashboard
-  </td>
-  <td align='center' width='16%' onmouseover="this.style.backgroundColor = 'orange'" onmouseout="this.style.backgroundColor = 'rgba(0,0,0,0)'" onclick='showTwitch()'>
-    Twitch Stream
-  </td>
-  <td align='center' width='17%' onmouseover="this.style.backgroundColor = 'orange'" onmouseout="this.style.backgroundColor = 'rgba(0,0,0,0)'" onclick='showStats()'>
-    Stats
-  </td>
-  <td align='center' width='17%' onmouseover="this.style.backgroundColor = 'orange'" onmouseout="this.style.backgroundColor = 'rgba(0,0,0,0)'" onclick='showSchedule()'>
-    Schedule
+  <td align='center' width='14%' onmouseover="this.style.backgroundColor = 'orange'" onmouseout="this.style.backgroundColor = 'rgba(0,0,0,0)'" onclick='showReleases()'>
+    Releases
   </td>`]
 }
 
 function showDefault(){
-  document.getElementById('botLinks').innerHTML = [`<td align='center' width='17%' onmouseover="this.style.backgroundColor = 'orange'" onmouseout="this.style.backgroundColor = 'rgba(0,0,0,0)'" onclick="showHome()">
+  document.getElementById('botLinks').innerHTML = [`<td align='center' width='25%' onmouseover="this.style.backgroundColor = 'orange'" onmouseout="this.style.backgroundColor = 'rgba(0,0,0,0)'" onclick="showHome()">
     Notices/Goals
   </td>
-  <td align='center' width='16%' onmouseover="this.style.backgroundColor = 'orange'" onmouseout="this.style.backgroundColor = 'rgba(0,0,0,0)'" onclick='showTwitch()'>
+  <td align='center' width='25%' onmouseover="this.style.backgroundColor = 'orange'" onmouseout="this.style.backgroundColor = 'rgba(0,0,0,0)'" onclick='showTwitch()'>
     Twitch Stream
   </td>
-  <td align='center' width='17%' onmouseover="this.style.backgroundColor = 'orange'" onmouseout="this.style.backgroundColor = 'rgba(0,0,0,0)'" onclick='showSchedule()'>
+  <td align='center' width='25%' onmouseover="this.style.backgroundColor = 'orange'" onmouseout="this.style.backgroundColor = 'rgba(0,0,0,0)'" onclick='showSchedule()'>
     Schedule
+  </td>
+  <td align='center' width='25%' onmouseover="this.style.backgroundColor = 'orange'" onmouseout="this.style.backgroundColor = 'rgba(0,0,0,0)'" onclick='showReleases()'>
+    Releases
   </td>`]
 }
 
@@ -201,6 +212,33 @@ function requestAccess(){
     <h4>Your request has been submitted. If you don't hear from RampantEpsilon or see the changes within 48 hours, message him on Discord.</h4>`];
 }
 
+//Load Releases
+function loadReleases(){
+
+  var title = [], date = [], platform = [];
+  var title1 = [], date1 = [], platform1 = [];
+
+  const app = firebase.app();
+  const db = firebase.firestore();
+  const releaseAPI = db.collection('releases').doc('info');
+
+  //Get Bot Dashboard link
+  releaseAPI.get().then(function(doc) {
+    const data = doc.data();
+    apiReleases = data.api;
+    //startDate = data.startDate;
+    //document.getElementById('startDate').value = startDate;
+    var d = new Date();
+    document.getElementById('startMonth').value = (d.getMonth() + 1);
+    document.getElementById('startDate').value = d.getDate();
+    document.getElementById('startYear').value = d.getFullYear();
+    //document.getElementById('endDate').value = startDate;
+    document.getElementById('offset').value = 0;
+    document.getElementById('results').innerHTML = 'Results: ' + 0;
+    //endDate = data.endDate;
+    });
+}
+
 //Modules
 function showHome(){
   api();
@@ -243,10 +281,10 @@ function showHome(){
       </tr>
     </table>`];
   } else {*/
-    document.getElementById('staffBody').innerHTML = [`<table>
+    document.getElementById('staffBody').innerHTML = [`<table width='100%'>
       <tr>
         <td style='text-align: center; border: 1px solid;'>
-          <h2>Notices</h2>` + notice1a + notice1b + `</br>` + notice2a + notice2b +
+          <h2>Notices</h2>` + notice1 + `=======` + notice2 + `=======` + notice3 +
         `</td>
         <td style='text-align: center; vertical-align: text-top; width: 35%; border: 1px solid;'>
           <h2>Goals</h2><div id='followers'></div>
@@ -286,7 +324,7 @@ function showTGSArticles(){
     //Fill information
     if (position == 'TGSN Coordinator'){
       document.getElementById('staffBody').innerHTML = [`
-      <table>
+      <table width='100%'>
         <tr>
           <td align='center' valign='top'>
             <h3><u>TGS Resources</u></h3>
@@ -309,7 +347,7 @@ function showTGSArticles(){
           </td>
         </tr>
         <tr>
-          <td colspan='2'>
+          <td colspan='2' align='center'>
             <iframe src='` + link + `' width='900px' height='400px'></iframe>
           </td>
         </tr>
@@ -354,16 +392,22 @@ function showBotDash(){
 function showTwitch(){
 
   sessionStorage.setItem('page','twitch');
-  document.getElementById('staffBody').innerHTML = [`<table>
+  document.getElementById('staffBody').innerHTML = [`<table width='100%'>
     <tr>
       <td style='text-align:center;'>
-        <iframe src='https://player.twitch.tv/?allowfullscreen&playsinline&player=twitch_everywhere&targetOrigin=https%3A%2F%2Fembed.twitch.tv&channel=thegamingsaloonnetwork&origin=https%3A%2F%2Fembed.twitch.tv' width='640px' height='390px' frameborder='0' scrolling='no' allow='autoplay; fullscreen' allowfullscreen></iframe>
+        <iframe src='https://player.twitch.tv/?allowfullscreen&playsinline&player=twitch_everywhere&targetOrigin=https%3A%2F%2Fembed.twitch.tv&channel=thegamingsaloonnetwork&origin=https%3A%2F%2Fembed.twitch.tv' id='twitchPlayer' frameborder='0' scrolling='no' allow='autoplay; fullscreen' allowfullscreen></iframe>
       </td>
       <td>
-        <iframe scrolling="no" frameborder="0" src="https://go.twitch.tv/embed/thegamingsaloonnetwork/chat?darkpopout=true&amp;te-theme=dark&amp;origin=https%3A%2F%2Fembed.twitch.tv" width='400px' height='390px'></iframe>
+        <iframe scrolling="no" frameborder="0" src="https://go.twitch.tv/embed/thegamingsaloonnetwork/chat?darkpopout=true&amp;te-theme=dark&amp;origin=https%3A%2F%2Fembed.twitch.tv" id='twitchChat'></iframe>
       </td>
     </tr>
   </table>`];
+  var playerHeight = window.innerHeight-230;
+  var playerWidth = window.innerWidth-450;
+  $('#twitchPlayer').css('width', playerWidth +'px');
+  $('#twitchPlayer').css('height', playerHeight +'px');
+  $('#twitchChat').css('width', 400+'px');
+  $('#twitchChat').css('height', playerHeight+'px');
 }
 
 function showStats(){
@@ -534,6 +578,79 @@ function showStats(){
       </table>
       <!--End Stats-->`];
     }
+    //Change Stats
+    $("#lengthutw").keyup(function(event) {
+      if (event.keyCode === 13){
+      updateTWValues();
+      }
+    });
+    $("#minutw").keyup(function(event) {
+      if (event.keyCode === 13){
+      updateTWValues();
+      }
+    });
+    $("#avgutw").keyup(function(event) {
+      if (event.keyCode === 13){
+      updateTWValues();
+      }
+    });
+    $("#maxutw").keyup(function(event) {
+      if (event.keyCode === 13){
+        updateTWValues();
+      }
+    });
+    $("#uniqueutw").keyup(function(event) {
+      if (event.keyCode === 13){
+        updateTWValues();
+      }
+    });
+    $("#newFollowsutw").keyup(function(event) {
+      if (event.keyCode === 13){
+        updateTWValues();
+      }
+    });
+    $("#followsutw").keyup(function(event) {
+      if (event.keyCode === 13){
+        updateTWValues();
+      }
+    });
+    $("#lengthulw").keyup(function(event) {
+      if (event.keyCode === 13){
+        updateLWValues();
+      }
+    });
+    $("#minulw").keyup(function(event) {
+      if (event.keyCode === 13){
+        updateLWValues();
+      }
+    });
+    $("#avgulw").keyup(function(event) {
+      if (event.keyCode === 13){
+        updateLWValues();
+      }
+    });
+    $("#maxulw").keyup(function(event) {
+      if (event.keyCode === 13){
+        updateLWValues();
+      }
+    });
+    $("#uniqueulw").keyup(function(event) {
+      if (event.keyCode === 13){
+        updateLWValues();
+      }
+    });
+    $("#newFollowsulw").keyup(function(event) {
+      if (event.keyCode === 13){
+        updateLWValues();
+      }
+    });
+    $("#followsulw").keyup(function(event) {
+      if (event.keyCode === 13){
+        updateLWValues();
+      }
+    });
+
+    //Load Stats
     loadStats();
 }
 
@@ -775,6 +892,57 @@ function showSchedule(){
   loadSchedule();
 }
 
+function showReleases(){
+  sessionStorage.setItem('page','releases');
+
+  document.getElementById('staffBody').innerHTML = [`
+    <!--Start Body-->
+    <table width='100%' border='1px'>
+      <tr>
+        <td colspan='5' align='center'>
+          <h2>Releases</h2>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          Date (MM/DD/YYYY): <input id='startMonth' size='1'> - <input id='startDate' size='1'> - <input id='startYear' size='3'> <button onclick='addDay()'>+1 Day</button> <!--<button onclick='remDay()'>-1 Day<button>--><button onclick='goToday()'>Today</button>
+        </td>
+        <!--<td>
+          End Date: <input id='endDate'>
+        </td>-->
+        <td>
+          Offset (Change by 100 @ a time): <input id='offset' size='5'> <button onclick='add100()'>Add 100 Offset</button> <button onclick='rem100()'>Remove 100 Offset</button>
+        <td id='results'>
+          Results:
+        </td>
+        <td>
+          <button onclick='getReleases()'>Get Releases</button>
+          <button onclick='clearReleases()'>Clear Releases</button>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="5">
+          <table id='releases' width='100%'>
+        </td>
+      </tr>
+    </table>`];
+  loadReleases();
+}
+
+//Resize player
+function resizePlayer(){
+  var pageCheck = sessionStorage.getItem('page');
+
+  if (pageCheck == 'twitch'){
+    var playerHeight = window.innerHeight-230;
+    var playerWidth = window.innerWidth-450;
+    $('#twitchPlayer').css('width', playerWidth +'px');
+    $('#twitchPlayer').css('height', playerHeight +'px');
+    $('#twitchChat').css('width', 400+'px');
+    $('#twitchChat').css('height', playerHeight+'px');
+  }
+}
+
 //Calculate Change in Stats
 function statChange() {
   //Initalize all IDs
@@ -878,4 +1046,166 @@ function statChange() {
   if (followsChange.innerHTML.includes('-')){
     followsChange.innerHTML = '<font color="red">' + followsChange.innerHTML + '</font>';
   }
+}
+
+//Releases Functions
+function clearReleases(){
+  document.getElementById('releases').innerHTML = "";
+}
+
+function getReleases(){
+  var title = [], date = [], platform = [];
+  var title1 = [], date1 = [], platform1 = [];
+
+  var start = document.getElementById('startYear').value + '-' + document.getElementById('startMonth').value + '-' + document.getElementById('startDate').value;
+  var offset = document.getElementById('offset').value;
+  var numReleases = results(apiReleases, start);
+  var t1 = `<tr><td id='name'>`;
+  var t2 = `</td><td id='date' align='center'>`;
+  var t3 = `</td></tr><tr><td id='platform' colspan='2'>`;
+  var t4 = `</td></tr><tr><td>=========================================================</td></tr>`;
+
+  $.ajax({
+    datatype: 'json',
+    url: 'https://cors-anywhere.herokuapp.com/https://www.gamespot.com/api/releases/?api_key=' + apiReleases + '&offset=' + offset +'&sort=release_date:asc&filter=release_date:' + start + '&format=json',
+    success: function(data)
+    {
+      var offsetCheck = offset;
+      var results = parseInt(data.number_of_total_results, 10);
+      var max = results - offsetCheck;
+      console.log(max);
+      if (max < 100){
+        for (i = 0; i < max; i ++ ){
+          if (data.results[i].region == 'North America'){
+            if (data.results[i].platform != 'PC'){
+              if (data.results[i].platform != 'Macintosh'){
+                if (data.results[i].platform != 'Linux'){
+                  title1[i] = data.results[i].name;
+                  date1[i] = data.results[i].release_date.substring(5,10) + '-' + data.results[i].release_date.substring(0,4);
+                  platform1[i] = data.results[i].platform;
+                }
+              }
+            }
+          }
+        };
+      } else {
+        for (i = 0; i < 100; i ++ ){
+          if (data.results[i].region == 'North America'){
+            if (data.results[i].platform != 'PC'){
+              if (data.results[i].platform != 'Macintosh'){
+                if (data.results[i].platform != 'Linux'){
+                  title1[i] = data.results[i].name;
+                  date1[i] = data.results[i].release_date.substring(5,10) + '-' + data.results[i].release_date.substring(0,4);
+                  platform1[i] = data.results[i].platform;
+                }
+              }
+            }
+          }
+        };
+      }
+      var z = 0;
+      for (k = 0; k < title1.length; k++){
+        if (title1[k] != null){
+          title[z] = title1[k];
+          date[z] = date1[k];
+          platform[z] = platform1[k];
+          z += 1;
+        }
+      }
+      for (j = 0; j < title.length; j++){
+        document.getElementById('releases').innerHTML += t1 + title[j] + " (" + platform[j] + ")" + t2 + date[j] + t4;
+      }
+    },
+    error: function(){
+      console.log("The Request Failed");
+    }
+  });
+}
+
+function results(apiReleases, start){
+  $.ajax({
+    datatype: 'json',
+    url: 'https://cors-anywhere.herokuapp.com/https://www.gamespot.com/api/releases/?api_key=' + apiReleases + '&sort=release_date:asc&filter=release_date:' + start + '&format=json',
+    success: function(channel)
+    {
+      console.log(channel.number_of_total_results);
+      document.getElementById('results').innerHTML = 'Results: ' + channel.number_of_total_results;
+      return channel.number_of_total_results;
+    },
+    error: function(){
+      console.log("The Request Failed");
+    }
+  });
+}
+
+function addDay(){
+  var currentMonth = document.getElementById('startMonth').value;
+  var currentDay = document.getElementById('startDate').value;
+  var currentYear = document.getElementById('startYear').value;
+  currentMonth = parseInt(currentMonth, 10);
+  currentDay = parseInt(currentDay, 10);
+  currentYear = parseInt(currentYear, 10);
+
+  if (currentMonth < 12){
+    if (currentMonth == 1 || currentMonth == 3 || currentMonth == 5 || currentMonth == 7 || currentMonth == 8 || currentMonth == 10){
+      if (currentDay != 31){
+        document.getElementById('startDate').value = currentDay + 1;
+      } else if (currentDay = 31){
+        document.getElementById('startDate').value = 1;
+        document.getElementById('startMonth').value = currentMonth + 1;
+      }
+    } else if (currentMonth == 2){
+      if ((currentYear % 4) == 0){
+        if (currentDay != 29){
+          document.getElementById('startDate').value = currentDay + 1;
+        } else if (currentDay == 29){
+          document.getElementById('startDate').value = 1;
+          document.getElementById('startMonth').value = currentMonth + 1;
+        }
+      } else {
+        if (currentDay != 28){
+          document.getElementById('startDate').value = currentDay + 1;
+        } else if (currentDay == 28){
+          document.getElementById('startDate').value = 1;
+          document.getElementById('startMonth').value = currentMonth + 1;
+        }
+      }
+    } else {
+      if (currentDay != 30){
+        document.getElementById('startDate').value = currentDay + 1;
+      } else if (currentDay == 30){
+        document.getElementById('startDate').value = 1;
+        document.getElementById('startMonth').value = currentMonth + 1;
+      }
+    }
+  } else {
+    if (currentDay != 31){
+      document.getElementById('startDate').value = currentDay + 1;
+    } else if (currentDay = 31){
+      document.getElementById('startDate').value = 1;
+      document.getElementById('startMonth').value = 1;
+      document.getElementById('startYear').value = currentYear + 1;
+    }
+  }
+}
+
+function goToday(){
+  var d = new Date();
+  document.getElementById('startMonth').value = (d.getMonth() + 1);
+  document.getElementById('startDate').value = d.getDate();
+  document.getElementById('startYear').value = d.getFullYear();
+}
+
+function add100(){
+  var current = document.getElementById('offset').value;
+  current = parseInt(current, 10);
+  current += 100;
+  document.getElementById('offset').value = current;
+}
+
+function rem100(){
+  var current = document.getElementById('offset').value;
+  current = parseInt(current, 10);
+  current -= 100;
+  document.getElementById('offset').value = current;
 }
