@@ -747,7 +747,7 @@ function showSchedule(){
                         Pre-Show Game/Stream: <input type="text" id='pShow'><br>
                         Game/Stream: <input type='text' id='showGame'><br>
                         Week Of: <input type='text' id='weekOfEdit'><br>
-                        <button onclick='updateSchedule()'>Update Schedule</button>
+                        <button onclick='updateSchedule()' id='ud8Schedule'>Update Schedule</button>
                     </tr>
                   </table>
                 </td>
@@ -888,6 +888,28 @@ function showSchedule(){
         </tr>
       </table>`];
   }
+
+  //Update on Enter
+  $("#sTime").keyup(function(event){
+    if (event.keyCode === 13){
+      $("#ud8Schedule").click();
+    }
+  });
+  $("#pShow").keyup(function(event){
+    if (event.keyCode === 13){
+      $("#ud8Schedule").click();
+    }
+  });
+  $("#showGame").keyup(function(event){
+    if (event.keyCode === 13){
+      $("#ud8Schedule").click();
+    }
+  });
+  $("#weekOfEdit").keyup(function(event){
+    if (event.keyCode === 13){
+      $("#ud8Schedule").click();
+    }
+  });
 
   loadSchedule();
 }
