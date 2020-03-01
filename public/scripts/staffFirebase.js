@@ -88,7 +88,7 @@ function googleLogin() {
         position = 'Staff';
       }
 
-      document.querySelector('#topTitle').innerHTML = (`<a href='../staffv2' id='topLink'>` + position + ` HQ</a>`)
+      document.querySelector('#topTitle').innerHTML = (`<a href='../staff' id='topLink'>` + position + ` HQ</a>`)
 
       document.querySelector('#title').innerHTML = (`Hello ` + userName + `<br><button onclick='googleLogout()'>Logout</button>`);
       document.querySelector('#userPic').innerHTML = (`<img src='` + user.photoURL + `' width='60px' height='60px' id='profilePic' />`);
