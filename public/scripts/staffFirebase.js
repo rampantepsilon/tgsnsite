@@ -1,37 +1,46 @@
 //Staff Information
-var tgsnCoordinators = ['tomjware@gmail.com', 'peacemaker24482@gmail.com'];
-var tgsnStaff = ['tgs.rampantepsilon@gmail.com'];
-const tgsnCoordUID = ['xzofVIVhWoadAIHXzlSbarbI71I3','GCbsDBUGTwXMqvpAgcHo1Y4obJV2'];
-const tgsnStaffUID = ['IhLztO0rtFRH2faSYKgoblgJclf2'];
+var tgsnStaff = [];
+const tgsnStaffUID = [];
+var tgsnCoordinators = [];
+var tgsnCoordUID = [];
 
 //Document Load
 document.addEventListener("DOMContentLoaded", event =>{
-  init();
+  //Please Wait on Login
+  document.querySelector('#title').innerHTML = (`Please Wait`);
+
+  //Get info from Firestore Database
+  const fBase = firebase.app();
+  const fsDB = firebase.firestore();
+  const coord = fsDB.collection('users').doc("tgsnCoord");
+  const staff = fsDB.collection('users').doc('tgsnStaff');
+
+  coord.onSnapshot(doc => {
+    const coordData = doc.data();
+    for (i = 0; i < coordData.uid.length; i++){
+      tgsnCoordUID[i] = coordData.uid[i];
+    }
+    for (i = 0; i < coordData.email.length; i++){
+      tgsnCoordinators[i] = coordData.email[i];
+    }
+  })
+
+  staff.onSnapshot(doc => {
+    const staffData = doc.data();
+    for (i = 0; i < staffData.uid.length; i++){
+      tgsnStaffUID[i] = staffData.uid[i];
+    }
+    for (i = 0; i < staffData.email.length; i++){
+      tgsnStaff[i] = staffData.email[i];
+    }
+  })
+
   //Check if user refreshed Page
-  reloadCheck();
-  //Fill Bottom links
-  var uEmail = sessionStorage.getItem('userEmail');
-  var position = '';
-  if (tgsnCoordinators.includes(uEmail)){
-    position = 'TGSN Coordinator';
-  } else if (tgsnStaff.includes(uEmail)) {
-    position = 'TGSN Staff';
-  } else {
-    position = 'Staff';
-  }
-  if (position == 'TGSN Coordinator'){
-    showAll();
-  }
-  else if (position == 'TGSN Staff'){
-    showAllRO();
-  }
-  else {
-    showDefault();
-  }
+  setTimeout(`reloadCheck();`,1250);
+  init();
 
   //Add Home information
   showHome();
-
 });
 
 function reloadCheck(){
@@ -43,17 +52,21 @@ function reloadCheck(){
   var position = '';
   if (tgsnCoordinators.includes(uEmail)){
     position = 'TGSN Coordinator';
+    showAll();
   } else if (tgsnStaff.includes(uEmail)) {
     position = 'TGSN Staff';
+    showAllRO();
   } else {
     position = 'Staff';
+    showDefault();
   }
 
   if (uid){
-    document.querySelector('#topTitle').innerHTML = (`<a href='../staffv2' id='topLink'>` + position + ` HQ</a>`)
-
+    document.querySelector('#topTitle').innerHTML = (`<a href='../staffv2' id='topLink'>` + position + ` HQ</a>`);
     document.querySelector('#title').innerHTML = (`Hello ` + uName + `<br><button onclick='googleLogout()'>Logout</button>`);
     document.querySelector('#userPic').innerHTML = (`<img src='` + uPhoto + `' width='60px' height='60px' id='profilePic' />`);
+  } else {
+    document.querySelector('#title').innerHTML = (`Not Signed In <br><button onclick='googleLogin()'>Login with Google</button>`);
   }
 }
 
