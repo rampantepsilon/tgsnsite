@@ -36,7 +36,7 @@ document.addEventListener("DOMContentLoaded", event =>{
   })
 
   //Check if user refreshed Page
-  setTimeout(`reloadCheck();`,1250);
+  setTimeout(`reloadCheck();`,1500);
   init();
 
   //Add Home information
@@ -82,6 +82,9 @@ function googleLogin() {
       }
       else if (user.email == 'peacemaker24482@gmail.com'){
         userName = 'peacemaker2448';
+      }
+      else if (user.email == 'tgs.tommygun2442@gmail.com'){
+        userName = 'Tommygun2442';
       }
       else {
         userName = user.displayName;

@@ -186,6 +186,90 @@ function loadSchedule(){
   })
 }
 
+//Add User Permissions
+function addUser(){
+  const db = firebase.firestore();
+  const coord = db.collection('users').doc('tgsnCoord');
+  const staff = db.collection('users').doc('tgsnStaff');
+
+  //Set Info from Form
+  var email = document.getElementById('email').value;
+  var uid = document.getElementById('uid').value;
+  var position = '';
+  var positionRadio = document.getElementsByName('permPosition');
+  for (i = 0; i < positionRadio.length; i++){
+    if (positionRadio[i].checked){
+      position = positionRadio[i].value;
+    }
+  }
+
+  if (email != "" && email != 'tomjware@gmail.com' && email != 'peacemaker24482@gmail.com'){
+    if (uid != ""){
+      if (position == 'TGSNCoordinator'){
+        coord.update({
+          email: firebase.firestore.FieldValue.arrayUnion(email),
+          uid: firebase.firestore.FieldValue.arrayUnion(uid)
+        })
+        document.getElementById('permConfirm').innerHTML = `Permissions Added For ` + email;
+      } else if (position == 'TGSNStaff'){
+        staff.update({
+          email: firebase.firestore.FieldValue.arrayUnion(email),
+          uid: firebase.firestore.FieldValue.arrayUnion(uid)
+        })
+        document.getElementById('permConfirm').innerHTML = `Permissions Removed For ` + email;
+      } else {
+       document.getElementById('permConfirm').innerHTML = `Please make sure you have all fields filled.`
+     }
+    } else {
+     document.getElementById('permConfirm').innerHTML = `Please make sure you have both fields filled.`
+   }
+  } else {
+   document.getElementById('permConfirm').innerHTML = `Please make sure you have both fields filled.`
+ }
+}
+
+//Remove User Permissions
+function remUser(){
+  const db = firebase.firestore();
+  const coord = db.collection('users').doc('tgsnCoord');
+  const staff = db.collection('users').doc('tgsnStaff');
+
+  //Set Info from Form
+  var email = document.getElementById('email').value;
+  var uid = document.getElementById('uid').value;
+  var position = '';
+  var positionRadio = document.getElementsByName('permPosition');
+  for (i = 0; i < positionRadio.length; i++){
+    if (positionRadio[i].checked){
+      position = positionRadio[i].value;
+    }
+  }
+
+  if (email != "" && email != 'tomjware@gmail.com' && email != 'peacemaker24482@gmail.com'){
+    if (uid != ""){
+      if (position == 'TGSNCoordinator'){
+        coord.update({
+          email: firebase.firestore.FieldValue.arrayRemove(email),
+          uid: firebase.firestore.FieldValue.arrayRemove(uid)
+        })
+        document.getElementById('permConfirm').innerHTML = `Permissions Added For ` + email;
+      } else if (position == 'TGSNStaff'){
+        staff.update({
+          email: firebase.firestore.FieldValue.arrayRemove(email),
+          uid: firebase.firestore.FieldValue.arrayRemove(uid)
+        })
+        document.getElementById('permConfirm').innerHTML = `Permissions Removed For ` + email;
+      } else {
+       document.getElementById('permConfirm').innerHTML = `Please make sure you have all fields filled.`
+     }
+    } else {
+     document.getElementById('permConfirm').innerHTML = `Please make sure you have both fields filled.`
+   }
+  } else {
+   document.getElementById('permConfirm').innerHTML = `Please make sure you have both fields filled.`
+ }
+}
+
 //Request Access
 function requestAccess(){
   var sessionID = sessionStorage.getItem('user');
@@ -244,6 +328,7 @@ function showHome(){
   api();
   //Determine what to show
   var uEmail = sessionStorage.getItem('userEmail');
+  var uid = sessionStorage.getItem('user');
   var position = '';
   if (tgsnCoordinators.includes(uEmail)){
     position = 'TGSN Coordinator';
@@ -292,6 +377,44 @@ function showHome(){
       </tr>
     </table>`];
   //}
+  if (uid == 'xzofVIVhWoadAIHXzlSbarbI71I3'){
+    document.getElementById('staffBody').innerHTML += [`
+      <table width='100%'>
+        <tr>
+          <td align='center' colspan='4'>
+            <h3>Grant Permissions</h3>
+          </td>
+        </tr>
+        <tr>
+          <td align='right'>
+            Email: <input type='text' id='email'>
+          </td>
+          <td rowspan='2' valign='top' align='right'>
+            Position:
+          </td>
+          <td rowspan='2' valign='top'>
+            <input type='radio' name='permPosition' value='TGSNCoordinator'> TGSN Coordinator<br>
+            <input type='radio' name='permPosition' value='TGSNStaff'> TGSN Staff
+          </td>
+        </tr>
+        <tr>
+          <td align='right'>
+            User ID: <input type='text' id='uid'>
+          </td>
+        </tr>
+        <tr>
+          <td align='center' colspan='3'>
+            <button onclick='addUser()'>Add Permissions</button>
+            <button onclick='remUser()'>Remove Permissions</button>
+          </td>
+        </tr>
+        <tr>
+          <td align='center' id='permConfirm' colspan='3'>
+          </td>
+        </tr>
+      </table>
+      `]
+  }
   sessionStorage.setItem('page','home');
 }
 
