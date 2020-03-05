@@ -1166,8 +1166,8 @@ function showRequest(){
       </table>
       <table width='100%'>
         <tr>
-          <td id='coordReq' width='50%' align='center'><h3>Coordinator Requests</h3><br></td>
-          <td id='staffReq' width='50%' align='center'><h3>Staff Requests</h3><br></td>
+          <td id='coordReq' width='50%' align='center' valign='top'><h3>Coordinator Requests</h3><br></td>
+          <td id='staffReq' width='50%' align='center' valign='top'><h3>Staff Requests</h3><br></td>
         </tr>
       </table>`];
     loadRequests();
@@ -1213,6 +1213,9 @@ function remCoordRequest(num){
     email: firebase.firestore.FieldValue.arrayRemove(email)
   });
 
+  document.getElementById('coordReq').innerHTML = [`<h3>Coordinator Requests</h3><br>`];
+  document.getElementById('staffReq').innerHTML = [`<h3>Staff Requests</h3><br>`];
+
   loadRequests();
 }
 
@@ -1233,6 +1236,9 @@ function remStaffRequest(num){
     uid: firebase.firestore.FieldValue.arrayRemove(uid),
     email: firebase.firestore.FieldValue.arrayRemove(email)
   });
+
+  document.getElementById('coordReq').innerHTML = [`<h3>Coordinator Requests</h3><br>`];
+  document.getElementById('staffReq').innerHTML = [`<h3>Staff Requests</h3><br>`];
 
   loadRequests();
 }
