@@ -38,7 +38,7 @@ function api(){
 
 /* ----- BODY SCRIPTING ----- */
 //Notices
-const notice1 = `<p>Welcome to The Gaming Saloon Network Staff HQ!<br />This location will hold important information regarding TGSN Staff</p><p><font color='red'>Please Note: All Staff must log into this page at least once and contact RampantEpsilon#7868 on Discord to get proper permissions.</font></p>`;
+const notice1 = `<p>Welcome to The Gaming Saloon Network Staff HQ!<br />This location will hold important information regarding TGSN Staff</p><p><font color='red'>Please Note: All Staff must log into this page at least once and use the Request Page to request permissions.</font></p>`;
 const notice2 = `<p><font color='red'>ATTENTION TGS STAFF!</font><br>The Releases Page has now been implemented in the Staff HQ.<br>Click Releases down below to see yourself!</p>`;
 const notice3 = [`<p>Want to provide feedback for the Staff HQ page?<br>Use the form <a href='https://forms.gle/PescTWy6oEDd6e6R7' target='_blank'>HERE</a>`];
 
