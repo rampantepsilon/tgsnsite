@@ -44,29 +44,32 @@ const notice3 = [`<p>Want to provide feedback for the Staff HQ page?<br>Use the 
 
 //Bottom Links
 function showAll(){
-  document.getElementById('botLinks').innerHTML = [`<td align='center' width='12%' onmouseover="this.style.backgroundColor = 'orange'" onmouseout="this.style.backgroundColor = 'rgba(0,0,0,0)'" onclick="showHome()">
+  document.getElementById('botLinks').innerHTML = [`<td align='center' width='11%' onmouseover="this.style.backgroundColor = 'orange'" onmouseout="this.style.backgroundColor = 'rgba(0,0,0,0)'" onclick="showHome()">
     Notices/Goals
   </td>
-  <td align='center' width='12%' onmouseover="this.style.backgroundColor = 'orange'" onmouseout="this.style.backgroundColor = 'rgba(0,0,0,0)'" onclick='showTGSArticles()'>
+  <td align='center' width='11%' onmouseover="this.style.backgroundColor = 'orange'" onmouseout="this.style.backgroundColor = 'rgba(0,0,0,0)'" onclick='showTGSArticles()'>
     TGS Articles
   </td>
-  <td align='center' width='12%' onmouseover="this.style.backgroundColor = 'orange'" onmouseout="this.style.backgroundColor = 'rgba(0,0,0,0)'" onclick='showDashboard()'>
+  <td align='center' width='11%' onmouseover="this.style.backgroundColor = 'orange'" onmouseout="this.style.backgroundColor = 'rgba(0,0,0,0)'" onclick='showDashboard()'>
     Dashboard
   </td>
-  <td align='center' width='13%' onmouseover="this.style.backgroundColor = 'orange'" onmouseout="this.style.backgroundColor = 'rgba(0,0,0,0)'" onclick='showBotDash()'>
+  <td align='center' width='12%' onmouseover="this.style.backgroundColor = 'orange'" onmouseout="this.style.backgroundColor = 'rgba(0,0,0,0)'" onclick='showBotDash()'>
     TGSNBot Dashboard
   </td>
-  <td align='center' width='13%' onmouseover="this.style.backgroundColor = 'orange'" onmouseout="this.style.backgroundColor = 'rgba(0,0,0,0)'" onclick='showTwitch()'>
+  <td align='center' width='11%' onmouseover="this.style.backgroundColor = 'orange'" onmouseout="this.style.backgroundColor = 'rgba(0,0,0,0)'" onclick='showTwitch()'>
     Twitch Stream
   </td>
-  <td align='center' width='12%' onmouseover="this.style.backgroundColor = 'orange'" onmouseout="this.style.backgroundColor = 'rgba(0,0,0,0)'" onclick='showStats()'>
+  <td align='center' width='11%' onmouseover="this.style.backgroundColor = 'orange'" onmouseout="this.style.backgroundColor = 'rgba(0,0,0,0)'" onclick='showStats()'>
     Stats
   </td>
-  <td align='center' width='13%' onmouseover="this.style.backgroundColor = 'orange'" onmouseout="this.style.backgroundColor = 'rgba(0,0,0,0)'" onclick='showSchedule()'>
+  <td align='center' width='11%' onmouseover="this.style.backgroundColor = 'orange'" onmouseout="this.style.backgroundColor = 'rgba(0,0,0,0)'" onclick='showSchedule()'>
     Schedule
   </td>
-  <td align='center' width='13%' onmouseover="this.style.backgroundColor = 'orange'" onmouseout="this.style.backgroundColor = 'rgba(0,0,0,0)'" onclick='showReleases()'>
+  <td align='center' width='11%' onmouseover="this.style.backgroundColor = 'orange'" onmouseout="this.style.backgroundColor = 'rgba(0,0,0,0)'" onclick='showReleases()'>
     Releases
+  </td>
+  <td align='center' width='11%' onmouseover="this.style.backgroundColor = 'orange'" onmouseout="this.style.backgroundColor = 'rgba(0,0,0,0)'" onclick='showRequest()'>
+    Request Page
   </td>`]
 }
 
@@ -92,6 +95,31 @@ function showAllRO(){
   <td align='center' width='14%' onmouseover="this.style.backgroundColor = 'orange'" onmouseout="this.style.backgroundColor = 'rgba(0,0,0,0)'" onclick='showReleases()'>
     Releases
   </td>`]
+  if (sessionStorage.getItem('user') != null){
+    document.getElementById('botLinks').innerHTML = [`<td align='center' width='13%' onmouseover="this.style.backgroundColor = 'orange'" onmouseout="this.style.backgroundColor = 'rgba(0,0,0,0)'" onclick="showHome()">
+      Notices/Goals
+    </td>
+    <td align='center' width='12%' onmouseover="this.style.backgroundColor = 'orange'" onmouseout="this.style.backgroundColor = 'rgba(0,0,0,0)'" onclick='showTGSArticles()'>
+      TGS Articles
+    </td>
+    <td align='center' width='12%' onmouseover="this.style.backgroundColor = 'orange'" onmouseout="this.style.backgroundColor = 'rgba(0,0,0,0)'" onclick='showDashboard()'>
+      Dashboard
+    </td>
+    <td align='center' width='13%' onmouseover="this.style.backgroundColor = 'orange'" onmouseout="this.style.backgroundColor = 'rgba(0,0,0,0)'" onclick='showTwitch()'>
+      Twitch Stream
+    </td>
+    <td align='center' width='12%' onmouseover="this.style.backgroundColor = 'orange'" onmouseout="this.style.backgroundColor = 'rgba(0,0,0,0)'" onclick='showStats()'>
+      Stats
+    </td>
+    <td align='center' width='12%' onmouseover="this.style.backgroundColor = 'orange'" onmouseout="this.style.backgroundColor = 'rgba(0,0,0,0)'" onclick='showSchedule()'>
+      Schedule
+    </td>
+    <td align='center' width='12%' onmouseover="this.style.backgroundColor = 'orange'" onmouseout="this.style.backgroundColor = 'rgba(0,0,0,0)'" onclick='showReleases()'>
+      Releases
+    </td>
+    <td align='center' width='13%' onmouseover="this.style.backgroundColor = 'orange'" onmouseout="this.style.backgroundColor = 'rgba(0,0,0,0)'" onclick='showRequest()'>
+      Request Access
+    </td>`]}
 }
 
 function showDefault(){
@@ -107,6 +135,23 @@ function showDefault(){
   <td align='center' width='25%' onmouseover="this.style.backgroundColor = 'orange'" onmouseout="this.style.backgroundColor = 'rgba(0,0,0,0)'" onclick='showReleases()'>
     Releases
   </td>`]
+  if (sessionStorage.getItem('user') != null){
+    document.getElementById('botLinks').innerHTML = [`<td align='center' width='20%' onmouseover="this.style.backgroundColor = 'orange'" onmouseout="this.style.backgroundColor = 'rgba(0,0,0,0)'" onclick="showHome()">
+      Notices/Goals
+    </td>
+    <td align='center' width='20%' onmouseover="this.style.backgroundColor = 'orange'" onmouseout="this.style.backgroundColor = 'rgba(0,0,0,0)'" onclick='showTwitch()'>
+      Twitch Stream
+    </td>
+    <td align='center' width='20%' onmouseover="this.style.backgroundColor = 'orange'" onmouseout="this.style.backgroundColor = 'rgba(0,0,0,0)'" onclick='showSchedule()'>
+      Schedule
+    </td>
+    <td align='center' width='20%' onmouseover="this.style.backgroundColor = 'orange'" onmouseout="this.style.backgroundColor = 'rgba(0,0,0,0)'" onclick='showReleases()'>
+      Releases
+    </td>
+    <td align='center' width='20%' onmouseover="this.style.backgroundColor = 'orange'" onmouseout="this.style.backgroundColor = 'rgba(0,0,0,0)'" onclick='showRequest()'>
+      Request Access
+    </td>`]
+  }
 }
 
 //Stats Load
@@ -216,7 +261,7 @@ function addUser(){
           email: firebase.firestore.FieldValue.arrayUnion(email),
           uid: firebase.firestore.FieldValue.arrayUnion(uid)
         })
-        document.getElementById('permConfirm').innerHTML = `Permissions Removed For ` + email;
+        document.getElementById('permConfirm').innerHTML = `Permissions Added For ` + email;
       } else {
        document.getElementById('permConfirm').innerHTML = `Please make sure you have all fields filled.`
      }
@@ -274,7 +319,10 @@ function remUser(){
 function requestAccess(){
   var sessionID = sessionStorage.getItem('user');
   var sessionUser = sessionStorage.getItem('userName');
+  var sessionEmail = sessionStorage.getItem('userEmail');
   const db = firebase.firestore();
+  const coord = db.collection('access').doc('tgsnCoord');
+  const staff = db.collection('access').doc('tgsnStaff');
 
   var position = '';
   var discordName = document.getElementById('discord').value;
@@ -286,14 +334,31 @@ function requestAccess(){
     }
   }
 
-  db.collection('access').doc(sessionUser).set({
-    position: position,
-    discord: discordName,
-    uid: sessionID
-  });
-
-  document.getElementById('confirmation').innerHTML = [`
-    <h4>Your request has been submitted. If you don't hear from RampantEpsilon or see the changes within 48 hours, message him on Discord.</h4>`];
+  if (discordName != ''){
+    if (position == 'TGSNCoordinator'){
+      coord.update({
+        discord: firebase.firestore.FieldValue.arrayUnion(discordName),
+        uid: firebase.firestore.FieldValue.arrayUnion(sessionID),
+        email: firebase.firestore.FieldValue.arrayUnion(sessionEmail)
+      });
+      document.getElementById('confirmation').innerHTML = [`
+        <h4>Your request has been submitted. If you don't hear from RampantEpsilon or see the changes within 48 hours, message him on Discord.</h4>`];
+    } else if (position == 'TGSNStaff'){
+      staff.update({
+        discord: firebase.firestore.FieldValue.arrayUnion(discordName),
+        uid: firebase.firestore.FieldValue.arrayUnion(sessionID),
+        email: firebase.firestore.FieldValue.arrayUnion(sessionEmail)
+      });
+      document.getElementById('confirmation').innerHTML = [`
+        <h4>Your request has been submitted. If you don't hear from RampantEpsilon or see the changes within 48 hours, message him on Discord.</h4>`];
+    } else {
+      document.getElementById('confirmation').innerHTML = [`
+        <h4>Please Select Position</h4>`];
+    }
+  } else {
+    document.getElementById('confirmation').innerHTML = [`
+      <h4>Please Enter Your Discord Name For Verification</h4>`];
+  }
 }
 
 //Load Releases
@@ -338,83 +403,16 @@ function showHome(){
     position = 'Staff';
   }
 
-  /*if (position == 'Staff'){
-    document.getElementById('staffBody').innerHTML = [`<table>
-      <tr>
-        <td style='text-align: center; border: 1px solid;'>
-          <h2>Notices</h2>` + notice1a + notice1b + `</br>` + notice2a + notice2b +
-        `</td>
-        <td style='text-align: center; vertical-align: text-top; width: 35%; border: 1px solid;'>
-          <h2>Goals</h2><div id='followers'></div>
-        </td>
-      </tr>
-      <tr>
-        <td style='text-align: center; border: 1px solid;' colspan='2'>
-          <h3>Staff Access Request</h3>
-          <table align='center'>
-            <tr>
-              <td align='left'>
-                <input type='radio' name='position' value='TGSNCoordinator'> TGSN Coordinator<br>
-                <input type='radio' name='position' value='TGSNStaff'> TGSN Staff
-              </td>
-            </tr>
-          </table>
-          Discord Name: <input type="text" id='discord'><br>
-          <button onclick='requestAccess()'>Request Access</button><br>
-          <div align='center' id='confirmation'></div>
-        </td>
-      </tr>
-    </table>`];
-  } else {*/
-    document.getElementById('staffBody').innerHTML = [`<table width='100%'>
-      <tr>
-        <td style='text-align: center; border: 1px solid;'>
-          <h2>Notices</h2>` + notice1 + `=======` + notice2 + `=======` + notice3 +
-        `</td>
-        <td style='text-align: center; vertical-align: text-top; width: 35%; border: 1px solid;'>
-          <h2>Goals</h2><div id='followers'></div>
-        </td>
-      </tr>
-    </table>`];
-  //}
-  if (uid == 'xzofVIVhWoadAIHXzlSbarbI71I3'){
-    document.getElementById('staffBody').innerHTML += [`
-      <table width='100%'>
-        <tr>
-          <td align='center' colspan='4'>
-            <h3>Grant Permissions</h3>
-          </td>
-        </tr>
-        <tr>
-          <td align='right'>
-            Email: <input type='text' id='email'>
-          </td>
-          <td rowspan='2' valign='top' align='right'>
-            Position:
-          </td>
-          <td rowspan='2' valign='top'>
-            <input type='radio' name='permPosition' value='TGSNCoordinator'> TGSN Coordinator<br>
-            <input type='radio' name='permPosition' value='TGSNStaff'> TGSN Staff
-          </td>
-        </tr>
-        <tr>
-          <td align='right'>
-            User ID: <input type='text' id='uid'>
-          </td>
-        </tr>
-        <tr>
-          <td align='center' colspan='3'>
-            <button onclick='addUser()'>Add Permissions</button>
-            <button onclick='remUser()'>Remove Permissions</button>
-          </td>
-        </tr>
-        <tr>
-          <td align='center' id='permConfirm' colspan='3'>
-          </td>
-        </tr>
-      </table>
-      `]
-  }
+  document.getElementById('staffBody').innerHTML = [`<table width='100%'>
+    <tr>
+      <td style='text-align: center; border: 1px solid;'>
+        <h2>Notices</h2>` + notice1 + `=======` + notice2 + `=======` + notice3 +
+      `</td>
+      <td style='text-align: center; vertical-align: text-top; width: 35%; border: 1px solid;'>
+        <h2>Goals</h2><div id='followers'></div>
+      </td>
+    </tr>
+  </table>`];
   sessionStorage.setItem('page','home');
 }
 
@@ -1072,6 +1070,171 @@ function showReleases(){
       </tr>
     </table>`];
   loadReleases();
+}
+
+function showRequest(){
+  sessionStorage.setItem('page','request');
+
+  //Firebase Constants
+  const db = firebase.firestore();
+  const coord = db.collection('access').doc('tgsnCoord');
+  const staff = db.collection('access').doc('tgsnStaff');
+
+  //Determine what to show
+  var uEmail = sessionStorage.getItem('userEmail');
+  var uid = sessionStorage.getItem('user');
+  var position = '';
+  if (tgsnCoordinators.includes(uEmail)){
+    position = 'TGSN Coordinator';
+  } else if (tgsnStaff.includes(uEmail)) {
+    position = 'TGSN Staff';
+  } else {
+    position = 'Staff';
+  }
+
+  if (position == 'Staff'){
+    document.getElementById('staffBody').innerHTML = [`<table width='100%'>
+      <tr>
+        <td style='text-align: center; border: 1px solid;' colspan='2'>
+          <h3>Staff Access Request</h3>
+          <table align='center'>
+            <tr>
+              <td align='left' id='positionList'>
+                <input type='radio' name='position' value='TGSNStaff'> TGSN Staff
+              </td>
+            </tr>
+          </table>
+          Discord Name: <input type="text" id='discord'><br>
+          <button onclick='requestAccess()'>Request Access</button><br>
+          <div align='center' id='confirmation'></div>
+        </td>
+      </tr>
+    </table>`];
+  } else if (position == 'TGSN Staff'){
+    document.getElementById('staffBody').innerHTML = [`<table width='100%'>
+      <tr>
+        <td style='text-align: center; border: 1px solid;' colspan='2'>
+          <h3>Staff Access Request</h3>
+          <table align='center'>
+            <tr>
+              <td align='left' id='positionList'>
+                <input type='radio' name='position' value='TGSNCoordinator'> TGSN Coordinator
+              </td>
+            </tr>
+          </table>
+          Discord Name: <input type="text" id='discord'><br>
+          <button onclick='requestAccess()'>Request Access</button><br>
+          <div align='center' id='confirmation'></div>
+        </td>
+      </tr>
+    </table>`];
+  } else if (position == 'TGSN Coordinator'){
+    document.getElementById('staffBody').innerHTML = [`
+      <table width='100%'>
+        <tr>
+          <td align='center' colspan='4'>
+            <h3>Grant Permissions</h3>
+          </td>
+        </tr>
+        <tr>
+          <td align='right'>
+            Email: <input type='text' id='email'>
+          </td>
+          <td rowspan='2' valign='top' align='right'>
+            Position:
+          </td>
+          <td rowspan='2' valign='top'>
+            <input type='radio' name='permPosition' value='TGSNCoordinator'> TGSN Coordinator<br>
+            <input type='radio' name='permPosition' value='TGSNStaff'> TGSN Staff
+          </td>
+        </tr>
+        <tr>
+          <td align='right'>
+            User ID: <input type='text' id='uid'>
+          </td>
+        </tr>
+        <tr>
+          <td align='center' colspan='3'>
+            <button onclick='addUser()'>Add Permissions</button>
+            <button onclick='remUser()'>Remove Permissions</button>
+          </td>
+        </tr>
+        <tr>
+          <td align='center' id='permConfirm' colspan='3'>
+          </td>
+        </tr>
+      </table>
+      <table width='100%'>
+        <tr>
+          <td id='coordReq' width='50%' align='center'><h3>Coordinator Requests</h3><br></td>
+          <td id='staffReq' width='50%' align='center'><h3>Staff Requests</h3><br></td>
+        </tr>
+      </table>`];
+    loadRequests();
+  }
+}
+
+//Load Requests Made
+function loadRequests(){
+  //Firebase Constants
+  const db = firebase.firestore();
+  const coord = db.collection('access').doc('tgsnCoord');
+  const staff = db.collection('access').doc('tgsnStaff');
+
+  coord.get().then(function(doc) {
+    const data = doc.data();
+    for (i = 0; i < data.uid.length; i++){
+      document.getElementById('coordReq').innerHTML += `<div id='coord` + i + `' onclick='remCoordRequest(` + i + `)'>` + data.discord[i] + '<br>' + data.uid[i] + '<br>' + data.email[i] + '</div><br>=====<br>';
+    }
+  })
+  staff.get().then(function(doc) {
+    const data = doc.data();
+    for (i = 0; i < data.uid.length; i++){
+      document.getElementById('staffReq').innerHTML += `<div id='staff` + i + `' onclick='remStaffRequest(` + i + `)'>` + data.discord[i] + '<br>' + data.uid[i] + '<br>' + data.email[i] + '</div><br>=====<br>';
+    }
+  })
+}
+
+//Remove Coord Requests
+function remCoordRequest(num){
+  var id = 'coord' + num;
+  var example = document.getElementById(id).innerHTML;
+	var infoArr = example.split( "<br>" );
+
+  var discord = infoArr[0];
+  var uid = infoArr[1];
+  var email = infoArr[2];
+
+  const db = firebase.firestore();
+  const coord = db.collection('access').doc('tgsnCoord');
+  coord.update({
+    discord: firebase.firestore.FieldValue.arrayRemove(discord),
+    uid: firebase.firestore.FieldValue.arrayRemove(uid),
+    email: firebase.firestore.FieldValue.arrayRemove(email)
+  });
+
+  loadRequests();
+}
+
+//Remove Staff Requests
+function remStaffRequest(num){
+  var id = 'staff' + num;
+  var example = document.getElementById(id).innerHTML;
+	var infoArr = example.split( "<br>" );
+
+  var discord = infoArr[0];
+  var uid = infoArr[1];
+  var email = infoArr[2];
+
+  const db = firebase.firestore();
+  const staff = db.collection('access').doc('tgsnStaff');
+  staff.update({
+    discord: firebase.firestore.FieldValue.arrayRemove(discord),
+    uid: firebase.firestore.FieldValue.arrayRemove(uid),
+    email: firebase.firestore.FieldValue.arrayRemove(email)
+  });
+
+  loadRequests();
 }
 
 //Resize player
