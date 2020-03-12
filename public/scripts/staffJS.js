@@ -44,80 +44,90 @@ const notice3 = [`<p>Want to provide feedback for the Staff HQ page?<br>Use the 
 
 //Bottom Links
 function showAll(){
-  document.getElementById('botLinks').innerHTML = [`<td align='center' width='11%' onmouseover="this.style.backgroundColor = 'orange'" onmouseout="this.style.backgroundColor = 'rgba(0,0,0,0)'" onclick="showHome()">
+  document.getElementById('botLinks').innerHTML = [`<td align='center' width='10%' onmouseover="this.style.backgroundColor = 'orange'" onmouseout="this.style.backgroundColor = 'rgba(0,0,0,0)'" onclick="showHome()">
     Notices/Goals
   </td>
-  <td align='center' width='11%' onmouseover="this.style.backgroundColor = 'orange'" onmouseout="this.style.backgroundColor = 'rgba(0,0,0,0)'" onclick='showTGSArticles()'>
+  <td align='center' width='10%' onmouseover="this.style.backgroundColor = 'orange'" onmouseout="this.style.backgroundColor = 'rgba(0,0,0,0)'" onclick='showTGSArticles()'>
     TGS Articles
   </td>
-  <td align='center' width='11%' onmouseover="this.style.backgroundColor = 'orange'" onmouseout="this.style.backgroundColor = 'rgba(0,0,0,0)'" onclick='showDashboard()'>
+  <td align='center' width='10%' onmouseover="this.style.backgroundColor = 'orange'" onmouseout="this.style.backgroundColor = 'rgba(0,0,0,0)'" onclick='showDashboard()'>
     Dashboard
   </td>
-  <td align='center' width='12%' onmouseover="this.style.backgroundColor = 'orange'" onmouseout="this.style.backgroundColor = 'rgba(0,0,0,0)'" onclick='showBotDash()'>
+  <td align='center' width='10%' onmouseover="this.style.backgroundColor = 'orange'" onmouseout="this.style.backgroundColor = 'rgba(0,0,0,0)'" onclick='showBotDash()'>
     TGSNBot Dashboard
   </td>
-  <td align='center' width='11%' onmouseover="this.style.backgroundColor = 'orange'" onmouseout="this.style.backgroundColor = 'rgba(0,0,0,0)'" onclick='showTwitch()'>
+  <td align='center' width='10%' onmouseover="this.style.backgroundColor = 'orange'" onmouseout="this.style.backgroundColor = 'rgba(0,0,0,0)'" onclick='showTwitch()'>
     Twitch Stream
   </td>
-  <td align='center' width='11%' onmouseover="this.style.backgroundColor = 'orange'" onmouseout="this.style.backgroundColor = 'rgba(0,0,0,0)'" onclick='showStats()'>
+  <td align='center' width='10%' onmouseover="this.style.backgroundColor = 'orange'" onmouseout="this.style.backgroundColor = 'rgba(0,0,0,0)'" onclick='showStats()'>
     Stats
   </td>
-  <td align='center' width='11%' onmouseover="this.style.backgroundColor = 'orange'" onmouseout="this.style.backgroundColor = 'rgba(0,0,0,0)'" onclick='showSchedule()'>
+  <td align='center' width='10%' onmouseover="this.style.backgroundColor = 'orange'" onmouseout="this.style.backgroundColor = 'rgba(0,0,0,0)'" onclick='showSchedule()'>
     Schedule
   </td>
-  <td align='center' width='11%' onmouseover="this.style.backgroundColor = 'orange'" onmouseout="this.style.backgroundColor = 'rgba(0,0,0,0)'" onclick='showReleases()'>
+  <td align='center' width='10%' onmouseover="this.style.backgroundColor = 'orange'" onmouseout="this.style.backgroundColor = 'rgba(0,0,0,0)'" onclick='showReleases()'>
     Releases
   </td>
-  <td align='center' width='11%' onmouseover="this.style.backgroundColor = 'orange'" onmouseout="this.style.backgroundColor = 'rgba(0,0,0,0)'" onclick='showRequest()'>
+  <td align='center' width='10%' onmouseover="this.style.backgroundColor = 'orange'" onmouseout="this.style.backgroundColor = 'rgba(0,0,0,0)'" onclick='showTGSR()'>
+    TGSR Videos
+  </td>
+  <td align='center' width='10%' onmouseover="this.style.backgroundColor = 'orange'" onmouseout="this.style.backgroundColor = 'rgba(0,0,0,0)'" onclick='showRequest()'>
     Request Page
   </td>`]
 }
 
 function showAllRO(){
-  document.getElementById('botLinks').innerHTML = [`<td align='center' width='14%' onmouseover="this.style.backgroundColor = 'orange'" onmouseout="this.style.backgroundColor = 'rgba(0,0,0,0)'" onclick="showHome()">
+  document.getElementById('botLinks').innerHTML = [`<td align='center' width='12%' onmouseover="this.style.backgroundColor = 'orange'" onmouseout="this.style.backgroundColor = 'rgba(0,0,0,0)'" onclick="showHome()">
     Notices/Goals
   </td>
-  <td align='center' width='14%' onmouseover="this.style.backgroundColor = 'orange'" onmouseout="this.style.backgroundColor = 'rgba(0,0,0,0)'" onclick='showTGSArticles()'>
+  <td align='center' width='12%' onmouseover="this.style.backgroundColor = 'orange'" onmouseout="this.style.backgroundColor = 'rgba(0,0,0,0)'" onclick='showTGSArticles()'>
     TGS Articles
   </td>
-  <td align='center' width='14%' onmouseover="this.style.backgroundColor = 'orange'" onmouseout="this.style.backgroundColor = 'rgba(0,0,0,0)'" onclick='showDashboard()'>
+  <td align='center' width='12%' onmouseover="this.style.backgroundColor = 'orange'" onmouseout="this.style.backgroundColor = 'rgba(0,0,0,0)'" onclick='showDashboard()'>
     Dashboard
   </td>
-  <td align='center' width='16%' onmouseover="this.style.backgroundColor = 'orange'" onmouseout="this.style.backgroundColor = 'rgba(0,0,0,0)'" onclick='showTwitch()'>
+  <td align='center' width='14%' onmouseover="this.style.backgroundColor = 'orange'" onmouseout="this.style.backgroundColor = 'rgba(0,0,0,0)'" onclick='showTwitch()'>
     Twitch Stream
   </td>
-  <td align='center' width='14%' onmouseover="this.style.backgroundColor = 'orange'" onmouseout="this.style.backgroundColor = 'rgba(0,0,0,0)'" onclick='showStats()'>
+  <td align='center' width='12%' onmouseover="this.style.backgroundColor = 'orange'" onmouseout="this.style.backgroundColor = 'rgba(0,0,0,0)'" onclick='showStats()'>
     Stats
   </td>
-  <td align='center' width='14%' onmouseover="this.style.backgroundColor = 'orange'" onmouseout="this.style.backgroundColor = 'rgba(0,0,0,0)'" onclick='showSchedule()'>
+  <td align='center' width='12%' onmouseover="this.style.backgroundColor = 'orange'" onmouseout="this.style.backgroundColor = 'rgba(0,0,0,0)'" onclick='showSchedule()'>
     Schedule
   </td>
-  <td align='center' width='14%' onmouseover="this.style.backgroundColor = 'orange'" onmouseout="this.style.backgroundColor = 'rgba(0,0,0,0)'" onclick='showReleases()'>
+  <td align='center' width='12%' onmouseover="this.style.backgroundColor = 'orange'" onmouseout="this.style.backgroundColor = 'rgba(0,0,0,0)'" onclick='showReleases()'>
     Releases
+  </td>
+  <td align='center' width='14%' onmouseover="this.style.backgroundColor = 'orange'" onmouseout="this.style.backgroundColor = 'rgba(0,0,0,0)'" onclick='showTGSR()'>
+    TGSR Videos
   </td>`]
-  if (sessionStorage.getItem('user') != null){
-    document.getElementById('botLinks').innerHTML = [`<td align='center' width='13%' onmouseover="this.style.backgroundColor = 'orange'" onmouseout="this.style.backgroundColor = 'rgba(0,0,0,0)'" onclick="showHome()">
+  if (sessionStorage.getItem('user') != null && sessionStorage.getItem('user') != ""){
+    document.getElementById('botLinks').innerHTML = [`
+    <td align='center' width='11%' onmouseover="this.style.backgroundColor = 'orange'" onmouseout="this.style.backgroundColor = 'rgba(0,0,0,0)'" onclick="showHome()">
       Notices/Goals
     </td>
-    <td align='center' width='12%' onmouseover="this.style.backgroundColor = 'orange'" onmouseout="this.style.backgroundColor = 'rgba(0,0,0,0)'" onclick='showTGSArticles()'>
+    <td align='center' width='11%' onmouseover="this.style.backgroundColor = 'orange'" onmouseout="this.style.backgroundColor = 'rgba(0,0,0,0)'" onclick='showTGSArticles()'>
       TGS Articles
     </td>
-    <td align='center' width='12%' onmouseover="this.style.backgroundColor = 'orange'" onmouseout="this.style.backgroundColor = 'rgba(0,0,0,0)'" onclick='showDashboard()'>
+    <td align='center' width='11%' onmouseover="this.style.backgroundColor = 'orange'" onmouseout="this.style.backgroundColor = 'rgba(0,0,0,0)'" onclick='showDashboard()'>
       Dashboard
     </td>
-    <td align='center' width='13%' onmouseover="this.style.backgroundColor = 'orange'" onmouseout="this.style.backgroundColor = 'rgba(0,0,0,0)'" onclick='showTwitch()'>
+    <td align='center' width='11%' onmouseover="this.style.backgroundColor = 'orange'" onmouseout="this.style.backgroundColor = 'rgba(0,0,0,0)'" onclick='showTwitch()'>
       Twitch Stream
     </td>
-    <td align='center' width='12%' onmouseover="this.style.backgroundColor = 'orange'" onmouseout="this.style.backgroundColor = 'rgba(0,0,0,0)'" onclick='showStats()'>
+    <td align='center' width='11%' onmouseover="this.style.backgroundColor = 'orange'" onmouseout="this.style.backgroundColor = 'rgba(0,0,0,0)'" onclick='showStats()'>
       Stats
     </td>
-    <td align='center' width='12%' onmouseover="this.style.backgroundColor = 'orange'" onmouseout="this.style.backgroundColor = 'rgba(0,0,0,0)'" onclick='showSchedule()'>
+    <td align='center' width='11%' onmouseover="this.style.backgroundColor = 'orange'" onmouseout="this.style.backgroundColor = 'rgba(0,0,0,0)'" onclick='showSchedule()'>
       Schedule
     </td>
-    <td align='center' width='12%' onmouseover="this.style.backgroundColor = 'orange'" onmouseout="this.style.backgroundColor = 'rgba(0,0,0,0)'" onclick='showReleases()'>
+    <td align='center' width='11%' onmouseover="this.style.backgroundColor = 'orange'" onmouseout="this.style.backgroundColor = 'rgba(0,0,0,0)'" onclick='showReleases()'>
       Releases
     </td>
-    <td align='center' width='13%' onmouseover="this.style.backgroundColor = 'orange'" onmouseout="this.style.backgroundColor = 'rgba(0,0,0,0)'" onclick='showRequest()'>
+    <td align='center' width='11%' onmouseover="this.style.backgroundColor = 'orange'" onmouseout="this.style.backgroundColor = 'rgba(0,0,0,0)'" onclick='showTGSR()'>
+      TGSR Videos
+    </td>
+    <td align='center' width='12%' onmouseover="this.style.backgroundColor = 'orange'" onmouseout="this.style.backgroundColor = 'rgba(0,0,0,0)'" onclick='showRequest()'>
       Request Access
     </td>`]}
 }
@@ -1174,6 +1184,86 @@ function showRequest(){
   }
 }
 
+function showTGSR(){
+  sessionStorage.setItem('page','request');
+
+  //Firebase Constants
+  const db = firebase.firestore();
+  const coord = db.collection('access').doc('tgsnCoord');
+  const staff = db.collection('access').doc('tgsnStaff');
+
+  //Determine what to show
+  var uEmail = sessionStorage.getItem('userEmail');
+  var uid = sessionStorage.getItem('user');
+  var position = '';
+  if (tgsnCoordinators.includes(uEmail)){
+    position = 'TGSN Coordinator';
+  } else if (tgsnStaff.includes(uEmail)) {
+    position = 'TGSN Staff';
+  } else {
+    position = 'Staff';
+  }
+
+  if (position == 'TGSN Coordinator' || position == 'TGSN Staff'){
+    document.getElementById('staffBody').innerHTML = [`
+    <table>
+      <tr>
+        <td>
+          Video 1<br>
+          <iframe src='https://www.gaobook.review/v/7zv-5lg129x' width='533px' height='300px' allowfullscreen></iframe>
+        </td>
+        <td>
+          Video 2<br>
+          <iframe src='https://www.gaobook.review/v/zyvn83j88v1' width='533px' height='300px' allowfullscreen></iframe>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          Video 3<br>
+          <iframe src='https://www.gaobook.review/v/dw9rk4j1pog' width='533px' height='300px' allowfullscreen></iframe>
+        </td>
+        <td>
+          Video 4<br>
+          <iframe src='https://www.gaobook.review/v/p6ogx84jxvj' width='533px' height='300px' allowfullscreen></iframe>
+        </td>
+      </tr>
+    </table>`];
+  }
+  /*if (uid == tgsnCoordUID[0]){
+    document.getElementById('staffBody').innerHTML = [`
+    <table>
+      <tr>
+        <td id='video1'>
+          Video 1<br>
+          <iframe src='https://www.gaobook.review/v/4l902grwxoq' width='533px' height='300px' allowfullscreen></iframe>
+        </td>
+        <td id='video2'>
+          Video 2<br>
+          <iframe src='https://www.gaobook.review/v/3qv14pyj2vy' width='533px' height='300px' allowfullscreen></iframe>
+        </td>
+        <td rowspan='2' align='center' valign='top'>
+          Change Videos<br>
+          Video 1: <input type='text' id='v1'><br>
+          Video 2: <input type='text' id='v2'><br>
+          Video 3: <input type='text' id='v3'><br>
+          Video 4: <input type='text' id='v4'><br>
+          <button onclick='changeVideos()'>Change Videos</button>
+        </td>
+      </tr>
+      <tr>
+        <td id='video3'>
+          Video 3<br>
+          <iframe src='https://www.gaobook.review/v/5jv43dxrx90' width='533px' height='300px' allowfullscreen></iframe>
+        </td>
+        <td id='video4'>
+          Video 4<br>
+          <iframe src='https://www.gaobook.review/v/1l966j0dl95' width='533px' height='300px' allowfullscreen></iframe>
+        </td>
+      </tr>
+    </table>`];
+  }*/
+}
+
 //Load Requests Made
 function loadRequests(){
   //Firebase Constants
@@ -1186,11 +1276,17 @@ function loadRequests(){
     for (i = 0; i < data.uid.length; i++){
       document.getElementById('coordReq').innerHTML += `<div id='coord` + i + `' onclick='remCoordRequest(` + i + `)'>` + data.discord[i] + '<br>' + data.uid[i] + '<br>' + data.email[i] + '</div><br>=====<br>';
     }
+    if (data.uid.length == 0){
+      document.getElementById('coordReq').innerHTML += `No Current Requests`;
+    }
   })
   staff.get().then(function(doc) {
     const data = doc.data();
     for (i = 0; i < data.uid.length; i++){
       document.getElementById('staffReq').innerHTML += `<div id='staff` + i + `' onclick='remStaffRequest(` + i + `)'>` + data.discord[i] + '<br>' + data.uid[i] + '<br>' + data.email[i] + '</div><br>=====<br>';
+    }
+    if (data.uid.length == 0){
+      document.getElementById('staffReq').innerHTML += `No Current Requests`;
     }
   })
 }
@@ -1522,4 +1618,13 @@ function rem100(){
   current = parseInt(current, 10);
   current -= 100;
   document.getElementById('offset').value = current;
+}
+
+//Change TGSR Videos
+function loadTGSR(){
+
+}
+
+function changeVideos(){
+
 }
