@@ -443,6 +443,7 @@ function showTGSArticles(){
 
     //Determine what to show
     var uEmail = sessionStorage.getItem('userEmail');
+    var uid = sessionStorage.getItem('user');
     var position = '';
     if (tgsnCoordinators.includes(uEmail)){
       position = 'TGSN Coordinator';
@@ -453,7 +454,7 @@ function showTGSArticles(){
     }
 
     //Fill information
-    if (position == 'TGSN Coordinator'){
+    if (position == 'TGSN Coordinator' && tgsnCoordUID.includes(uid)){
       document.getElementById('staffBody').innerHTML = [`
       <table width='100%'>
         <tr>
@@ -547,6 +548,7 @@ function showStats(){
 
   //Determine what to show
   var uEmail = sessionStorage.getItem('userEmail');
+  var uid = sessionStorage.getItem('user');
   var position = '';
   if (tgsnCoordinators.includes(uEmail)){
     position = 'TGSN Coordinator';
@@ -556,7 +558,7 @@ function showStats(){
     position = 'Staff';
   }
 
-  if (position == 'TGSN Coordinator'){
+  if (position == 'TGSN Coordinator' && tgsnCoordUID.includes(uid)){
     document.getElementById('staffBody').innerHTML = [`
       <!--Start Stream Stats-->
       <table>
@@ -641,9 +643,15 @@ function showStats(){
             </table>
           </td>
         </tr>
+        <tr>
+          <td align='center'>
+            <b><u>Excel Embed</u></b><br>
+            <iframe src='https://docs.google.com/spreadsheets/d/1EVVwG-oq4N6XrPmvIice9iYMTlx1Qwxqnjxs5RM8V7c/edit' width='900px' height='390px'></iframe>
+          </td>
+        </tr>
       </table>
       <!--End Stats-->`];
-  } else if (position == 'TGSN Staff') {
+  } else if (position == 'TGSN Staff' && tgsnStaffUID.includes(uid)) {
     document.getElementById('staffBody').innerHTML = [`
       <!--Start Stream Stats-->
       <table>
@@ -791,6 +799,7 @@ function showSchedule(){
 
   //Determine what to show
   var uEmail = sessionStorage.getItem('userEmail');
+  var uid = sessionStorage.getItem('user');
   var position = '';
   if (tgsnCoordinators.includes(uEmail)){
     position = 'TGSN Coordinator';
@@ -800,7 +809,8 @@ function showSchedule(){
     position = 'Staff';
   }
 
-  if (position == 'TGSN Coordinator'){
+  //Review Staff/No Perm (Possible combine?)
+  if (position == 'TGSN Coordinator' && tgsnCoordUID.includes(uid)){
     document.getElementById('staffBody').innerHTML = [`
       <!--Start Schedule-->
       <table width='100%'>
@@ -890,7 +900,7 @@ function showSchedule(){
           </td>
         </tr>
       </table>`];
-  } else if (position == 'TGSN Staff'){
+  } else if (position == 'TGSN Staff' && tgsnStaffUID.includes(uid)){
     document.getElementById('staffBody').innerHTML = [`
       <!--Start Schedule-->
       <table width='100%'>
@@ -1193,75 +1203,9 @@ function showTGSR(){
   const staff = db.collection('access').doc('tgsnStaff');
 
   //Determine what to show
-  var uEmail = sessionStorage.getItem('userEmail');
   var uid = sessionStorage.getItem('user');
-  var position = '';
-  if (tgsnCoordinators.includes(uEmail)){
-    position = 'TGSN Coordinator';
-  } else if (tgsnStaff.includes(uEmail)) {
-    position = 'TGSN Staff';
-  } else {
-    position = 'Staff';
-  }
 
-  if (position == 'TGSN Coordinator' || position == 'TGSN Staff'){
-    document.getElementById('staffBody').innerHTML = [`
-    <table>
-      <tr>
-        <td>
-          Video 1<br>
-          <iframe src='https://www.gaobook.review/v/7zv-5lg129x' width='533px' height='300px' allowfullscreen></iframe>
-        </td>
-        <td>
-          Video 2<br>
-          <iframe src='https://www.gaobook.review/v/zyvn83j88v1' width='533px' height='300px' allowfullscreen></iframe>
-        </td>
-      </tr>
-      <tr>
-        <td>
-          Video 3<br>
-          <iframe src='https://www.gaobook.review/v/dw9rk4j1pog' width='533px' height='300px' allowfullscreen></iframe>
-        </td>
-        <td>
-          Video 4<br>
-          <iframe src='https://www.gaobook.review/v/p6ogx84jxvj' width='533px' height='300px' allowfullscreen></iframe>
-        </td>
-      </tr>
-    </table>`];
-  }
-  /*if (uid == tgsnCoordUID[0]){
-    document.getElementById('staffBody').innerHTML = [`
-    <table>
-      <tr>
-        <td id='video1'>
-          Video 1<br>
-          <iframe src='https://www.gaobook.review/v/4l902grwxoq' width='533px' height='300px' allowfullscreen></iframe>
-        </td>
-        <td id='video2'>
-          Video 2<br>
-          <iframe src='https://www.gaobook.review/v/3qv14pyj2vy' width='533px' height='300px' allowfullscreen></iframe>
-        </td>
-        <td rowspan='2' align='center' valign='top'>
-          Change Videos<br>
-          Video 1: <input type='text' id='v1'><br>
-          Video 2: <input type='text' id='v2'><br>
-          Video 3: <input type='text' id='v3'><br>
-          Video 4: <input type='text' id='v4'><br>
-          <button onclick='changeVideos()'>Change Videos</button>
-        </td>
-      </tr>
-      <tr>
-        <td id='video3'>
-          Video 3<br>
-          <iframe src='https://www.gaobook.review/v/5jv43dxrx90' width='533px' height='300px' allowfullscreen></iframe>
-        </td>
-        <td id='video4'>
-          Video 4<br>
-          <iframe src='https://www.gaobook.review/v/1l966j0dl95' width='533px' height='300px' allowfullscreen></iframe>
-        </td>
-      </tr>
-    </table>`];
-  }*/
+  loadTGSR(uid);
 }
 
 //Load Requests Made
@@ -1621,10 +1565,108 @@ function rem100(){
 }
 
 //Change TGSR Videos
-function loadTGSR(){
+function loadTGSR(uid){
+  const db = firebase.firestore();
+  const tgsrVideos = db.collection('tgsr').doc('videos');
+  var total;
 
+  //Framework
+  document.getElementById('staffBody').innerHTML = [`
+    <table>
+      <tr>
+        <td id='video1'>
+          Video 1<br>
+        </td>
+        <td id='video2'>
+          Video 2<br>
+        </td>
+        <td rowspan='2' align='center' valign='top' id='repsilon'>
+        </td>
+      </tr>
+      <tr>
+        <td id='video3'>
+          Video 3<br>
+        </td>
+        <td id='video4'>
+          Video 4<br>
+        </td>
+      </tr>
+    </table>`]
+
+  tgsrVideos.onSnapshot(doc => {
+    const data = doc.data();
+    if (tgsnStaffUID.includes(uid) || tgsnCoordUID.includes(uid)){
+      document.getElementById('video1').innerHTML = [`Video 1<br>
+        <iframe src='` + data.v1 + `' width='533px' height='300px' allowfullscreen></iframe>`];
+      if (data.v2 != ' '){
+        document.getElementById('video2').innerHTML = [`Video 2<br>
+          <iframe src='` + data.v2 + `' width='533px' height='300px' allowfullscreen></iframe>`];
+      }
+      if (data.v3 != ' '){
+        document.getElementById('video3').innerHTML = [`Video 3<br>
+          <iframe src='` + data.v3 + `' width='533px' height='300px' allowfullscreen></iframe>`];
+      }
+      if (data.v4 != ' '){
+        document.getElementById('video4').innerHTML = [`Video 4<br>
+          <iframe src='` + data.v4 + `' width='533px' height='300px' allowfullscreen></iframe>`];
+      }
+    }
+  })
+
+  if (tgsnCoordUID.includes(uid)){
+    $("#repsilon").show();
+    document.getElementById('repsilon').innerHTML = [`
+      Change Videos<br>
+      Video 1: <input type='text' id='v1'><br>
+      Video 2: <input type='text' id='v2'><br>
+      Video 3: <input type='text' id='v3'><br>
+      Video 4: <input type='text' id='v4'><br>
+      <button onclick='changeVideos()'>Change Videos</button>`];
+  } else {
+    $("#repsilon").hide();
+  }
+
+  $('#v1').keyup(function(event){
+    if (event.keyCode === 13){
+      changeVideos();
+    }
+  })
+  $('#v2').keyup(function(event){
+    if (event.keyCode === 13){
+      changeVideos();
+    }
+  })
+  $('#v3').keyup(function(event){
+    if (event.keyCode === 13){
+      changeVideos();
+    }
+  })
+  $('#v4').keyup(function(event){
+    if (event.keyCode === 13){
+      changeVideos();
+    }
+  })
 }
 
 function changeVideos(){
+  var video1 = document.getElementById('v1').value;
+  var video2 = document.getElementById('v2').value;
+  var video3 = document.getElementById('v3').value;
+  var video4 = document.getElementById('v4').value;
 
+  const db = firebase.firestore();
+  const tgsrVideos = db.collection('tgsr').doc('videos');
+
+  if (video1 != ""){
+    tgsrVideos.update({ v1: video1});
+  }
+  if (video2 != ""){
+    tgsrVideos.update({ v2: video2});
+  }
+  if (video3 != ""){
+    tgsrVideos.update({ v3: video3});
+  }
+  if (video4 != ""){
+    tgsrVideos.update({ v4: video4});
+  }
 }

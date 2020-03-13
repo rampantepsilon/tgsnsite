@@ -62,7 +62,7 @@ function reloadCheck(){
   }
 
   if (uid){
-    document.querySelector('#topTitle').innerHTML = (`<a href='../staffv2' id='topLink'>` + position + ` HQ</a>`);
+    document.querySelector('#topTitle').innerHTML = (`<a href='../staff' id='topLink'>` + position + ` HQ</a>`);
     document.querySelector('#title').innerHTML = (`Hello ` + uName + `<br><button onclick='googleLogout()'>Logout</button>`);
     document.querySelector('#userPic').innerHTML = (`<img src='` + uPhoto + `' width='60px' height='60px' id='profilePic' />`);
   } else {
