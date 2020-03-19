@@ -472,7 +472,7 @@ function showTGSArticles(){
         </tr>
         <tr>
           <td colspan='2' align='center'>
-            <iframe src='` + link + `' width='900px' height='400px'></iframe>
+            <iframe src='` + link + `' id='articlesWin'></iframe>
           </td>
         </tr>
       </table>`]
@@ -488,11 +488,16 @@ function showTGSArticles(){
         </tr>
         <tr>
           <td>
-            <iframe src='` + link + `' width='900px' height='400px'></iframe>
+            <iframe src='` + link + `' id='articlesWin'></iframe>
           </td>
         </tr>
       </table>`]
     }
+
+    var playerWidth = window.innerWidth-50;
+    var playerHeight = window.innerHeight-450;
+    $('#articlesWin').css('width', playerWidth +'px');
+    $('#articlesWin').css('height', playerHeight +'px');
   })
 }
 
@@ -644,7 +649,7 @@ function showStats(){
                   Unique Viewers: <input id='uniqueutw' size='1'><br>
                   New Followers: <input id='newFollowsutw' size='1'><br>
                   Total Followers: <input id='followsutw' size='1'><br>
-                  <table><tr><td id='linkButton2' onclick='updateTWValues()'>Update W2D Values</td></tr></table>
+                  <button onclick='updateTWValues()'>Update W2D Values</button>
                 </td>
                 <td align='center' valign='top' rowspan="8" id='updateLW' width='175px'>
                   <u>Update LW</u><br>
@@ -655,7 +660,7 @@ function showStats(){
                   <input id='uniqueulw' size='1'><br>
                   <input id='newFollowsulw' size='1'><br>
                   <input id='followsulw' size='1'><br>
-                  <table><tr><td id='linkButton2' onclick='updateLWValues()'>Update LW Values</td></tr></table>
+                  <button onclick='updateLWValues()'>Update LW Values</button>
                 </td>
               </tr>
             </table>
@@ -664,7 +669,7 @@ function showStats(){
         <tr>
           <td align='center'>
             <b><u>Excel Embed</u></b><br>
-            <iframe src='https://docs.google.com/spreadsheets/d/1EVVwG-oq4N6XrPmvIice9iYMTlx1Qwxqnjxs5RM8V7c/edit' width='900px' height='390px'></iframe>
+            <iframe src='https://docs.google.com/spreadsheets/d/1EVVwG-oq4N6XrPmvIice9iYMTlx1Qwxqnjxs5RM8V7c/edit' id='statsView'></iframe>
           </td>
         </tr>
       </table>
@@ -809,6 +814,12 @@ function showStats(){
 
     //Load Stats
     loadStats();
+
+  //Resize Window
+  var playerWidth = window.innerWidth-50;
+  var playerHeight = window.innerHeight-500;
+  $('#statsView').css('width', playerWidth +'px');
+  $('#statsView').css('height', playerHeight +'px');
 }
 
 function showSchedule(){
@@ -1234,7 +1245,6 @@ function showTVSVids(){
   }
   var playerHeight = window.innerHeight-300;
   var playerWidth = (((window.innerHeight-300)*16)/9);
-  //var playerWidth = window.innerWidth-50;
   $('#tvsPlaylist').css('width', playerWidth +'px');
   $('#tvsPlaylist').css('height', playerHeight +'px');
 }

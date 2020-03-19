@@ -44,6 +44,40 @@ document.addEventListener("DOMContentLoaded", event =>{
   showHome();
 });
 
+//Resize Scripting for Twitch, TVS, & TGS Articles
+window.addEventListener('resize', resizeView);
+
+function resizeView() {
+  var page = sessionStorage.getItem('page');
+
+  if (page == 'tgsArticles'){
+    var playerWidth = window.innerWidth-50;
+    var playerHeight = window.innerHeight-450;
+    $('#articlesWin').css('width', playerWidth +'px');
+    $('#articlesWin').css('height', playerHeight +'px');
+  }
+  if (page == 'twitch'){
+    var playerHeight = window.innerHeight-260;
+    var playerWidth = window.innerWidth-450;
+    $('#twitchPlayer').css('width', playerWidth +'px');
+    $('#twitchPlayer').css('height', playerHeight +'px');
+    $('#twitchChat').css('width', 400+'px');
+    $('#twitchChat').css('height', playerHeight+'px');
+  }
+  if (page == 'tvs'){
+    var playerHeight = window.innerHeight-300;
+    var playerWidth = (((window.innerHeight-300)*16)/9);
+    $('#tvsPlaylist').css('width', playerWidth +'px');
+    $('#tvsPlaylist').css('height', playerHeight +'px');
+  }
+  if (page == 'stats'){
+    var playerWidth = window.innerWidth-50;
+    var playerHeight = window.innerHeight-500;
+    $('#statsView').css('width', playerWidth +'px');
+    $('#statsView').css('height', playerHeight +'px');
+  }
+}
+
 function reloadCheck(){
   var uid = sessionStorage.getItem('user');
   var uEmail = sessionStorage.getItem('userEmail');
