@@ -3,6 +3,7 @@ var tgsnStaff = [];
 const tgsnStaffUID = [];
 var tgsnCoordinators = [];
 var tgsnCoordUID = [];
+var tgsnAdminUName = ['RampantEpsilon', 'peacemaker2448'];
 
 //Document Load
 document.addEventListener("DOMContentLoaded", event =>{
@@ -51,7 +52,11 @@ function reloadCheck(){
 
   var position = '';
   if (tgsnCoordinators.includes(uEmail)){
-    position = 'TGSN Coordinator';
+    if (tgsnAdminUName.includes(uName)){
+      position = 'TGSN Network Admin';
+    } else {
+      position = 'TGSN Coordinator';
+    }
     showAll();
   } else if (tgsnStaff.includes(uEmail)) {
     position = 'TGSN Staff';
@@ -60,6 +65,8 @@ function reloadCheck(){
     position = 'Staff';
     showDefault();
   }
+
+  var page = sessionStorage.getItem('page');
 
   if (uid){
     document.querySelector('#topTitle').innerHTML = (`<a href='../staff' id='topLink'>` + position + ` HQ</a>`);
@@ -115,6 +122,42 @@ function googleLogin() {
         showAllRO();
       } else {
         showDefault();
+      }
+
+      var page = sessionStorage.getItem('page');
+      if (page == 'twitch'){
+        if (tgsnCoordinators.includes(user.email) && tgsnCoordUID.includes(user.uid)){
+          document.getElementById('staffBody').innerHTML += [`<table width='100%'>
+            <tr>
+              <td style='text-align: center; border: 1px solid;'>
+                <table>
+                  <tr>
+                    <td align='center' width='10%' onmouseover="this.style.backgroundColor = 'orange'" onmouseout="this.style.backgroundColor = 'rgba(0,0,0,0)'" onclick='showDashboard()'>
+                      Twitch Dashboard
+                    </td>
+                    <td align='center' width='10%' onmouseover="this.style.backgroundColor = 'orange'" onmouseout="this.style.backgroundColor = 'rgba(0,0,0,0)'" onclick='showBotDash()'>
+                      TGSNBot Dashboard
+                    </td>
+                  </tr>
+                </table>
+              </td>
+            </tr>
+          </table>`];
+        } else if (tgsnStaff.includes(user.email) && tgsnStaffUID.includes(user.uid)){
+          document.getElementById('staffBody').innerHTML += [`<table width='100%'>
+            <tr>
+              <td style='text-align: center; border: 1px solid;'>
+                <table>
+                  <tr>
+                    <td align='center' width='10%' onmouseover="this.style.backgroundColor = 'orange'" onmouseout="this.style.backgroundColor = 'rgba(0,0,0,0)'" onclick='showDashboard()'>
+                      Twitch Dashboard
+                    </td>
+                  </tr>
+                </table>
+              </td>
+            </tr>
+          </table>`];
+        }
       }
       //console.log(user);
     })

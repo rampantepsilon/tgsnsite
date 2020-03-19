@@ -39,7 +39,7 @@ function api(){
 /* ----- BODY SCRIPTING ----- */
 //Notices
 const notice1 = `<p>Welcome to The Gaming Saloon Network Staff HQ!<br />This location will hold important information regarding TGSN Staff</p><p><font color='red'>Please Note: All Staff must log into this page at least once and use the Request Page to request permissions.</font></p>`;
-const notice2 = `<p><font color='red'>ATTENTION TGS STAFF!</font><br>The Releases Page has now been implemented in the Staff HQ.<br>Click Releases down below to see yourself!</p>`;
+const notice2 = `<p><font color='red'>IMPORTANT STAFF TOOL RELOCATION</font><br>The Twitch Dashboard and TGSNBot Dashboard links can now be found on the Twitch Stream page when logged in. If you are experiencing problems please reach out to RampantEpsilon on Discord.</p>`;
 const notice3 = [`<p>Want to provide feedback for the Staff HQ page?<br>Use the form <a href='https://forms.gle/PescTWy6oEDd6e6R7' target='_blank'>HERE</a>`];
 
 //Bottom Links
@@ -49,12 +49,6 @@ function showAll(){
   </td>
   <td align='center' width='10%' onmouseover="this.style.backgroundColor = 'orange'" onmouseout="this.style.backgroundColor = 'rgba(0,0,0,0)'" onclick='showTGSArticles()'>
     TGS Articles
-  </td>
-  <td align='center' width='10%' onmouseover="this.style.backgroundColor = 'orange'" onmouseout="this.style.backgroundColor = 'rgba(0,0,0,0)'" onclick='showDashboard()'>
-    Dashboard
-  </td>
-  <td align='center' width='10%' onmouseover="this.style.backgroundColor = 'orange'" onmouseout="this.style.backgroundColor = 'rgba(0,0,0,0)'" onclick='showBotDash()'>
-    TGSNBot Dashboard
   </td>
   <td align='center' width='10%' onmouseover="this.style.backgroundColor = 'orange'" onmouseout="this.style.backgroundColor = 'rgba(0,0,0,0)'" onclick='showTwitch()'>
     Twitch Stream
@@ -71,6 +65,9 @@ function showAll(){
   <td align='center' width='10%' onmouseover="this.style.backgroundColor = 'orange'" onmouseout="this.style.backgroundColor = 'rgba(0,0,0,0)'" onclick='showTGSR()'>
     TGSR Videos
   </td>
+  <td align='center' width='10%' onmouseover="this.style.backgroundColor = 'orange'" onmouseout="this.style.backgroundColor = 'rgba(0,0,0,0)'" onclick='showTVSVids()'>
+    TVS Videos
+  </td>
   <td align='center' width='10%' onmouseover="this.style.backgroundColor = 'orange'" onmouseout="this.style.backgroundColor = 'rgba(0,0,0,0)'" onclick='showRequest()'>
     Request Page
   </td>`]
@@ -82,9 +79,6 @@ function showAllRO(){
   </td>
   <td align='center' width='12%' onmouseover="this.style.backgroundColor = 'orange'" onmouseout="this.style.backgroundColor = 'rgba(0,0,0,0)'" onclick='showTGSArticles()'>
     TGS Articles
-  </td>
-  <td align='center' width='12%' onmouseover="this.style.backgroundColor = 'orange'" onmouseout="this.style.backgroundColor = 'rgba(0,0,0,0)'" onclick='showDashboard()'>
-    Dashboard
   </td>
   <td align='center' width='14%' onmouseover="this.style.backgroundColor = 'orange'" onmouseout="this.style.backgroundColor = 'rgba(0,0,0,0)'" onclick='showTwitch()'>
     Twitch Stream
@@ -108,9 +102,6 @@ function showAllRO(){
     </td>
     <td align='center' width='11%' onmouseover="this.style.backgroundColor = 'orange'" onmouseout="this.style.backgroundColor = 'rgba(0,0,0,0)'" onclick='showTGSArticles()'>
       TGS Articles
-    </td>
-    <td align='center' width='11%' onmouseover="this.style.backgroundColor = 'orange'" onmouseout="this.style.backgroundColor = 'rgba(0,0,0,0)'" onclick='showDashboard()'>
-      Dashboard
     </td>
     <td align='center' width='11%' onmouseover="this.style.backgroundColor = 'orange'" onmouseout="this.style.backgroundColor = 'rgba(0,0,0,0)'" onclick='showTwitch()'>
       Twitch Stream
@@ -422,6 +413,7 @@ function showHome(){
         <h2>Goals</h2><div id='followers'></div>
       </td>
     </tr>
+    <tr>
   </table>`];
   sessionStorage.setItem('page','home');
 }
@@ -523,6 +515,10 @@ function showBotDash(){
 
 function showTwitch(){
 
+  //Determine what to show
+  var uEmail = sessionStorage.getItem('userEmail');
+  var uid = sessionStorage.getItem('user');
+
   sessionStorage.setItem('page','twitch');
   document.getElementById('staffBody').innerHTML = [`<table width='100%'>
     <tr>
@@ -534,7 +530,41 @@ function showTwitch(){
       </td>
     </tr>
   </table>`];
-  var playerHeight = window.innerHeight-230;
+
+  if (tgsnCoordinators.includes(uEmail) && tgsnCoordUID.includes(uid)){
+    document.getElementById('staffBody').innerHTML += [`<table width='100%'>
+      <tr>
+        <td style='text-align: center; border: 1px solid;'>
+          <table>
+            <tr>
+              <td align='center' width='10%' onmouseover="this.style.backgroundColor = 'orange'" onmouseout="this.style.backgroundColor = 'rgba(0,0,0,0)'" onclick='showDashboard()'>
+                Twitch Dashboard
+              </td>
+              <td align='center' width='10%' onmouseover="this.style.backgroundColor = 'orange'" onmouseout="this.style.backgroundColor = 'rgba(0,0,0,0)'" onclick='showBotDash()'>
+                TGSNBot Dashboard
+              </td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+    </table>`];
+  } else if (tgsnStaff.includes(uEmail) && tgsnStaffUID.includes(uid)){
+    document.getElementById('staffBody').innerHTML += [`<table width='100%'>
+      <tr>
+        <td style='text-align: center; border: 1px solid;'>
+          <table>
+            <tr>
+              <td align='center' width='10%' onmouseover="this.style.backgroundColor = 'orange'" onmouseout="this.style.backgroundColor = 'rgba(0,0,0,0)'" onclick='showDashboard()'>
+                Twitch Dashboard
+              </td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+    </table>`];
+  }
+
+  var playerHeight = window.innerHeight-260;
   var playerWidth = window.innerWidth-450;
   $('#twitchPlayer').css('width', playerWidth +'px');
   $('#twitchPlayer').css('height', playerHeight +'px');
@@ -1194,13 +1224,35 @@ function showRequest(){
   }
 }
 
+function showTVSVids(){
+  sessionStorage.setItem('page','tvs');
+
+  var uEmail = sessionStorage.getItem('userEmail');
+  var uid = sessionStorage.getItem('user');
+
+  if (tgsnCoordinators.includes(uEmail) && tgsnCoordUID.includes(uid)){
+    document.getElementById('staffBody').innerHTML = [`<table>
+      <tr>
+        <td>
+          <h3 align='center'>Please download the video before streaming.</h3>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <iframe id='tvsPlaylist' src="https://www.youtube.com/embed/videoseries?list=PLPs7OF2cnAct9JUghBoKdw30LhzMRbvCw" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </td>
+      </tr>
+    </table>`]
+  }
+  var playerHeight = window.innerHeight-300;
+  var playerWidth = (((window.innerHeight-300)*16)/9);
+  //var playerWidth = window.innerWidth-50;
+  $('#tvsPlaylist').css('width', playerWidth +'px');
+  $('#tvsPlaylist').css('height', playerHeight +'px');
+}
+
 function showTGSR(){
   sessionStorage.setItem('page','request');
-
-  //Firebase Constants
-  const db = firebase.firestore();
-  const coord = db.collection('access').doc('tgsnCoord');
-  const staff = db.collection('access').doc('tgsnStaff');
 
   //Determine what to show
   var uid = sessionStorage.getItem('user');
