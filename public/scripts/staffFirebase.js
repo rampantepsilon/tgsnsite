@@ -129,27 +129,18 @@ function googleLogin() {
         if (tgsnCoordinators.includes(user.email) && tgsnCoordUID.includes(user.uid)){
           document.getElementById('staffBody').innerHTML += [`<table width='100%'>
             <tr>
-              <td style='text-align: center; border: 1px solid;'>
-                <table>
-                  <tr>
-                    <td align='center' width='10%' onmouseover="this.style.backgroundColor = 'orange'" onmouseout="this.style.backgroundColor = 'rgba(0,0,0,0)'" onclick='showDashboard()'>
-                      Twitch Dashboard
-                    </td>
-                    <td align='center' width='10%' onmouseover="this.style.backgroundColor = 'orange'" onmouseout="this.style.backgroundColor = 'rgba(0,0,0,0)'" onclick='showBotDash()'>
-                      TGSNBot Dashboard
-                    </td>
-                  </tr>
-                </table>
+              <td style='text-align: center; border: 1px solid;' width='10%' onmouseover="this.style.backgroundColor = 'orange'" onmouseout="this.style.backgroundColor = 'rgba(0,0,0,0)'" onclick='showDashboard()'>
+                Twitch Dashboard
+              </td>
+              <td style='text-align: center; border: 1px solid;' width='10%' onmouseover="this.style.backgroundColor = 'orange'" onmouseout="this.style.backgroundColor = 'rgba(0,0,0,0)'" onclick='showBotDash()'>
+                TGSNBot Dashboard
               </td>
             </tr>
           </table>`];
         } else if (tgsnStaff.includes(user.email) && tgsnStaffUID.includes(user.uid)){
           document.getElementById('staffBody').innerHTML += [`<table width='100%'>
             <tr>
-              <td style='text-align: center; border: 1px solid;'>
-                <table>
-                  <tr>
-                    <td align='center' width='10%' onmouseover="this.style.backgroundColor = 'orange'" onmouseout="this.style.backgroundColor = 'rgba(0,0,0,0)'" onclick='showDashboard()'>
+              <td style='text-align: center; border: 1px solid;' align='center' width='100%' onmouseover="this.style.backgroundColor = 'orange'" onmouseout="this.style.backgroundColor = 'rgba(0,0,0,0)'" onclick='showDashboard()'>
                       Twitch Dashboard
                     </td>
                   </tr>
