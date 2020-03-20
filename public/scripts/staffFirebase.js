@@ -138,7 +138,11 @@ function googleLogin() {
 
       var position = '';
       if (tgsnCoordinators.includes(user.email)){
+        if (user.email == 'tomjware@gmail.com' || user.email == 'peacemaker24482@gmail.com'){
+          position = 'TGSN Network Admin';
+        } else {
         position = 'TGSN Coordinator';
+        }
       } else if (tgsnStaff.includes(user.email)) {
         position = 'TGSN Staff';
       } else {
@@ -209,6 +213,17 @@ function updateTGSArticles() {
   if (document.getElementById('tgsArticleLink').value != ""){
     tgsArticleLink = document.getElementById('tgsArticleLink').value;
     tgsArticles.update({ link: tgsArticleLink });
+  }
+}
+
+function updateStaffArticles(){
+  const db = firebase.firestore();
+  const tgsArticles = db.collection('tgs').doc('articles');
+
+  var tgsArticleLink = '';
+  if (document.getElementById('tgsArticleLink').value != ""){
+    tgsArticleLink = document.getElementById('tgsArticleLink').value;
+    tgsArticles.update({ staffLink: tgsArticleLink });
   }
 }
 

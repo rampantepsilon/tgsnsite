@@ -430,6 +430,7 @@ function showTGSArticles(){
   tgsArticles.onSnapshot(doc => {
     const data = doc.data();
     var link = data.link;
+    var staffLink = data.staffLink;
     var length = data.link.length;
     var trunc = length - 5;
 
@@ -450,48 +451,56 @@ function showTGSArticles(){
       document.getElementById('staffBody').innerHTML = [`
       <table width='100%'>
         <tr>
-          <td align='center' valign='top'>
+          <td align='center' valign='top' colspan='3'>
             <h3><u>TGS Resources</u></h3>
             <h6>Changes can only be made by a Network Admin or TGSN Coordinator</h6>
-            <div id='body'>Current TGS Articles:<h5>(Only the document part of the URL is shown here)</h5><font size='2'><a href='` + link + `' target='_blank'>`/*Click Here (Opens in new tab)*/ + link.substring(35, trunc) + `</a></font></div>
-          </td>
-          <td align='center'>
-            Enter the new link for TGS Articles<br>
-            <input id='tgsArticleLink'>
-            <table>
-              <tr>
-                <td id='linkButton2' onclick='updateTGSArticles()'>
-                  Update TGS Articles
-                </td>
-                <td id='linkButton2' onclick='clearTGSArticles()'>
-                  Clear Link Field
-                </td>
-              </tr>
-            </table>
           </td>
         </tr>
         <tr>
-          <td colspan='2' align='center'>
-            <iframe src='` + link + `' id='articlesWin'></iframe>
+          <td align='center'>
+            <div id='body'>Current TGS Articles (Viewer Facing):<h5>(Only the document part of the URL is shown here)</h5><font size='2'><a href='` + link + `' target='_blank'>`/*Click Here (Opens in new tab)*/ + link.substring(35, trunc) + `</a></font></div>
+          </td>
+          <td align='center'>
+            <div id='body'>Current TGS Articles (Staff Facing [Shown Below]):<h5>(Only the document part of the URL is shown here)</h5><font size='2'><a href='` + staffLink + `' target='_blank'>`/*Click Here (Opens in new tab)*/ + staffLink.substring(35, trunc) + `</a></font></div>
+          </td>
+          <td align='center'>
+            Enter the new link for TGS Articles<br>
+            <input id='tgsArticleLink'><br>
+            <button onclick='updateTGSArticles()'>Update Viewer Articles</button>
+            <button onclick='updateStaffArticles()'>Update Staff Articles</button>
+            <button onclick='clearTGSArticles()'>Clear Link Field</button>
+          </td>
+        </tr>
+        <tr>
+          <td colspan='3' align='center'>
+            <iframe src='` + staffLink + `' id='articlesWin'></iframe>
           </td>
         </tr>
       </table>`]
     } else {
       document.getElementById('staffBody').innerHTML = [`
-      <table>
-        <tr>
-          <td align='center' valign='top'>
-            <h3><u>TGS Resources</u></h3>
-            <h6>Changes can only be made by a Network Admin or TGSN Coordinator</h6>
-            <div id='body'>Current TGS Articles:<h5>(Only the document part of the URL is shown here)</h5><font size='2'><a href='` + link + `' target='_blank'>`/*Click Here (Opens in new tab)*/ + link.substring(35, trunc) + `</a></font></div>
-          </td>
-        </tr>
-        <tr>
-          <td>
-            <iframe src='` + link + `' id='articlesWin'></iframe>
-          </td>
-        </tr>
-      </table>`]
+
+        <table width='100%'>
+          <tr>
+            <td align='center' valign='top' colspan='2'>
+              <h3><u>TGS Resources</u></h3>
+              <h6>Changes can only be made by a Network Admin or TGSN Coordinator</h6>
+            </td>
+          </tr>
+          <tr>
+            <td align='center'>
+              <div id='body'>Current TGS Articles (Viewer Facing):<h5>(Only the document part of the URL is shown here)</h5><font size='2'><a href='` + link + `' target='_blank'>`/*Click Here (Opens in new tab)*/ + link.substring(35, trunc) + `</a></font></div>
+            </td>
+            <td align='center'>
+              <div id='body'>Current TGS Articles (Staff Facing [Shown Below]):<h5>(Only the document part of the URL is shown here)</h5><font size='2'><a href='` + staffLink + `' target='_blank'>`/*Click Here (Opens in new tab)*/ + staffLink.substring(35, trunc) + `</a></font></div>
+            </td>
+          </tr>
+          <tr>
+            <td colspan='2' align='center'>
+              <iframe src='` + staffLink + `' id='articlesWin'></iframe>
+            </td>
+          </tr>
+        </table>`]
     }
 
     var playerWidth = window.innerWidth-50;
