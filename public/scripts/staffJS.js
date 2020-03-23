@@ -1680,7 +1680,8 @@ function loadTGSR(uid){
       Video 2: <input type='text' id='v2'><br>
       Video 3: <input type='text' id='v3'><br>
       Video 4: <input type='text' id='v4'><br>
-      <button onclick='changeVideos()'>Change Videos</button>`];
+      <button onclick='changeVideos()'>Change Videos</button><br>
+      Tip: Use " " to signify no video.`];
   } else {
     $("#repsilon").hide();
   }
