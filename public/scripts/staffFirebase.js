@@ -154,7 +154,7 @@ function googleLogin() {
       document.querySelector('#title').innerHTML = (`Hello ` + userName + `<br><button onclick='googleLogout()'>Logout</button>`);
       document.querySelector('#userPic').innerHTML = (`<img src='` + user.photoURL + `' width='60px' height='60px' id='profilePic' />`);
 
-      if (position == 'TGSN Coordinator'){
+      if (position == 'TGSN Coordinator' || position == 'TGSN Network Admin'){
         showAll();
       } else if (position == 'TGSN Staff') {
         showAllRO();

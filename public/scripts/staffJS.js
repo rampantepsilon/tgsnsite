@@ -1639,7 +1639,7 @@ function loadTGSR(uid){
         <td id='video2'>
           Video 2<br>
         </td>
-        <td rowspan='2' align='center' valign='top' id='repsilon'>
+        <td align='center' valign='middle' id='repsilon'>
         </td>
       </tr>
       <tr>
@@ -1649,6 +1649,9 @@ function loadTGSR(uid){
         <td id='video4'>
           Video 4<br>
         </td>
+        <td id='video5'>
+          Video 5<br>
+        </td>
       </tr>
     </table>`]
 
@@ -1656,34 +1659,56 @@ function loadTGSR(uid){
     const data = doc.data();
     if (tgsnStaffUID.includes(uid) || tgsnCoordUID.includes(uid)){
       document.getElementById('video1').innerHTML = [`Video 1<br>
-        <iframe src='` + data.v1 + `' width='533px' height='300px' allowfullscreen></iframe>`];
-      if (data.v2 != ' '){
+        <iframe src='` + data.v1 + `' width='567px' height='318px' id='tgsrVid1' allowfullscreen></iframe>`];
+      if (data.v2 != 'n/a'){
+        $('#video2').show();
         document.getElementById('video2').innerHTML = [`Video 2<br>
-          <iframe src='` + data.v2 + `' width='533px' height='300px' allowfullscreen></iframe>`];
+          <iframe src='` + data.v2 + `' width='567px' height='318px' id='tgsrVid2' allowfullscreen></iframe>`];
       }
-      if (data.v3 != ' '){
+      if (data.v2 == 'n/a'){
+        $('#video2').hide();
+      }
+      if (data.v3 != 'n/a'){
+        $('#video3').show();
         document.getElementById('video3').innerHTML = [`Video 3<br>
-          <iframe src='` + data.v3 + `' width='533px' height='300px' allowfullscreen></iframe>`];
+          <iframe src='` + data.v3 + `' width='567px' height='318px' id='tgsrVid3' allowfullscreen></iframe>`];
       }
-      if (data.v4 != ' '){
+      if (data.v3 == 'n/a'){
+        $('#video3').hide();
+      }
+      if (data.v4 != 'n/a'){
+        $('#video4').show();
         document.getElementById('video4').innerHTML = [`Video 4<br>
-          <iframe src='` + data.v4 + `' width='533px' height='300px' allowfullscreen></iframe>`];
+          <iframe src='` + data.v4 + `' width='567px' height='318px' id='tgsrVid4' allowfullscreen></iframe>`];
+      }
+      if (data.v4 == 'n/a'){
+        $('#video4').hide();
+      }
+      if (data.v5 != 'n/a'){
+        $('#video5').show();
+        document.getElementById('video5').innerHTML = [`Video 5<br>
+          <iframe src='` + data.v5 + `' width='567px' height='318px' id='tgsrVid5' allowfullscreen></iframe>`];
+      }
+      if (data.v5 == 'n/a'){
+        $('#video5').hide();
       }
     }
   })
 
   if (tgsnCoordUID.includes(uid)){
-    $("#repsilon").show();
     document.getElementById('repsilon').innerHTML = [`
+      <button onclick='resizeTGSR()'>Fit To Screen</button><br>
       Change Videos<br>
       Video 1: <input type='text' id='v1'><br>
       Video 2: <input type='text' id='v2'><br>
       Video 3: <input type='text' id='v3'><br>
       Video 4: <input type='text' id='v4'><br>
+      Video 5: <input type='text' id='v5'><br>
       <button onclick='changeVideos()'>Change Videos</button><br>
-      Tip: Use " " to signify no video.`];
+      Tip: Use "n/a" to signify no video.`];
   } else {
-    $("#repsilon").hide();
+    document.getElementById('repsilon').innerHTML = [`
+      <button onclick='resizeTGSR()'>Fit To Screen</button>`];
   }
 
   $('#v1').keyup(function(event){
@@ -1706,6 +1731,11 @@ function loadTGSR(uid){
       changeVideos();
     }
   })
+  $('#v5').keyup(function(event){
+    if (event.keyCode === 13){
+      changeVideos();
+    }
+  })
 }
 
 function changeVideos(){
@@ -1713,6 +1743,7 @@ function changeVideos(){
   var video2 = document.getElementById('v2').value;
   var video3 = document.getElementById('v3').value;
   var video4 = document.getElementById('v4').value;
+  var video5 = document.getElementById('v5').value;
 
   const db = firebase.firestore();
   const tgsrVideos = db.collection('tgsr').doc('videos');
@@ -1728,5 +1759,26 @@ function changeVideos(){
   }
   if (video4 != ""){
     tgsrVideos.update({ v4: video4});
+  }
+  if (video5 != ""){
+    tgsrVideos.update({ v5: video4});
+  }
+}
+
+function resizeTGSR(){
+  //Resize based on winSize (min 220*124)
+  var playerWidth = (window.innerWidth-75)/3;
+  var playerHeight = ((playerWidth*9)/16);
+  if (playerWidth < '220'){
+    for (i=1; i < 6; i++){
+      $('#tgsrVid'+i).css('width', '220px');
+      $('#tgsrVid'+i).css('height', '124px');
+    }
+    alert('Window is too small.\nPlease enlarge the window or try another browser and try again.');
+  } else {
+    for (i=1; i < 6; i++){
+      $('#tgsrVid'+i).css('width', playerWidth +'px');
+      $('#tgsrVid'+i).css('height', playerHeight +'px');
+    }
   }
 }
