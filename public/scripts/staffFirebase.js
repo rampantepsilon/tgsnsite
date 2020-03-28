@@ -36,6 +36,33 @@ document.addEventListener("DOMContentLoaded", event =>{
     }
   })
 
+  firebase.auth().getRedirectResult()
+    .then(result => {
+      var token = result.credential.accessToken;
+      const user = result.user;
+      var userName = "";
+      if (user.email == 'tomjware@gmail.com' || user.email == 'tgs.rampantepsilon@gmail.com'){
+        userName = 'RampantEpsilon';
+      }
+      else if (user.email == 'peacemaker24482@gmail.com'){
+        userName = 'peacemaker2448';
+      }
+      else if (user.email == 'tgs.tommygun2442@gmail.com'){
+        userName = 'Tommygun2442';
+      }
+      else {
+        userName = user.displayName;
+      }
+
+      sessionStorage.setItem('user', user.uid);
+      sessionStorage.setItem('userEmail', user.email);
+      sessionStorage.setItem('userName', userName);
+      sessionStorage.setItem('userPhoto', user.photoURL);
+
+      location.reload(1);
+    })
+    .catch(console.log)
+
   //Check if user refreshed Page
   setTimeout(`reloadCheck();`,1500);
   init();
@@ -114,8 +141,11 @@ function reloadCheck(){
 function googleLogin() {
   const provider = new firebase.auth.GoogleAuthProvider();
 
-  firebase.auth().signInWithPopup(provider)
+  firebase.auth().signInWithRedirect(provider);
+  //Old Login (Storing In Case of Fallback)
+  /*firebase.auth().signInWithPopup(provider)
     .then(result => {
+      var token = result.credential.accessToken;
       const user = result.user;
       var userName = "";
       if (user.email == 'tomjware@gmail.com' || user.email == 'tgs.rampantepsilon@gmail.com'){
@@ -190,7 +220,7 @@ function googleLogin() {
       }
       //console.log(user);
     })
-    .catch(console.log)
+    .catch(console.log)*/
 }
 
 function googleLogout(){
