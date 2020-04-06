@@ -25,7 +25,13 @@ function api(){
       var latestFollower = channel.data[0].from_name;
 
       if (sessionStorage.getItem('page') == 'home'){
-        document.getElementById('followers').innerHTML = `<div>Follower Goal: ` + followCount + `/200 (Or Affiliate)<br/>Rampant Plays Halo Custom Campaigns<br/>Peace Plays All Kamen Rider: Rider Revolution<br/>Latest Follower: ` + latestFollower + `</div>`;
+        document.getElementById('followers').innerHTML = `<div>Follower Goal: ` + followCount + `/200 (Or Affiliate)<br/>
+          <div class="w3-light-grey w3-round-xlarge">
+            <div class="w3-container w3-blue w3-round-xlarge" style="width:` + ((followCount/200)*100)`%" id="videos"></div>
+          </div>
+        <br/>Rampant Plays Halo Custom Campaigns
+        <br/>Peace Plays All Kamen Rider: Rider Revolution
+        <br/>Latest Follower: ` + latestFollower + `</div>`;
       }
       //console.log(channel.total);
     },

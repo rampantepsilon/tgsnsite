@@ -10,10 +10,10 @@ function init(){
 
 function api(){
   //console.log("Begin Script");
-  var token = "filler";
+  var token = "";
   $.ajax({
     datatype: 'json',
-    url: 'https://cors-anywhere.herokuapp.com/https://discordapp.com/api/channels/487679359566741504/messages',
+    url: 'https://discordapp.com/api/channels/487679359566741504/messages',
     headers: {
       "Authorization": 'Bot ' + token,
     },

@@ -3,6 +3,7 @@
   <title>TGSN Followers</title>
    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
    <link href="https://fonts.googleapis.com/css?family=Raleway:800" rel="stylesheet">
+   <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
    <style type="text/css">
      html, body{
        background-color: rgba(0,0,0,0);
@@ -63,6 +64,8 @@
            var latest = channel.data[0].from_name;
            $("#videos").html(title + '/200');
            $("#latestFollower").html('Latest Follower: ' + latest);
+           var progBar = ((title / 200)*100);
+           $("#videos").css("width", progBar + "%");
            console.log(channel.total);
          },
          error: function(){
@@ -88,14 +91,18 @@
  </head>
 
 <body onload='init()'>
-  <table width="600px" align="center">
+  <table width="800px" align="center">
     <tr>
-      <td align='left' width="142px">Follower Goals:</td>
-      <td align='center' id='goals'>Rampant Plays Halo Custom Campaigns</td>
-      <td align='left' id="videos" width='78px'></td>
+      <td align='left' width="125px">Follower Goals:</td>
+      <td align='center' id='goals' width='450px'>Rampant Plays Halo Custom Campaigns</td>
+      <td colspan='2' align='center' id='latestFollower' width='50%'></td>
     </tr>
     <tr>
-      <td colspan='3' align='center' id='latestFollower'></td>
+      <td colspan='3'>
+        <div class="w3-light-grey w3-round-xlarge">
+          <div class="w3-container w3-blue w3-round-xlarge" style="width:25%" id="videos"></div>
+        </div>
+      </td>
     </tr>
   </table>
 <body>
