@@ -1492,6 +1492,7 @@ function getReleases(){
 
   $.ajax({
     datatype: 'json',
+    origin: 'https://www.gamespot.com',
     url: 'https://cors-anywhere.herokuapp.com/https://www.gamespot.com/api/releases/?api_key=' + apiReleases + '&offset=' + offset +'&sort=release_date:asc&filter=release_date:' + start + '&format=json',
     success: function(data)
     {
@@ -1550,6 +1551,7 @@ function getReleases(){
 function results(apiReleases, start){
   $.ajax({
     datatype: 'json',
+    origin: 'https://www.gamespot.com',
     url: 'https://cors-anywhere.herokuapp.com/https://www.gamespot.com/api/releases/?api_key=' + apiReleases + '&sort=release_date:asc&filter=release_date:' + start + '&format=json',
     success: function(channel)
     {
@@ -1773,7 +1775,7 @@ function changeVideos(){
     tgsrVideos.update({ v4: video4});
   }
   if (video5 != ""){
-    tgsrVideos.update({ v5: video4});
+    tgsrVideos.update({ v5: video5});
   }
 }
 
