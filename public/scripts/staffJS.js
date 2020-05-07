@@ -21,18 +21,26 @@ function api(){
     {
       //console.log("Results:");
       //console.log(channel);
-      var followCount = channel.total;
+      //var followCount = channel.total;
+      const app = firebase.app();
+      const db = firebase.firestore();
+      const tgsnStats = db.collection('stats').doc('tgsn');
+      var avgFollows;
       var latestFollower = channel.data[0].from_name;
 
       if (sessionStorage.getItem('page') == 'home'){
-        var progBar = ((followCount / 200)*100);
-        document.getElementById('followers').innerHTML = `<div><u>Follower Goal</u>
-          <div class="w3-light-grey w3-round-xlarge">
-            <div class="w3-container w3-blue w3-round-xlarge" style="width:` + progBar + `%" id="videos">` + followCount + `/200 (Or Affiliate)</div>
-          </div>
-        <br/>Rampant Plays Halo Custom Campaigns
-        <br/>Peace Plays All Kamen Rider: Rider Revolution
-        <br/>Latest Follower: ` + latestFollower + `</div>`;
+        tgsnStats.get().then(function(doc) {
+          const data = doc.data();
+          avgFollows = parseFloat(data.avgViewers);
+          var progBar = ((avgFollows / 2)*100);
+          document.getElementById('followers').innerHTML = `<div><u>Average Viewer Goal</u>
+            <div class="w3-light-grey w3-round-xlarge">
+              <div class="w3-container w3-blue w3-round-xlarge" style="width:` + progBar + `%" id="videos">` + avgFollows + `/2</div>
+            </div>
+          <br/>Rampant Plays Halo Master Chief Collection
+          <br/>Peace Plays Ratchet & Clank
+          <br/>Latest Follower: ` + latestFollower + `</div>`;
+        })
       }
       //console.log(channel.total);
     },
@@ -1673,11 +1681,11 @@ function loadTGSR(uid){
     const data = doc.data();
     if (tgsnStaffUID.includes(uid) || tgsnCoordUID.includes(uid)){
       document.getElementById('video1').innerHTML = [`Video 1<br>
-        <iframe src='` + data.v1 + `' width='567px' height='318px' id='tgsrVid1' allowfullscreen></iframe>`];
+        <iframe src='` + data.v1 + `' width='567px' height='318px' id='tgsrVid1' allowfullscreen style='overflow-y:hidden;'></iframe>`];
       if (data.v2 != 'n/a'){
         $('#video2').show();
         document.getElementById('video2').innerHTML = [`Video 2<br>
-          <iframe src='` + data.v2 + `' width='567px' height='318px' id='tgsrVid2' allowfullscreen></iframe>`];
+          <iframe src='` + data.v2 + `' width='567px' height='318px' id='tgsrVid2' allowfullscreen style='overflow-y:hidden;'></iframe>`];
       }
       if (data.v2 == 'n/a'){
         $('#video2').hide();
@@ -1685,7 +1693,7 @@ function loadTGSR(uid){
       if (data.v3 != 'n/a'){
         $('#video3').show();
         document.getElementById('video3').innerHTML = [`Video 3<br>
-          <iframe src='` + data.v3 + `' width='567px' height='318px' id='tgsrVid3' allowfullscreen></iframe>`];
+          <iframe src='` + data.v3 + `' width='567px' height='318px' id='tgsrVid3' allowfullscreen style='overflow-y:hidden;'></iframe>`];
       }
       if (data.v3 == 'n/a'){
         $('#video3').hide();
@@ -1693,7 +1701,7 @@ function loadTGSR(uid){
       if (data.v4 != 'n/a'){
         $('#video4').show();
         document.getElementById('video4').innerHTML = [`Video 4<br>
-          <iframe src='` + data.v4 + `' width='567px' height='318px' id='tgsrVid4' allowfullscreen></iframe>`];
+          <iframe src='` + data.v4 + `' width='567px' height='318px' id='tgsrVid4' allowfullscreen style='overflow-y:hidden;'></iframe>`];
       }
       if (data.v4 == 'n/a'){
         $('#video4').hide();
@@ -1701,7 +1709,7 @@ function loadTGSR(uid){
       if (data.v5 != 'n/a'){
         $('#video5').show();
         document.getElementById('video5').innerHTML = [`Video 5<br>
-          <iframe src='` + data.v5 + `' width='567px' height='318px' id='tgsrVid5' allowfullscreen></iframe>`];
+          <iframe src='` + data.v5 + `' width='567px' height='318px' id='tgsrVid5' allowfullscreen style='overflow-y:hidden;'></iframe>`];
       }
       if (data.v5 == 'n/a'){
         $('#video5').hide();
