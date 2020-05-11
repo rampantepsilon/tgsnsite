@@ -1654,6 +1654,8 @@ function loadTGSR(uid){
   //Framework
   document.getElementById('staffBody').innerHTML = [`
     <table>
+      <tr colspan='3'>
+        <td align='center'>During the run of Kamen Rider (1971), there will not be embeds. Please visit <a href='http://www.shoutfactorytv.com/series/kamen-rider'>Shout Factory TV</a> for the epsiodes.
       <tr>
         <td id='video1'>
           Video 1<br>
@@ -1680,8 +1682,14 @@ function loadTGSR(uid){
   tgsrVideos.onSnapshot(doc => {
     const data = doc.data();
     if (tgsnStaffUID.includes(uid) || tgsnCoordUID.includes(uid)){
-      document.getElementById('video1').innerHTML = [`Video 1<br>
-        <iframe src='` + data.v1 + `' width='567px' height='318px' id='tgsrVid1' allowfullscreen style='overflow-y:hidden;'></iframe>`];
+      if (data.v1 != 'n/a'){
+        $('#video1').show();
+        document.getElementById('video1').innerHTML = [`Video 1<br>
+          <iframe src='` + data.v1 + `' width='567px' height='318px' id='tgsrVid1' allowfullscreen style='overflow-y:hidden;'></iframe>`];
+      }
+      if (data.v1 == 'n/a'){
+        $('#video1').hide();
+      }
       if (data.v2 != 'n/a'){
         $('#video2').show();
         document.getElementById('video2').innerHTML = [`Video 2<br>
