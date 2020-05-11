@@ -1655,7 +1655,7 @@ function loadTGSR(uid){
   document.getElementById('staffBody').innerHTML = [`
     <table>
       <tr colspan='3'>
-        <td align='center'>During the run of Kamen Rider (1971), there will not be embeds. Please visit <a href='http://www.shoutfactorytv.com/series/kamen-rider'>Shout Factory TV</a> for the epsiodes.
+        <td align='center'>During the run of Kamen Rider (1971), there will not be embeds. Please visit <a href='http://www.shoutfactorytv.com/series/kamen-rider' target='_blank'>Shout Factory TV</a> for the epsiodes.
       <tr>
         <td id='video1'>
           Video 1<br>
