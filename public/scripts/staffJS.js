@@ -15,6 +15,7 @@ function api(){
     datatype: 'json',
     url: 'https://api.twitch.tv/helix/users/follows?to_id=43584807',
     headers: {
+      "Authorization": 'Bearer zaatduqj2w5nf40gwdyilmfaktid2a',
       "Client-ID": 'o118lfy65junb52nuye0weh4xbvn11',
     },
     success: function(channel)
