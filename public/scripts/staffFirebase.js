@@ -64,7 +64,7 @@ document.addEventListener("DOMContentLoaded", event =>{
     .catch(console.log)
 
   //Check if user refreshed Page
-  setTimeout(`reloadCheck();`,1500);
+  setTimeout(`reloadCheck();`,1700);
   init();
 
   //Add Home information
