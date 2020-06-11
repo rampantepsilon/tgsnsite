@@ -135,6 +135,9 @@
          //console.log(title);
          $("#videos").html(title + '/2');
          var progBar = ((title / 2)*100);
+         if (progBar >= 100){
+           progBar = 100;
+         }
          //console.log(progBar);
          $("#videos").css("width", progBar + "%");
        })

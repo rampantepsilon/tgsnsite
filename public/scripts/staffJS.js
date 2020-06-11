@@ -34,6 +34,9 @@ function api(){
           const data = doc.data();
           avgFollows = parseFloat(data.avgViewers);
           var progBar = ((avgFollows / 2)*100);
+          if (progBar >= 100){
+            progBar = 100;
+          }
           document.getElementById('followers').innerHTML = `<div><u>Average Viewer Goal</u>
             <div class="w3-light-grey w3-round-xlarge">
               <div class="w3-container w3-blue w3-round-xlarge" style="width:` + progBar + `%" id="videos">` + avgFollows + `/2</div>
