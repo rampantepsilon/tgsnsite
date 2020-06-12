@@ -551,6 +551,21 @@ function showBotDash(){
   })
 }
 
+function loadTwitch(){
+  var playerHeight = window.innerHeight-260;
+  var playerWidth = window.innerWidth-50;
+
+  new Twitch.Embed('twitch-embed', {
+    width: playerWidth,
+    height: playerHeight,
+    channel: 'thegamingsaloonnetwork',
+    theme: 'dark',
+    parent: ['tgsnetwork.org','localhost']
+  })
+
+  document.getElementsByTagName("iframe")[0].setAttribute('id','player');
+}
+
 function showTwitch(){
 
   //Determine what to show
@@ -558,16 +573,25 @@ function showTwitch(){
   var uid = sessionStorage.getItem('user');
 
   sessionStorage.setItem('page','twitch');
+  /*document.getElementById('staffBody').innerHTML = [`<table width='100%'>
+    <tr>
+      <td style='text-align:center;'>
+        <iframe src='https://player.twitch.tv/?thegamingsaloonnetwork&parent=tgsnetwork.org&parent=localhost&autoplay=true' id='twitchPlayer' frameborder='0' scrolling='no' allowfullscreen='true'></iframe>
+      </td>
+      <td>
+        <iframe scrolling="no" frameborder="0" src="https://www.twitch.tv/popout/thegamingsaloonnetwork/chat?parent=tgsnetwork.org&parent=localhost" id='twitchChat'></iframe>
+      </td>
+    </tr>
+  </table>`];*/
   document.getElementById('staffBody').innerHTML = [`<table width='100%'>
     <tr>
       <td style='text-align:center;'>
-        <iframe src='https://player.twitch.tv/?allowfullscreen&playsinline&player=twitch_everywhere&targetOrigin=https%3A%2F%2Fembed.twitch.tv&channel=thegamingsaloonnetwork&origin=https%3A%2F%2Fembed.twitch.tv' id='twitchPlayer' frameborder='0' scrolling='no' allow='autoplay; fullscreen' allowfullscreen></iframe>
-      </td>
-      <td>
-        <iframe scrolling="no" frameborder="0" src="https://go.twitch.tv/embed/thegamingsaloonnetwork/chat?darkpopout=true&amp;te-theme=dark&amp;origin=https%3A%2F%2Fembed.twitch.tv" id='twitchChat'></iframe>
+        <div id='twitch-embed'></div>
       </td>
     </tr>
   </table>`];
+
+  loadTwitch();
 
   if (tgsnCoordinators.includes(uEmail) && tgsnCoordUID.includes(uid)){
     document.getElementById('staffBody').innerHTML += [`<table width='100%'>
@@ -589,13 +613,6 @@ function showTwitch(){
       </tr>
     </table>`];
   }
-
-  var playerHeight = window.innerHeight-260;
-  var playerWidth = window.innerWidth-450;
-  $('#twitchPlayer').css('width', playerWidth +'px');
-  $('#twitchPlayer').css('height', playerHeight +'px');
-  $('#twitchChat').css('width', 400+'px');
-  $('#twitchChat').css('height', playerHeight+'px');
 }
 
 function showStats(){
@@ -1372,11 +1389,10 @@ function resizePlayer(){
 
   if (pageCheck == 'twitch'){
     var playerHeight = window.innerHeight-230;
-    var playerWidth = window.innerWidth-450;
-    $('#twitchPlayer').css('width', playerWidth +'px');
-    $('#twitchPlayer').css('height', playerHeight +'px');
-    $('#twitchChat').css('width', 400+'px');
-    $('#twitchChat').css('height', playerHeight+'px');
+    var playerWidth = window.innerWidth-50;
+
+    document.getElementById('player').setAttribute('width', playerWidth);
+    document.getElementById('player').setAttribute('height', playerHeight);
   }
 }
 
