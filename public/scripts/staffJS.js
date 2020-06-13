@@ -58,7 +58,7 @@ function api(){
 /* ----- BODY SCRIPTING ----- */
 //Notices
 const notice1 = `<p>Welcome to The Gaming Saloon Network Staff HQ!<br />This location will hold important information regarding TGSN Staff</p><p><font color='red'>Please Note: All Staff must log into this page at least once and use the Request Page to request permissions.</font></p>`;
-const notice2 = `<p><font color='red'>IMPORTANT STAFF TOOL RELOCATION</font><br>The Twitch Dashboard and TGSNBot Dashboard links can now be found on the Twitch Stream page when logged in. If you are experiencing problems please reach out to RampantEpsilon on Discord.</p>`;
+const notice2 = `<p>TheVoicelessSaloon is looking for people interested in helping. This can be providing gameplay, streaming content, or even help coordinating better methods of sharing runs. If you are interested, please reach out to RampantEpsilon#7868 on Discord.</p>`;
 const notice3 = [`<p>Want to provide feedback for the Staff HQ page?<br>Use the form <a href='https://forms.gle/PescTWy6oEDd6e6R7' target='_blank'>HERE</a>`];
 
 //Bottom Links
@@ -1288,7 +1288,7 @@ function showTVSVids(){
       </tr>
       <tr>
         <td>
-          <iframe id='tvsPlaylist' src="https://www.youtube.com/embed/videoseries?list=PLPs7OF2cnAct9JUghBoKdw30LhzMRbvCw" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+          <iframe id='tvsPlaylist' src="https://www.youtube.com/embed/videoseries?list=PLOMNn1DOI7zeP2oJcQgMxVQ1tUm06_Xsg" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
         </td>
       </tr>
     </table>`]
