@@ -32,17 +32,17 @@ function api(){
       if (sessionStorage.getItem('page') == 'home'){
         tgsnStats.get().then(function(doc) {
           const data = doc.data();
-          avgFollows = parseFloat(data.avgViewers);
-          var progBar = ((avgFollows / 2)*100);
+          avgFollows = parseFloat(data.goalAvgView);
+          var progBar = ((avgFollows / 3)*100);
           if (progBar >= 100){
             progBar = 100;
           }
-          document.getElementById('followers').innerHTML = `<div><u>Average Viewer Goal</u>
+          document.getElementById('followers').innerHTML = `<div><u>Road To Affiliate</u>
             <div class="w3-light-grey w3-round-xlarge">
-              <div class="w3-container w3-blue w3-round-xlarge" style="width:` + progBar + `%" id="videos">` + avgFollows + `/2</div>
+              <div class="w3-container w3-blue w3-round-xlarge" style="width:` + progBar + `%" id="videos">` + avgFollows + `/3</div>
             </div>
-          <br/>Rampant Plays Halo Master Chief Collection
-          <br/>Peace Plays Ratchet & Clank
+          <br/>Rampant Randomizer Showcase
+          <br/>Peace Plays FF 15
           <br/>Latest Follower: ` + latestFollower + `</div>`;
         })
       }
@@ -205,6 +205,7 @@ function loadStats(){
     document.querySelector('#utw').innerHTML = data.uniqViewers;
     document.querySelector('#ntw').innerHTML = data.newFollow;
     document.querySelector('#ftw').innerHTML = data.totalFollow;
+    document.querySelector('#gav').innerHTML = data.goalAvgView;
     statChange();
   })
 }
@@ -649,6 +650,7 @@ function showStats(){
                   Unique Viewers&nbsp;&nbsp;&nbsp;</br>
                   New Followers&nbsp;&nbsp;&nbsp;</br>
                   Total Followers&nbsp;&nbsp;&nbsp;</br>
+                  Goal Avg. Viewers&nbsp;&nbsp;&nbsp;</br>
                 </td>
                 <td align='center' valign='top' style='border-right: 1px solid black;' width='130px'>
                   <u>Week to Date</u>
@@ -659,6 +661,7 @@ function showStats(){
                   <div id='utw'></div>
                   <div id='ntw'></div>
                   <div id='ftw'></div>
+                  <div id='gav'></div>
                 </td>
                 <td align='center' valign='top' style='border-right: 1px solid black;' width='130px'>
                   <u>Last Week</u>
@@ -669,6 +672,7 @@ function showStats(){
                   <div id='ulw'></div>
                   <div id='nlw'></div>
                   <div id='flw'></div>
+                  <div>---</div>
                 </td>
                 <td align='center' valign='top' style='border-right: 1px solid black;' width='130px'>
                   <u>Change</u>
@@ -679,6 +683,7 @@ function showStats(){
                   <div id='uchange'></div>
                   <div id='nchange'></div>
                   <div id='fchange'></div>
+                  <div>---</div>
                 </td>
                 <td align='center' valign='top' width='130px' style='border-right: 1px solid black;'>
                   <u>Goal</u><br>
@@ -688,7 +693,8 @@ function showStats(){
                   5<br>
                   5<br>
                   0<br>
-                  200
+                  205<br>
+                  3
                 </td>
                 <td align='right' valign='top' rowspan="8" id='loggedIn' style='border-right: 1px solid black;' width='225px'>
                   <u>Update W2D</u><br>
@@ -699,6 +705,7 @@ function showStats(){
                   Unique Viewers: <input id='uniqueutw' size='1'><br>
                   New Followers: <input id='newFollowsutw' size='1'><br>
                   Total Followers: <input id='followsutw' size='1'><br>
+                  Goal Avg. Viewers: <input id='goalAvgView' size='1'></br>
                   <button onclick='updateTWValues()'>Update W2D Values</button>
                 </td>
                 <td align='center' valign='top' rowspan="8" id='updateLW' width='175px'>
@@ -742,6 +749,7 @@ function showStats(){
                   Unique Viewers&nbsp;&nbsp;&nbsp;</br>
                   New Followers&nbsp;&nbsp;&nbsp;</br>
                   Total Followers&nbsp;&nbsp;&nbsp;</br>
+                  Goal Avg. Viewers&nbsp;&nbsp;&nbsp;</br>
                 </td>
                 <td align='center' valign='top' style='border-right: 1px solid black;' width='130px'>
                   <u>Week to Date</u>
@@ -752,6 +760,7 @@ function showStats(){
                   <div id='utw'></div>
                   <div id='ntw'></div>
                   <div id='ftw'></div>
+                  <div id='gav'></div>
                 </td>
                 <td align='center' valign='top' style='border-right: 1px solid black;' width='130px'>
                   <u>Last Week</u>
@@ -762,6 +771,7 @@ function showStats(){
                   <div id='ulw'></div>
                   <div id='nlw'></div>
                   <div id='flw'></div>
+                  <div>---</div>
                 </td>
                 <td align='center' valign='top' style='border-right: 1px solid black;' width='130px'>
                   <u>Change</u>
@@ -772,6 +782,7 @@ function showStats(){
                   <div id='uchange'></div>
                   <div id='nchange'></div>
                   <div id='fchange'></div>
+                  <div>---</div>
                 </td>
                 <td align='center' valign='top' width='130px' style='border-right: 1px solid black;'>
                   <u>Goal</u><br>
@@ -781,7 +792,8 @@ function showStats(){
                   5<br>
                   5<br>
                   0<br>
-                  200
+                  205<br>
+                  3
                 </td>
               </tr>
             </table>
@@ -859,6 +871,11 @@ function showStats(){
     $("#followsulw").keyup(function(event) {
       if (event.keyCode === 13){
         updateLWValues();
+      }
+    });
+    $("#goalAvgView").keyup(function(event) {
+      if (event.keyCode === 13){
+        updateTWValues();
       }
     });
 

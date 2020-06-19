@@ -114,11 +114,11 @@
      function goals(){
        if (loop == 0){
          loop = 1;
-         $("#goals").html("Rampant Plays Halo Master Chief Collection (All Games)");
+         $("#goals").html("Rampant Randomizer Showcase");
        }
        else if (loop == 1){
          loop = 0;
-         $("#goals").html("Peace Plays Ratchet & Clank Trilogy");
+         $("#goals").html("Peace Plays FF 15");
        }
        else {
          loop = 0;
@@ -131,10 +131,10 @@
 
        tgsnStats.get().then(function(doc) {
          const data = doc.data();
-         title = parseFloat(data.avgViewers);
+         title = parseFloat(data.goalAvgView);
          //console.log(title);
-         $("#videos").html(title + '/2');
-         var progBar = ((title / 2)*100);
+         $("#videos").html(title + '/3');
+         var progBar = ((title / 3)*100);
          if (progBar >= 100){
            progBar = 100;
          }
@@ -148,8 +148,8 @@
 <body onload='init()'>
   <table width="800px" align="center">
     <tr>
-      <td align='left' width="125px">Average Viewer Goal:</td>
-      <td align='center' id='goals' width='450px'>Rampant Plays Halo Master Chief Collection (All Games)s</td>
+      <td align='left' width="125px">Road To Affiliate:</td>
+      <td align='center' id='goals' width='450px'>Rampant Randomizer Showcase</td>
     </tr>
     <tr>
       <td colspan='2'>

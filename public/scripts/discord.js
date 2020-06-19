@@ -10,7 +10,7 @@ function init(){
 
 function api(){
   //console.log("Begin Script");
-  var token = "";
+  var token = "MzgwNTM3MzkzNjMzMDM0MjUx.XoqMaw.zTPJNSi0YKv69_3zR4UA2VWOmFs";
   $.ajax({
     datatype: 'json',
     url: 'https://discordapp.com/api/channels/487679359566741504/messages',

@@ -273,6 +273,7 @@ function updateTWValues(){
   var lwUnique = "";
   var lwNewFollows = "";
   var lwFollows = "";
+  var goalAvgView = ""
 
   if (document.getElementById('lengthutw').value != ""){
     lwLength = document.getElementById('lengthutw').value;
@@ -301,6 +302,10 @@ function updateTWValues(){
   if (document.getElementById('followsutw').value != ""){
     lwFollows = document.getElementById('followsutw').value;
     tgsnLWStats.update ({ totalFollow: lwFollows});
+  }
+  if (document.getElementById('goalAvgView').value != ""){
+    goalAvgView = document.getElementById('goalAvgView').value;
+    tgsnLWStats.update ({ goalAvgView: goalAvgView });
   }
 }
 
