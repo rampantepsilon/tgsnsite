@@ -1119,7 +1119,7 @@ function showSchedule(){
                   <button onclick='updateSchedule()' id='ud8Schedule'>Update Schedule</button>
               </tr>
             </table>
-            <div align='center'><span style='color:red;'>NOTE:</span> If a field is left blank all information for that slot will be removed!</div>
+            <div align='center'><span style='color:red;'>NOTE:</span> If a field is left blank all information for that slot will be removed!<br>When editing, if you want to remove all entries, leave all fields blank and set the day and show.</div>
           </td>
         </tr>
       </table>`];
