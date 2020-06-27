@@ -361,103 +361,63 @@ function prefixChange(){
 
 function updateSchedule(){
   const db = firebase.firestore();
-  const tgsnSchedule = db.collection('schedule').doc('tgsn');
+  const tgsnSchedule = db.collection('schedule').doc('new');
 
-  var day = "";
+  var day = document.getElementById('day').value;
   var time = document.getElementById('sTime').value;
   var preShow = document.getElementById('pShow').value;
-  var show = document.getElementById('showGame').value;
-  var wo = document.getElementById('weekOfEdit').value;
+  var show = document.getElementById('show').value;
+  var game = document.getElementById('game').value;
+  var wosm = document.getElementById('wosm').value;
+  var wosd = document.getElementById('wosd').value;
+  var woem = document.getElementById('woem').value;
+  var woed = document.getElementById('woed').value;
+  var post = [];
 
-  if (wo != ''){
-    tgsnSchedule.update({wo: wo});
+  if (wosm != '' && wosd != '' && woem != '' && woed != ''){
+    tgsnSchedule.update({week: {[0]: wosm,[1]: wosd,[2]: woem,[3]: woed}});
   }
 
-  var dayRadio = document.getElementsByName('day');
-  for (i = 0; i < dayRadio.length; i++){
-    if (dayRadio[i].checked){
-      day = dayRadio[i].value;
-    }
+  if (time != ''){
+    post[0] = time;
   }
-
-  if (day != ""){
-    if (day == 'monday'){
-      if (time != ""){
-        tgsnSchedule.update ({ mTime: time});
-      }
-      if (preShow != ''){
-        tgsnSchedule.update ({ mPS: preShow});
-      }
-      if (show != ''){
-        tgsnSchedule.update ({ mS: show});
-      }
-    }
-    if (day == 'tuesday'){
-      if (time != ""){
-        tgsnSchedule.update ({ tuTime: time});
-      }
-      if (preShow != ''){
-        tgsnSchedule.update ({ tuPS: preShow});
-      }
-      if (show != ''){
-        tgsnSchedule.update ({ tuS: show});
-      }
-    }
-    if (day == 'wednesday'){
-      if (time != ""){
-        tgsnSchedule.update ({ wTime: time});
-      }
-      if (preShow != ''){
-        tgsnSchedule.update ({ wPS: preShow});
-      }
-      if (show != ''){
-        tgsnSchedule.update ({ wS: show});
-      }
-    }
-    if (day == 'thursday'){
-      if (time != ""){
-        tgsnSchedule.update ({ thTime: time});
-      }
-      if (preShow != ''){
-        tgsnSchedule.update ({ thPS: preShow});
-      }
-      if (show != ''){
-        tgsnSchedule.update ({ thS: show});
-      }
-    }
-    if (day == 'friday'){
-      if (time != ""){
-        tgsnSchedule.update ({ fTime: time});
-      }
-      if (preShow != ''){
-        tgsnSchedule.update ({ fPS: preShow});
-      }
-      if (show != ''){
-        tgsnSchedule.update ({ fS: show});
-      }
-    }
-    if (day == 'saturday'){
-      if (time != ""){
-        tgsnSchedule.update ({ saTime: time});
-      }
-      if (preShow != ''){
-        tgsnSchedule.update ({ saPS: preShow});
-      }
-      if (show != ''){
-        tgsnSchedule.update ({ saS: show});
-      }
-    }
-    if (day == 'sunday'){
-      if (time != ""){
-        tgsnSchedule.update ({ suTime: time});
-      }
-      if (preShow != ''){
-        tgsnSchedule.update ({ suPS: preShow});
-      }
-      if (show != ''){
-        tgsnSchedule.update ({ suS: show});
-      }
-    }
+  if (time == ''){
+    post[0] = 'N/A';
+  }
+  if (preShow != ''){
+    post[1] = preShow
+  }
+  if (preShow == ''){
+    post[1] = '&nbsp;';
+  }
+  post[2] = show;
+  if (game != ''){
+    post[3] = game;
+  }
+  if (game == ''){
+    post[3] = 'N/A';
+  }
+  //Post to Database
+  if (day == 'Monday'){
+    tgsnSchedule.update({monday: {[0]: post[0], [1]: post[1], [2]: post[2], [3]: post[3]}});
+  }
+  if (day == 'Tuesday'){
+    tgsnSchedule.update({tuesday: {[0]: post[0], [1]: post[1], [2]: post[2], [3]: post[3]}});
+  }
+  if (day == 'Wednesday'){
+    tgsnSchedule.update({wednesday: {[0]: post[0], [1]: post[1], [2]: post[2], [3]: post[3]}});
+  }
+  if (day == 'Thursday'){
+    tgsnSchedule.update({thursday: {[0]: post[0], [1]: post[1], [2]: post[2], [3]: post[3]}});
+  }
+  if (day == 'Friday'){
+    tgsnSchedule.update({friday: {[0]: post[0], [1]: post[1], [2]: post[2], [3]: post[3]}});
+  }
+  if (day == 'Saturday'){
+    tgsnSchedule.update({saturday: {[0]: post[0], [1]: post[1], [2]: post[2], [3]: post[3]}});
+  }
+  if (day == 'Sunday'){
+    tgsnSchedule.update({sunday: {[0]: post[0], [1]: post[1], [2]: post[2], [3]: post[3]}});
   }
 }
 

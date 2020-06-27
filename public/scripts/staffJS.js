@@ -215,40 +215,146 @@ function loadSchedule(){
   //Initialize Values
   const app = firebase.app();
   const db = firebase.firestore();
-  const schedule = db.collection('schedule').doc('tgsn');
+  const schedule = db.collection('schedule').doc('new');
 
-  //Get Current schedule
+  //Get Schedule & Dates
+
   schedule.onSnapshot(doc => {
-    const field = doc.data();
+    const day = doc.data();
 
-    document.querySelector('#weekOf').innerHTML = 'Week Of ' + field.wo;
+    //Fill dates
+    var startMonth = day.week[0];
+    var startDay = day.week[1];
+    var endMonth = day.week[2];
+    var endDay = day.week[3];
+    var weekDays = [];
+    var dayCalc;
+    var newMonthCounter = 0;
 
-    //Set Start Times
-    document.querySelector('#mTime').innerHTML = field.mTime;
-    document.querySelector('#tuTime').innerHTML = field.tuTime;
-    document.querySelector('#wTime').innerHTML = field.wTime;
-    document.querySelector('#thTime').innerHTML = field.thTime;
-    document.querySelector('#fTime').innerHTML = field.fTime;
-    document.querySelector('#saTime').innerHTML = field.saTime;
-    document.querySelector('#suTime').innerHTML = field.suTime;
+    if (startMonth == endMonth){
+      for (i=0; i < 7; i++){
+        weekDays[i] = (parseInt(startDay)+parseInt(i));
+      }
+      //Add Dates to schedule
+      $('#mDate').html(startMonth + '/' + weekDays[0]);
+      $('#tuDate').html(startMonth + '/' + weekDays[1]);
+      $('#wDate').html(startMonth + '/' + weekDays[2]);
+      $('#thDate').html(startMonth + '/' + weekDays[3]);
+      $('#fDate').html(startMonth + '/' + weekDays[4]);
+      $('#saDate').html(startMonth + '/' + weekDays[5]);
+      $('#suDate').html(startMonth + '/' + weekDays[6]);
+    }
+    if (startMonth != endMonth){
+      if (parseInt(startMonth) == 4 || parseInt(startMonth) == 6 || parseInt(startMonth) == 9 || parseInt(startMonth) == 11){
+        //Get Amount of Days before month change
+        dayCalc = 31 - parseInt(startDay);
 
-    //Set Pre-Show
-    document.querySelector('#mPre').innerHTML = field.mPS;
-    document.querySelector('#tuPre').innerHTML = field.tuPS;
-    document.querySelector('#wPre').innerHTML = field.wPS;
-    document.querySelector('#thPre').innerHTML = field.thPS;
-    document.querySelector('#fPre').innerHTML = field.fPS;
-    document.querySelector('#saPre').innerHTML = field.saPS;
-    document.querySelector('#suPre').innerHTML = field.suPS;
+        //Add Current Month
+        for (i = 0; i < dayCalc; i++){
+          weekDays[i] = startMonth + '/' + (parseInt(startDay)+parseInt(i));
+        }
 
-    //Set Stream
-    document.querySelector('#mShow').innerHTML = field.mS;
-    document.querySelector('#tuShow').innerHTML = field.tuS;
-    document.querySelector('#wShow').innerHTML = field.wS;
-    document.querySelector('#thShow').innerHTML = field.thS;
-    document.querySelector('#fShow').innerHTML = field.fS;
-    document.querySelector('#saShow').innerHTML = field.saS;
-    document.querySelector('#suShow').innerHTML = field.suS;
+        //Add New Month
+        for (j = weekDays.length; j < 7; j++){
+          weekDays[j] = endMonth + '/' + (1 + parseInt(newMonthCounter));
+          newMonthCounter++;
+        }
+
+        //Add Dates to schedule
+        $('#mDate').html(weekDays[0]);
+        $('#tuDate').html(weekDays[1]);
+        $('#wDate').html(weekDays[2]);
+        $('#thDate').html(weekDays[3]);
+        $('#fDate').html(weekDays[4]);
+        $('#saDate').html(weekDays[5]);
+        $('#suDate').html(weekDays[6]);
+      }
+
+      if (parseInt(startMonth) == 1 || parseInt(startMonth) == 3 || parseInt(startMonth) == 5 || parseInt(startMonth) == 7 || parseInt(startMonth) == 8 || parseInt(startMonth) == 10 || parseInt(startMonth) == 12){
+        //Get Amount of Days before month change
+        dayCalc = 32 - parseInt(startDay);
+
+        //Add Current Month
+        for (i = 0; i < dayCalc; i++){
+          weekDays[i] = startMonth + '/' + (parseInt(startDay)+parseInt(i));
+        }
+
+        //Add New Month
+        for (j = weekDays.length; j < 7; j++){
+          weekDays[j] = endMonth + '/' + (1 + parseInt(newMonthCounter));
+          newMonthCounter++;
+        }
+
+        //Add Dates to schedule
+        $('#mDate').html(weekDays[0]);
+        $('#tuDate').html(weekDays[1]);
+        $('#wDate').html(weekDays[2]);
+        $('#thDate').html(weekDays[3]);
+        $('#fDate').html(weekDays[4]);
+        $('#saDate').html(weekDays[5]);
+        $('#suDate').html(weekDays[6]);
+      }
+
+      if (parseInt(startMonth) == 2){
+        //Get Amount of Days before month change
+        dayCalc = 29 - parseInt(startDay);
+
+        //Add Current Month
+        for (i = 0; i < dayCalc; i++){
+          weekDays[i] = startMonth + '/' + (parseInt(startDay)+parseInt(i));
+        }
+
+        //Add New Month
+        for (j = weekDays.length; j < 7; j++){
+          weekDays[j] = endMonth + '/' + (1 + parseInt(newMonthCounter));
+          newMonthCounter++;
+        }
+
+        //Add Dates to schedule
+        $('#mDate').html(weekDays[0]);
+        $('#tuDate').html(weekDays[1]);
+        $('#wDate').html(weekDays[2]);
+        $('#thDate').html(weekDays[3]);
+        $('#fDate').html(weekDays[4]);
+        $('#saDate').html(weekDays[5]);
+        $('#suDate').html(weekDays[6]);
+      }
+    }
+
+    //Fill Monday Fields
+    $('#mTime').html(day.monday[0]);
+    $('#mPShow').html(day.monday[1]);
+    $('#mShow').html(day.monday[2] + "<br>(" + day.monday[3] + ")");
+
+    //Fill Tuesday Fields
+    $('#tuTime').html(day.tuesday[0]);
+    $('#tuPShow').html(day.tuesday[1]);
+    $('#tuShow').html(day.tuesday[2] + "<br>(" + day.tuesday[3] + ")");
+
+    //Fill Wednesday Fields
+    $('#wTime').html(day.wednesday[0]);
+    $('#wPShow').html(day.wednesday[1]);
+    $('#wShow').html(day.wednesday[2] + "<br>(" + day.wednesday[3] + ")");
+
+    //Fill Thursday Fields
+    $('#thTime').html(day.thursday[0]);
+    $('#thPShow').html(day.thursday[1]);
+    $('#thShow').html(day.thursday[2] + "<br>(" + day.thursday[3] + ")");
+
+    //Fill Friday Fields
+    $('#fTime').html(day.friday[0]);
+    $('#fPShow').html(day.friday[1]);
+    $('#fShow').html(day.friday[2] + "<br>(" + day.friday[3] + ")");
+
+    //Fill Saturday Fields
+    $('#saTime').html(day.saturday[0]);
+    $('#saPShow').html(day.saturday[1]);
+    $('#saShow').html(day.saturday[2] + "<br>(" + day.saturday[3] + ")");
+
+    //Fill Sunday Fields
+    $('#suTime').html(day.sunday[0]);
+    $('#suPShow').html(day.sunday[1]);
+    $('#suShow').html(day.sunday[2] + "<br>(" + day.sunday[3] + ")");
   })
 }
 
@@ -905,226 +1011,119 @@ function showSchedule(){
     position = 'Staff';
   }
 
-  //Review Staff/No Perm (Possible combine?)
+  document.getElementById('staffBody').innerHTML = [`
+    <div align='center'>Stream Schedule</div>
+    <table width='85%' align='center' border='1px'>
+      <tr>
+        <td width='25%' align='center'>
+          <b><u>Date</u></b>
+          <div>Start Time</div>
+          <div>Pre-Show</div>
+          <div>Show</div>
+          <div>Game (If Applicable)</div>
+        </td>
+        <td width='25%' id='monday' align='center'>
+          <b><u>Monday <span id='mDate'></span></u></b>
+          <div id='mTime'>&nbsp;</div>
+          <div id='mPShow'>&nbsp;<br>&nbsp;</div>
+          <div id='mShow'>&nbsp;<br>&nbsp;</div>
+        </td>
+        <td width='25%' id='tuesday' align='center'>
+          <b><u>Tuesday <span id='tuDate'></span></u></b>
+          <div id='tuTime'>&nbsp;</div>
+          <div id='tuPShow'>&nbsp;<br>&nbsp;</div>
+          <div id='tuShow'>&nbsp;<br>&nbsp;</div>
+        </td>
+        <td width='25%' id='wednesday' align='center'>
+          <b><u>Wednesday <span id='wDate'></span></u></b>
+          <div id='wTime'>&nbsp;</div>
+          <div id='wPShow'>&nbsp<br>&nbsp;;</div>
+          <div id='wShow'>&nbsp;<br>&nbsp;</div>
+        </td>
+      </tr>
+    </table>
+    <table width='85%' align='center' border='1px'>
+      <tr>
+        <td width='25%' id='thursday' align='center'>
+          <b><u>Thursday <span id='thDate'></span></u></b>
+          <div id='thTime'>&nbsp;</div>
+          <div id='thPShow'>&nbsp;<br>&nbsp;</div>
+          <div id='thShow'>&nbsp;<br>&nbsp;</div>
+        </td>
+        <td width='25%' id='friday' align='center'>
+          <b><u>Friday <span id='fDate'></span></u></b>
+          <div id='fTime'>&nbsp;</div>
+          <div id='fPShow'>&nbsp;<br>&nbsp;</div>
+          <div id='fShow'>&nbsp;<br>&nbsp;</div>
+        </td>
+        <td width='25%' id='saturday' align='center'>
+          <b><u>Saturday <span id='saDate'></span></u></b>
+          <div id='saTime'>&nbsp;</div>
+          <div id='saPShow'>&nbsp;<br>&nbsp;</div>
+          <div id='saShow'>&nbsp;<br>&nbsp;</div>
+        </td>
+        <td width='25%' id='sunday' align='center'>
+          <b><u>Sunday <span id='suDate'></span></u></b>
+          <div id='suTime'>&nbsp;</div>
+          <div id='suPShow'>&nbsp;<br>&nbsp;</div>
+          <div id='suShow'>&nbsp;<br>&nbsp;</div>
+        </td>
+      </tr>
+    </table>`];
+
+  //Schedule Edit Commands
   if (position == 'TGSN Coordinator' && tgsnCoordUID.includes(uid)){
-    document.getElementById('staffBody').innerHTML = [`
-      <!--Start Schedule-->
-      <table width='100%'>
-        <tr>
-          <td align='center' colspan='3'>
-            <h3><u>Current Week's Schedule</u></h3>
-            <div id='weekOf'>Week Of </div>
-            <table width='85%' align='center'>
+    document.getElementById('staffBody').innerHTML += [`
+      <table width='85%' align='center'>
+        <tr id='scheduleEdit'>
+          <td colspan='4' align='center'><u>Update Schedule</u>
+            <table>
               <tr>
-                <td width='20%' align='center'><u>Day</u></td>
-                <td width='20%' align='center'><u>Start Time <font color='red'>*</font></u></td>
-                <td width='20%' align='center'><u>Pre-Show Game/Stream</u></td>
-                <td width='20%' align='center'><u>Game/Stream</u></td>
-              </tr>
-              <tr>
-                <td width='20%' align='center'>Monday</td>
-                <td width='20%' align='center' id='mTime'></td>
-                <td width='20%' align='center' id='mPre'></td>
-                <td width='20%' align='center' id='mShow'></td>
-              </tr>
-              <tr>
-                <td width='20%' align='center'>Tuesday</td>
-                <td width='20%' align='center' id='tuTime'></td>
-                <td width='20%' align='center' id='tuPre'></td>
-                <td width='20%' align='center' id='tuShow'></td>
-              </tr>
-              <tr>
-                <td width='20%' align='center'>Wednesday</td>
-                <td width='20%' align='center' id='wTime'></td>
-                <td width='20%' align='center' id='wPre'></td>
-                <td width='20%' align='center' id='wShow'></td>
-              </tr>
-              <tr>
-                <td width='20%' align='center'>Thursday</td>
-                <td width='20%' align='center' id='thTime'></td>
-                <td width='20%' align='center' id='thPre'></td>
-                <td width='20%' align='center' id='thShow'></td>
-              </tr>
-              <tr>
-                <td width='20%' align='center'>Friday</td>
-                <td width='20%' align='center' id='fTime'></td>
-                <td width='20%' align='center' id='fPre'></td>
-                <td width='20%' align='center' id='fShow'></td>
-              </tr>
-              <tr>
-                <td width='20%' align='center'>Saturday</td>
-                <td width='20%' align='center' id='saTime'></td>
-                <td width='20%' align='center' id='saPre'></td>
-                <td width='20%' align='center' id='saShow'></td>
-              </tr>
-              <tr>
-                <td width='20%' align='center'>Sunday</td>
-                <td width='20%' align='center' id='suTime'></td>
-                <td width='20%' align='center' id='suPre'></td>
-                <td width='20%' align='center' id='suShow'></td>
-              </tr>
-              <tr id='scheduleEdit'>
-                <td colspan='4' align='center'><u>Update Schedule</u>
-                  <table>
-                    <tr>
-                      <td>
-                        <input type='radio' name='day' value='monday'> Monday<br>
-                        <input type='radio' name='day' value='tuesday'> Tuesday<br>
-                        <input type='radio' name='day' value='wednesday'> Wednesday<br>
-                        <input type='radio' name='day' value='thursday'> Thursday<br>
-                        <input type='radio' name='day' value='friday'> Friday<br>
-                        <input type='radio' name='day' value='saturday'> Saturday<br>
-                        <input type='radio' name='day' value='sunday'> Sunday<br>
-                      </td>
-                      <td>
-                        &nbsp;
-                      </td>
-                      <td valign='top' align='right'>
-                        Start Time (Pre-Show Start If Applicable): <input type="text" id='sTime'><br>
-                        Pre-Show Game/Stream: <input type="text" id='pShow'><br>
-                        Game/Stream: <input type='text' id='showGame'><br>
-                        Week Of: <input type='text' id='weekOfEdit'><br>
-                        <button onclick='updateSchedule()' id='ud8Schedule'>Update Schedule</button>
-                    </tr>
-                  </table>
+                <td align='right' valign='top' style='font-size:18px'>
+                  Day:<br>
+                  Start Time:<br>
+                  Pre-Show Game:<br>
+                  Show:<br>
+                  Game:<br>
+                  Week Of:
                 </td>
-              </tr>
-              <tr>
-                <td align='center' colspan='4'><font color='red'>* = Start Time will be for Pre-Show if Applicable</font></td>
+                <td valign='top' align='left'>
+                  <form>
+                    <select id='day' size='1'>
+                      <option>Monday</option>
+                      <option>Tuesday</option>
+                      <option>Wednesday</option>
+                      <option>Thursday</option>
+                      <option>Friday</option>
+                      <option>Saturday</option>
+                      <option>Sunday</option>
+                    </select>
+                  </form>
+                  <input type="text" id='sTime'><br>
+                  <input type="text" id='pShow'><br>
+                  <form>
+                    <select id='show' size='1'>
+                      <option>No Stream</option>
+                      <option>The Gaming Saloon</option>
+                      <option>Rampant Gaming</option>
+                      <option>Weekly Co-Op</option>
+                      <option>The Gaming Saloon Reviews</option>
+                      <option>Peace Plays</option>
+                      <option>Rampant Plays</option>
+                      <option>Rampant Runs</option>
+                      <option>Glock Plays</option>
+                    </select>
+                  </form>
+                  <input type='text' id='game'><br>
+                  <input type='text' id='wosm' maxlength='2' size='2'>/<input type='text' id='wosd' maxlength='2' size='2'> - <input type='text' id='woem' maxlength='2' size='2'>/<input type='text' id='woed' maxlength='2' size='2'><br>
+                  <button onclick='updateSchedule()' id='ud8Schedule'>Update Schedule</button>
               </tr>
             </table>
+            <div align='center'><span style='color:red;'>NOTE:</span> If a field is left blank all information for that slot will be removed!</div>
           </td>
         </tr>
       </table>`];
-  } else if (position == 'TGSN Staff' && tgsnStaffUID.includes(uid)){
-    document.getElementById('staffBody').innerHTML = [`
-      <!--Start Schedule-->
-      <table width='100%'>
-        <tr>
-          <td align='center' colspan='3'>
-            <h3><u>Current Week's Schedule</u></h3>
-            <div id='weekOf'>Week Of </div>
-            <table width='85%' align='center'>
-              <tr>
-                <td width='20%' align='center'><u>Day</u></td>
-                <td width='20%' align='center'><u>Start Time <font color='red'>*</font></u></td>
-                <td width='20%' align='center'><u>Pre-Show Game/Stream</u></td>
-                <td width='20%' align='center'><u>Game/Stream</u></td>
-              </tr>
-              <tr>
-                <td width='20%' align='center'>Monday</td>
-                <td width='20%' align='center' id='mTime'></td>
-                <td width='20%' align='center' id='mPre'></td>
-                <td width='20%' align='center' id='mShow'></td>
-              </tr>
-              <tr>
-                <td width='20%' align='center'>Tuesday</td>
-                <td width='20%' align='center' id='tuTime'></td>
-                <td width='20%' align='center' id='tuPre'></td>
-                <td width='20%' align='center' id='tuShow'></td>
-              </tr>
-              <tr>
-                <td width='20%' align='center'>Wednesday</td>
-                <td width='20%' align='center' id='wTime'></td>
-                <td width='20%' align='center' id='wPre'></td>
-                <td width='20%' align='center' id='wShow'></td>
-              </tr>
-              <tr>
-                <td width='20%' align='center'>Thursday</td>
-                <td width='20%' align='center' id='thTime'></td>
-                <td width='20%' align='center' id='thPre'></td>
-                <td width='20%' align='center' id='thShow'></td>
-              </tr>
-              <tr>
-                <td width='20%' align='center'>Friday</td>
-                <td width='20%' align='center' id='fTime'></td>
-                <td width='20%' align='center' id='fPre'></td>
-                <td width='20%' align='center' id='fShow'></td>
-              </tr>
-              <tr>
-                <td width='20%' align='center'>Saturday</td>
-                <td width='20%' align='center' id='saTime'></td>
-                <td width='20%' align='center' id='saPre'></td>
-                <td width='20%' align='center' id='saShow'></td>
-              </tr>
-              <tr>
-                <td width='20%' align='center'>Sunday</td>
-                <td width='20%' align='center' id='suTime'></td>
-                <td width='20%' align='center' id='suPre'></td>
-                <td width='20%' align='center' id='suShow'></td>
-              </tr>
-              <tr>
-                <td align='center' colspan='4'><font color='red'>* = Start Time will be for Pre-Show if Applicable</font></td>
-              </tr>
-            </table>
-          </td>
-        </tr>
-      </table>`];
-  } else {
-    document.getElementById('staffBody').innerHTML = [`
-      <!--Start Schedule-->
-      <table width='100%'>
-        <tr>
-          <td align='center' colspan='3'>
-            <h3><u>Current Week's Schedule</u></h3>
-            <div id='weekOf'>Week Of </div>
-            <table width='85%' align='center'>
-              <tr>
-                <td width='20%' align='center'><u>Day</u></td>
-                <td width='20%' align='center'><u>Start Time <font color='red'>*</font></u></td>
-                <td width='20%' align='center'><u>Pre-Show Game/Stream</u></td>
-                <td width='20%' align='center'><u>Game/Stream</u></td>
-              </tr>
-              <tr>
-                <td width='20%' align='center'>Monday</td>
-                <td width='20%' align='center' id='mTime'></td>
-                <td width='20%' align='center' id='mPre'></td>
-                <td width='20%' align='center' id='mShow'></td>
-              </tr>
-              <tr>
-                <td width='20%' align='center'>Tuesday</td>
-                <td width='20%' align='center' id='tuTime'></td>
-                <td width='20%' align='center' id='tuPre'></td>
-                <td width='20%' align='center' id='tuShow'></td>
-              </tr>
-              <tr>
-                <td width='20%' align='center'>Wednesday</td>
-                <td width='20%' align='center' id='wTime'></td>
-                <td width='20%' align='center' id='wPre'></td>
-                <td width='20%' align='center' id='wShow'></td>
-              </tr>
-              <tr>
-                <td width='20%' align='center'>Thursday</td>
-                <td width='20%' align='center' id='thTime'></td>
-                <td width='20%' align='center' id='thPre'></td>
-                <td width='20%' align='center' id='thShow'></td>
-              </tr>
-              <tr>
-                <td width='20%' align='center'>Friday</td>
-                <td width='20%' align='center' id='fTime'></td>
-                <td width='20%' align='center' id='fPre'></td>
-                <td width='20%' align='center' id='fShow'></td>
-              </tr>
-              <tr>
-                <td width='20%' align='center'>Saturday</td>
-                <td width='20%' align='center' id='saTime'></td>
-                <td width='20%' align='center' id='saPre'></td>
-                <td width='20%' align='center' id='saShow'></td>
-              </tr>
-              <tr>
-                <td width='20%' align='center'>Sunday</td>
-                <td width='20%' align='center' id='suTime'></td>
-                <td width='20%' align='center' id='suPre'></td>
-                <td width='20%' align='center' id='suShow'></td>
-              </tr>
-              <tr>
-                <td align='center' colspan='4'><font color='red'>* = Start Time will be for Pre-Show if Applicable</font></td>
-              </tr>
-            </table>
-          </td>
-        </tr>
-      </table>`];
-  }
+    }
 
   //Update on Enter
   $("#sTime").keyup(function(event){
@@ -1137,12 +1136,27 @@ function showSchedule(){
       $("#ud8Schedule").click();
     }
   });
-  $("#showGame").keyup(function(event){
+  $("#game").keyup(function(event){
     if (event.keyCode === 13){
       $("#ud8Schedule").click();
     }
   });
-  $("#weekOfEdit").keyup(function(event){
+  $("#wosm").keyup(function(event){
+    if (event.keyCode === 13){
+      $("#ud8Schedule").click();
+    }
+  });
+  $("#wosd").keyup(function(event){
+    if (event.keyCode === 13){
+      $("#ud8Schedule").click();
+    }
+  });
+  $("#woem").keyup(function(event){
+    if (event.keyCode === 13){
+      $("#ud8Schedule").click();
+    }
+  });
+  $("#woed").keyup(function(event){
     if (event.keyCode === 13){
       $("#ud8Schedule").click();
     }
