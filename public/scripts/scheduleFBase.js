@@ -18,37 +18,37 @@ document.addEventListener('DOMContentLoaded', event =>{
       //Fill Monday Fields
       $('#mTime').html(day.monday[0]);
       $('#mPShow').html(day.monday[1]);
-      $('#mShow').html(day.monday[2] + "<br>" + day.monday[3]);
+      $('#mShow').html(day.monday[2] + "<br>(" + day.monday[3] + ")");
 
       //Fill Tuesday Fields
       $('#tuTime').html(day.tuesday[0]);
       $('#tuPShow').html(day.tuesday[1]);
-      $('#tuShow').html(day.tuesday[2] + "<br>" + day.tuesday[3]);
+      $('#tuShow').html(day.tuesday[2] + "<br>(" + day.tuesday[3] + ")");
 
       //Fill Wednesday Fields
       $('#wTime').html(day.wednesday[0]);
       $('#wPShow').html(day.wednesday[1]);
-      $('#wShow').html(day.wednesday[2] + "<br>" + day.wednesday[3]);
+      $('#wShow').html(day.wednesday[2] + "<br>(" + day.wednesday[3] + ")");
 
       //Fill Thursday Fields
       $('#thTime').html(day.thursday[0]);
       $('#thPShow').html(day.thursday[1]);
-      $('#thShow').html(day.thursday[2] + "<br>" + day.thursday[3]);
+      $('#thShow').html(day.thursday[2] + "<br>(" + day.thursday[3] + ")");
 
       //Fill Friday Fields
       $('#fTime').html(day.friday[0]);
       $('#fPShow').html(day.friday[1]);
-      $('#fShow').html(day.friday[2] + "<br>" + day.friday[3]);
+      $('#fShow').html(day.friday[2] + "<br>(" + day.friday[3] + ")");
 
       //Fill Saturday Fields
       $('#saTime').html(day.saturday[0]);
       $('#saPShow').html(day.saturday[1]);
-      $('#saShow').html(day.saturday[2] + "<br>" + day.saturday[3]);
+      $('#saShow').html(day.saturday[2] + "<br>(" + day.saturday[3] + ")");
 
       //Fill Sunday Fields
       $('#suTime').html(day.sunday[0]);
       $('#suPShow').html(day.sunday[1]);
-      $('#suShow').html(day.sunday[2] + "<br>" + day.sunday[3]);
+      $('#suShow').html(day.sunday[2] + "<br>(" + day.sunday[3] + ")");
     })
 })
 
