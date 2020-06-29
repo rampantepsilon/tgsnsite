@@ -80,6 +80,58 @@
       </tr>
     </table>
 
+    <div id="myModal" class="modal">
+      <div class="modal-content">
+        <span class="close">&times;</span>
+        <table align='center'>
+          <tr>
+            <td align='right' valign='top' style='font-size:18px'>
+              Day:<br>
+              Start Time:<br>
+              Pre-Show Game:<br>
+              Show:<br>
+              Game:<br>
+              Week Of:
+            </td>
+            <td valign='top' align='left'>
+              <form>
+                <select id='day' size='1'>
+                  <option>Monday</option>
+                  <option>Tuesday</option>
+                  <option>Wednesday</option>
+                  <option>Thursday</option>
+                  <option>Friday</option>
+                  <option>Saturday</option>
+                  <option>Sunday</option>
+                </select>
+                <!--<input type="text" id='mDate' maxlength="2" size="2">
+                /
+                <input type="text" id='dDate' maxlength="2" size="2">-->
+              </form>
+              <input type="text" id='sTime'><br>
+              <input type="text" id='pShow'><br>
+              <form>
+                <select id='show' size='1'>
+                  <option>No Stream</option>
+                  <option>The Gaming Saloon</option>
+                  <option>Rampant Gaming</option>
+                  <option>Weekly Co-Op</option>
+                  <option>The Gaming Saloon Reviews</option>
+                  <option>Peace Plays</option>
+                  <option>Rampant Plays</option>
+                  <option>Rampant Runs</option>
+                  <option>Glock Plays</option>
+                </select>
+              </form>
+              <input type='text' id='game'><br>
+              <input type='text' id='wosm' maxlength='2' size='2'>/<input type='text' id='wosd' maxlength='2' size='2'> - <input type='text' id='woem' maxlength='2' size='2'>/<input type='text' id='woed' maxlength='2' size='2'><br>
+              <button onclick='updateSchedule()' id='ud8Schedule'>Update Schedule</button>
+              <div id='scheduleError'></div>
+          </tr>
+        </table>
+      </div>
+    </div>
+
     <script src='https://embed.twitch.tv/embed/v1.js'></script>
 
     <!--Attach Firebase JS-->

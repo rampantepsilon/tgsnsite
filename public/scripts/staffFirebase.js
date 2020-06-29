@@ -364,6 +364,8 @@ function updateSchedule(){
   const tgsnSchedule = db.collection('schedule').doc('new');
 
   var day = document.getElementById('day').value;
+  var month = document.getElementById('mDate').value;
+  var date = document.getElementById('dDate').value;
   var time = document.getElementById('sTime').value;
   var preShow = document.getElementById('pShow').value;
   var show = document.getElementById('show').value;
@@ -397,6 +399,9 @@ function updateSchedule(){
   if (game == ''){
     post[3] = 'N/A';
   }
+  //To Be Added In Next Update
+  //post[4] = month + '/' + date;
+
   //Post to Database
   if (day == 'Monday'){
     tgsnSchedule.update({monday: {[0]: post[0], [1]: post[1], [2]: post[2], [3]: post[3]}});
@@ -419,6 +424,8 @@ function updateSchedule(){
   if (day == 'Sunday'){
     tgsnSchedule.update({sunday: {[0]: post[0], [1]: post[1], [2]: post[2], [3]: post[3]}});
   }
+
+  document.getElementById('myModal').style.display = 'none';
 }
 
 function showTGSN(){

@@ -1011,6 +1011,12 @@ function showSchedule(){
     position = 'Staff';
   }
 
+  window.onclick = function(event) {
+    if (event.target == document.getElementById('myModal')) {
+      document.getElementById('myModal').style.display = 'none';
+    }
+  }
+
   document.getElementById('staffBody').innerHTML = [`
     <div align='center'>Stream Schedule</div>
     <table width='85%' align='center' border='1px'>
@@ -1022,19 +1028,19 @@ function showSchedule(){
           <div>Show</div>
           <div>Game (If Applicable)</div>
         </td>
-        <td width='25%' id='monday' align='center'>
+        <td width='25%' id='monday' align='center' onclick='edit("monday")'>
           <b><u>Monday <span id='mDate'></span></u></b>
           <div id='mTime'>&nbsp;</div>
           <div id='mPShow'>&nbsp;<br>&nbsp;</div>
           <div id='mShow'>&nbsp;<br>&nbsp;</div>
         </td>
-        <td width='25%' id='tuesday' align='center'>
+        <td width='25%' id='tuesday' align='center' onclick='edit("tuesday")'>
           <b><u>Tuesday <span id='tuDate'></span></u></b>
           <div id='tuTime'>&nbsp;</div>
           <div id='tuPShow'>&nbsp;<br>&nbsp;</div>
           <div id='tuShow'>&nbsp;<br>&nbsp;</div>
         </td>
-        <td width='25%' id='wednesday' align='center'>
+        <td width='25%' id='wednesday' align='center' onclick='edit("wednesday")'>
           <b><u>Wednesday <span id='wDate'></span></u></b>
           <div id='wTime'>&nbsp;</div>
           <div id='wPShow'>&nbsp<br>&nbsp;;</div>
@@ -1044,25 +1050,25 @@ function showSchedule(){
     </table>
     <table width='85%' align='center' border='1px'>
       <tr>
-        <td width='25%' id='thursday' align='center'>
+        <td width='25%' id='thursday' align='center' onclick='edit("thursday")'>
           <b><u>Thursday <span id='thDate'></span></u></b>
           <div id='thTime'>&nbsp;</div>
           <div id='thPShow'>&nbsp;<br>&nbsp;</div>
           <div id='thShow'>&nbsp;<br>&nbsp;</div>
         </td>
-        <td width='25%' id='friday' align='center'>
+        <td width='25%' id='friday' align='center' onclick='edit("friday")'>
           <b><u>Friday <span id='fDate'></span></u></b>
           <div id='fTime'>&nbsp;</div>
           <div id='fPShow'>&nbsp;<br>&nbsp;</div>
           <div id='fShow'>&nbsp;<br>&nbsp;</div>
         </td>
-        <td width='25%' id='saturday' align='center'>
+        <td width='25%' id='saturday' align='center' onclick='edit("saturday")'>
           <b><u>Saturday <span id='saDate'></span></u></b>
           <div id='saTime'>&nbsp;</div>
           <div id='saPShow'>&nbsp;<br>&nbsp;</div>
           <div id='saShow'>&nbsp;<br>&nbsp;</div>
         </td>
-        <td width='25%' id='sunday' align='center'>
+        <td width='25%' id='sunday' align='center' onclick='edit("sunday")'>
           <b><u>Sunday <span id='suDate'></span></u></b>
           <div id='suTime'>&nbsp;</div>
           <div id='suPShow'>&nbsp;<br>&nbsp;</div>
@@ -1073,7 +1079,9 @@ function showSchedule(){
 
   //Schedule Edit Commands
   if (position == 'TGSN Coordinator' && tgsnCoordUID.includes(uid)){
-    document.getElementById('staffBody').innerHTML += [`
+    //document.getElementById('monday').innerHTML += [`<button onclick='edit()'>Edit</div>`];
+
+    /*document.getElementById('staffBody').innerHTML += [`
       <table width='85%' align='center'>
         <tr id='scheduleEdit'>
           <td colspan='4' align='center'><u>Update Schedule</u>
@@ -1122,7 +1130,7 @@ function showSchedule(){
             <div align='center'><span style='color:red;'>NOTE:</span> If a field is left blank all information for that slot will be removed!<br>When editing, if you want to remove all entries, leave all fields blank and set the day and show.</div>
           </td>
         </tr>
-      </table>`];
+      </table>`];*/
     }
 
   //Update on Enter
@@ -1861,5 +1869,105 @@ function resizeTGSR(){
       $('#tgsrVid'+i).css('width', playerWidth +'px');
       $('#tgsrVid'+i).css('height', playerHeight +'px');
     }
+  }
+}
+
+function edit(dayOfWeek){
+  var modal = document.getElementById('myModal');
+  var span = document.getElementsByClassName("close")[0];
+  //Determine what to show
+  var uEmail = sessionStorage.getItem('userEmail');
+  var uid = sessionStorage.getItem('user');
+  var position = '';
+  if (tgsnCoordinators.includes(uEmail)){
+    position = 'TGSN Coordinator';
+  } else if (tgsnStaff.includes(uEmail)) {
+    position = 'TGSN Staff';
+  } else {
+    position = 'Staff';
+  }
+
+  if (position == 'TGSN Coordinator' && tgsnCoordUID.includes(uid)){
+    //Modal Open
+    modal.style.display = 'block';
+    //Close Function
+    span.onclick = function() {
+      document.getElementById('myModal').style.display = 'none';
+    };
+
+    //Load current information for day
+    //Initialize Values
+    const app = firebase.app();
+    const db = firebase.firestore();
+    const schedule = db.collection('schedule').doc('new');
+
+    //Get Schedule & Dates
+
+    schedule.onSnapshot(doc => {
+      const day = doc.data();
+
+      if (dayOfWeek == 'monday'){
+        //Fill Monday Fields
+        document.getElementById('day').value = 'Monday';
+        document.getElementById('sTime').value = day.monday[0];
+        document.getElementById('pShow').value = day.monday[1];
+        document.getElementById('show').value = day.monday[2];
+        document.getElementById('game').value = day.monday[3];
+      }
+      if (dayOfWeek == 'tuesday'){
+        //Fill Monday Fields
+        document.getElementById('day').value = 'Tuesday';
+        document.getElementById('sTime').value = day.tuesday[0];
+        document.getElementById('pShow').value = day.tuesday[1];
+        document.getElementById('show').value = day.tuesday[2];
+        document.getElementById('game').value = day.tuesday[3];
+      }
+      if (dayOfWeek == 'wednesday'){
+        //Fill Monday Fields
+        document.getElementById('day').value = 'Wednesday';
+        document.getElementById('sTime').value = day.wednesday[0];
+        document.getElementById('pShow').value = day.wednesday[1];
+        document.getElementById('show').value = day.wednesday[2];
+        document.getElementById('game').value = day.wednesday[3];
+      }
+      if (dayOfWeek == 'thursday'){
+        //Fill Monday Fields
+        document.getElementById('day').value = 'Thursday';
+        document.getElementById('sTime').value = day.thursday[0];
+        document.getElementById('pShow').value = day.thursday[1];
+        document.getElementById('show').value = day.thursday[2];
+        document.getElementById('game').value = day.thursday[3];
+      }
+      if (dayOfWeek == 'friday'){
+        //Fill Monday Fields
+        document.getElementById('day').value = 'Friday';
+        document.getElementById('sTime').value = day.friday[0];
+        document.getElementById('pShow').value = day.friday[1];
+        document.getElementById('show').value = day.friday[2];
+        document.getElementById('game').value = day.friday[3];
+      }
+      if (dayOfWeek == 'saturday'){
+        //Fill Monday Fields
+        document.getElementById('day').value = 'Saturday';
+        document.getElementById('sTime').value = day.saturday[0];
+        document.getElementById('pShow').value = day.saturday[1];
+        document.getElementById('show').value = day.saturday[2];
+        document.getElementById('game').value = day.saturday[3];
+      }
+      if (dayOfWeek == 'sunday'){
+        //Fill Monday Fields
+        document.getElementById('day').value = 'Sunday';
+        document.getElementById('sTime').value = day.sunday[0];
+        document.getElementById('pShow').value = day.sunday[1];
+        document.getElementById('show').value = day.sunday[2];
+        document.getElementById('game').value = day.sunday[3];
+      }
+      if (document.getElementById('pShow').value == '&nbsp;'){
+        document.getElementById('pShow').value = '';
+      }
+    })
+
+  } else {
+    modal.style.display = 'none';
   }
 }
