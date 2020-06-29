@@ -50,7 +50,54 @@ document.addEventListener('DOMContentLoaded', event =>{
       $('#suPShow').html(day.sunday[1]);
       $('#suShow').html(day.sunday[2] + "<br>(" + day.sunday[3] + ")");
     })
+    setTimeout(`highlightToday();`,1700);
 })
+
+//Highlight Current Day on schedule
+function highlightToday(){
+  //Highlight Current Day
+  var d = new Date();
+  var month = (d.getMonth() + 1);
+  var date = d.getDate();
+  var fullDate = month + '/' + date;
+  var hDay = d.getDay();
+
+  if (hDay == 0){
+    if (fullDate == document.getElementById('suDate').innerHTML){
+      document.getElementById('sunday').style.backgroundColor = 'gold';
+    }
+  }
+  if (hDay == 1){
+    if (fullDate == document.getElementById('mDate').innerText){
+      document.getElementById('monday').style.backgroundColor = 'gold';
+    }
+  }
+  if (hDay == 2){
+    if (fullDate == document.getElementById('tuDate').innerText){
+      document.getElementById('tuesday').style.backgroundColor = 'gold';
+    }
+  }
+  if (hDay == 3){
+    if (fullDate == document.getElementById('wDate').innerText){
+      document.getElementById('wednesday').style.backgroundColor = 'gold';
+    }
+  }
+  if (hDay == 4){
+    if (fullDate == document.getElementById('thDate').innerText){
+      document.getElementById('thursday').style.backgroundColor = 'gold';
+    }
+  }
+  if (hDay == 5){
+    if (fullDate == document.getElementById('fDate').innerText){
+      document.getElementById('friday').style.backgroundColor = 'gold';
+    }
+  }
+  if (hDay == 6){
+    if (fullDate == document.getElementById('saDate').innerText){
+      document.getElementById('saturday').style.backgroundColor = 'gold';
+    }
+  }
+}
 
 function layout(){
   $('#monday').html(`

@@ -364,8 +364,8 @@ function updateSchedule(){
   const tgsnSchedule = db.collection('schedule').doc('new');
 
   var day = document.getElementById('day').value;
-  var month = document.getElementById('mDate').value;
-  var date = document.getElementById('dDate').value;
+  //var month = document.getElementById('mDate').value;
+  //var date = document.getElementById('dDate').value;
   var time = document.getElementById('sTime').value;
   var preShow = document.getElementById('pShow').value;
   var show = document.getElementById('show').value;
