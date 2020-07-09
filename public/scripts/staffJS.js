@@ -59,7 +59,8 @@ function api(){
 //Notices
 const notice1 = `<p>Welcome to The Gaming Saloon Network Staff HQ!<br />This location will hold important information regarding TGSN Staff</p><p><font color='red'>Please Note: All Staff must log into this page at least once and use the Request Page to request permissions.</font></p>`;
 const notice2 = `<p>TheVoicelessSaloon is looking for people interested in helping. This can be providing gameplay, streaming content, or even help coordinating better methods of sharing runs. If you are interested, please reach out to RampantEpsilon#7868 on Discord.</p>`;
-const notice3 = [`<p>Want to provide feedback for the Staff HQ page?<br>Use the form <a href='https://forms.gle/PescTWy6oEDd6e6R7' target='_blank'>HERE</a>`];
+const notice3 = [`<p>Want to provide feedback for the Staff HQ page?<br>Use the form <a href='https://forms.gle/PescTWy6oEDd6e6R7' target='_blank'>HERE</a></p>`];
+const notice4 = [`<p>There's a new lightweight Twitch Chat client for only viewing chat. If you want to use this there is no support for emotes currently. You can find it <a href='./chat'>HERE</a></p>`]
 
 //Bottom Links
 function showAll(){
@@ -580,10 +581,10 @@ function showHome(){
   document.getElementById('staffBody').innerHTML = [`<table width='100%'>
     <tr>
       <td style='text-align: center; border: 1px solid;'>
-        <h2>Notices</h2>` + notice1 + `=======` + notice2 + `=======` + notice3 +
+        <h2><u>Message Board</u></h2>` + notice1 + `=======` + notice2 + `=======` + notice3 + `=======` + notice4 +
       `</td>
       <td style='text-align: center; vertical-align: text-top; width: 35%; border: 1px solid;'>
-        <h2>Goals</h2>
+        <h2><u>Goals</u></h2>
         <table width='95%' align='center'>
           <tr>
             <td><div id='followers'></div></td>
