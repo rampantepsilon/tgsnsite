@@ -10,7 +10,7 @@ function init(){
 
 function api(){
   //console.log("Begin Script");
-  var token = "
+  var token = ""
   $.ajax({
     datatype: 'json',
     url: 'https://discord.com/api/channels/487679359566741504/messages',
