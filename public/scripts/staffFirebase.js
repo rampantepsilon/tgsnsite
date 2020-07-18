@@ -1,6 +1,6 @@
 //Staff Information
 var tgsnStaff = [];
-const tgsnStaffUID = [];
+var tgsnStaffUID = [];
 var tgsnCoordinators = [];
 var tgsnCoordUID = [];
 var tgsnAdminUName = ['RampantEpsilon', 'peacemaker2448'];
@@ -74,6 +74,7 @@ document.addEventListener("DOMContentLoaded", event =>{
 //Resize Scripting for Twitch, TVS, & TGS Articles
 window.addEventListener('resize', resizeView);
 
+//Scripting for Resizing Window
 function resizeView() {
   var page = sessionStorage.getItem('page');
 
@@ -105,6 +106,7 @@ function resizeView() {
   }
 }
 
+//Check if previously logged in
 function reloadCheck(){
   var uid = sessionStorage.getItem('user');
   var uEmail = sessionStorage.getItem('userEmail');
@@ -138,91 +140,14 @@ function reloadCheck(){
   }
 }
 
+//Login with Google
 function googleLogin() {
   const provider = new firebase.auth.GoogleAuthProvider();
 
   firebase.auth().signInWithRedirect(provider);
-  //Old Login (Storing In Case of Fallback)
-  /*firebase.auth().signInWithPopup(provider)
-    .then(result => {
-      var token = result.credential.accessToken;
-      const user = result.user;
-      var userName = "";
-      if (user.email == 'tomjware@gmail.com' || user.email == 'tgs.rampantepsilon@gmail.com'){
-        userName = 'RampantEpsilon';
-      }
-      else if (user.email == 'peacemaker24482@gmail.com'){
-        userName = 'peacemaker2448';
-      }
-      else if (user.email == 'tgs.tommygun2442@gmail.com'){
-        userName = 'Tommygun2442';
-      }
-      else {
-        userName = user.displayName;
-      }
-
-      sessionStorage.setItem('user', user.uid);
-      sessionStorage.setItem('userEmail', user.email);
-      sessionStorage.setItem('userName', userName);
-      sessionStorage.setItem('userPhoto', user.photoURL);
-
-      var position = '';
-      if (tgsnCoordinators.includes(user.email)){
-        if (user.email == 'tomjware@gmail.com' || user.email == 'peacemaker24482@gmail.com'){
-          position = 'TGSN Network Admin';
-        } else {
-        position = 'TGSN Coordinator';
-        }
-      } else if (tgsnStaff.includes(user.email)) {
-        position = 'TGSN Staff';
-      } else {
-        position = 'Staff';
-      }
-
-      document.querySelector('#topTitle').innerHTML = (`<a href='../staff' id='topLink'>` + position + ` HQ</a>`)
-
-      document.querySelector('#title').innerHTML = (`Hello ` + userName + `<br><button onclick='googleLogout()'>Logout</button>`);
-      document.querySelector('#userPic').innerHTML = (`<img src='` + user.photoURL + `' width='60px' height='60px' id='profilePic' />`);
-
-      if (position == 'TGSN Coordinator' || position == 'TGSN Network Admin'){
-        showAll();
-      } else if (position == 'TGSN Staff') {
-        showAllRO();
-      } else {
-        showDefault();
-      }
-
-      var page = sessionStorage.getItem('page');
-      if (page == 'twitch'){
-        if (tgsnCoordinators.includes(user.email) && tgsnCoordUID.includes(user.uid)){
-          document.getElementById('staffBody').innerHTML += [`<table width='100%'>
-            <tr>
-              <td style='text-align: center; border: 1px solid;' width='10%' onmouseover="this.style.backgroundColor = 'orange'" onmouseout="this.style.backgroundColor = 'rgba(0,0,0,0)'" onclick='showDashboard()'>
-                Twitch Dashboard
-              </td>
-              <td style='text-align: center; border: 1px solid;' width='10%' onmouseover="this.style.backgroundColor = 'orange'" onmouseout="this.style.backgroundColor = 'rgba(0,0,0,0)'" onclick='showBotDash()'>
-                TGSNBot Dashboard
-              </td>
-            </tr>
-          </table>`];
-        } else if (tgsnStaff.includes(user.email) && tgsnStaffUID.includes(user.uid)){
-          document.getElementById('staffBody').innerHTML += [`<table width='100%'>
-            <tr>
-              <td style='text-align: center; border: 1px solid;' align='center' width='100%' onmouseover="this.style.backgroundColor = 'orange'" onmouseout="this.style.backgroundColor = 'rgba(0,0,0,0)'" onclick='showDashboard()'>
-                      Twitch Dashboard
-                    </td>
-                  </tr>
-                </table>
-              </td>
-            </tr>
-          </table>`];
-        }
-      }
-      //console.log(user);
-    })
-    .catch(console.log)*/
 }
 
+//Logout with Google
 function googleLogout(){
   firebase.auth().signOut().then(function() {
     sessionStorage.removeItem('user');
@@ -235,6 +160,7 @@ function googleLogout(){
   });
 }
 
+//Update Viewer Facing TGS Articles
 function updateTGSArticles() {
   const db = firebase.firestore();
   const tgsArticles = db.collection('tgs').doc('articles');
@@ -246,6 +172,7 @@ function updateTGSArticles() {
   }
 }
 
+//Update Staff Facing TGS Articles
 function updateStaffArticles(){
   const db = firebase.firestore();
   const tgsArticles = db.collection('tgs').doc('articles');
@@ -262,6 +189,7 @@ function clearTGSArticles(){
   document.getElementById('tgsArticleLink').value = "";
 }
 
+//Update this week's stats
 function updateTWValues(){
   const db = firebase.firestore();
   const tgsnLWStats = db.collection('stats').doc('tgsn');
@@ -309,6 +237,7 @@ function updateTWValues(){
   }
 }
 
+//Update last week's stats
 function updateLWValues(){
   const db = firebase.firestore();
   const tgsnLWStats = db.collection('stats').doc('lastweek');
@@ -351,14 +280,7 @@ function updateLWValues(){
   }
 }
 
-function prefixChange(){
-  const db = firebase.firestore();
-  const tgsnPrefix = db.collection('stream').doc('prefix');
-  var newPrefix = document.getElementById('prefixChange').value;
-
-  tgsnPrefix.update ({ TGSN: newPrefix});
-}
-
+//Update Schedule from Modal
 function updateSchedule(){
   const db = firebase.firestore();
   const tgsnSchedule = db.collection('schedule').doc('new');
@@ -426,12 +348,4 @@ function updateSchedule(){
   }
 
   document.getElementById('myModal').style.display = 'none';
-}
-
-function showTGSN(){
-  $('#player').load('tgsn.html');
-}
-
-function showTVS(){
-  $('#player').load('tvs.html');
 }
