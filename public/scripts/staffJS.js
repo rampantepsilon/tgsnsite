@@ -10,26 +10,22 @@ const notice4 = [`<p>There's a new lightweight Twitch Chat client for only viewi
 
 //Bottom Links
 const coord = [
-  `<td align='center' width='10%' onmouseover="this.style.backgroundColor = 'orange'" onmouseout="this.style.backgroundColor = 'rgba(0,0,0,0)'" onclick="showHome()">Message Board</td>
-  <td align='center' width='10%' onmouseover="this.style.backgroundColor = 'orange'" onmouseout="this.style.backgroundColor = 'rgba(0,0,0,0)'" onclick='showTGSArticles()'>TGS Articles</td>
-  <td align='center' width='10%' onmouseover="this.style.backgroundColor = 'orange'" onmouseout="this.style.backgroundColor = 'rgba(0,0,0,0)'" onclick='showTwitch()'>Twitch Stream</td>
-  <td align='center' width='10%' onmouseover="this.style.backgroundColor = 'orange'" onmouseout="this.style.backgroundColor = 'rgba(0,0,0,0)'" onclick='showStats()'>Stats</td>
-  <td align='center' width='10%' onmouseover="this.style.backgroundColor = 'orange'" onmouseout="this.style.backgroundColor = 'rgba(0,0,0,0)'" onclick='showSchedule()'>Schedule</td>
-  <td align='center' width='10%' onmouseover="this.style.backgroundColor = 'orange'" onmouseout="this.style.backgroundColor = 'rgba(0,0,0,0)'" onclick='showReleases()'>Releases</td>
-  <td align='center' width='10%' onmouseover="this.style.backgroundColor = 'orange'" onmouseout="this.style.backgroundColor = 'rgba(0,0,0,0)'" onclick='showTGSR()'>TGSR Videos</td>
-  <td align='center' width='10%' onmouseover="this.style.backgroundColor = 'orange'" onmouseout="this.style.backgroundColor = 'rgba(0,0,0,0)'" onclick='showTVSVids()'>TVS Videos</td>
-  <td align='center' width='10%' onmouseover="this.style.backgroundColor = 'orange'" onmouseout="this.style.backgroundColor = 'rgba(0,0,0,0)'" onclick='showRequest()'>Request Page</td>`
+  `<td align='center' width='14%' onmouseover="this.style.backgroundColor = 'orange'" onmouseout="this.style.backgroundColor = 'rgba(0,0,0,0)'" onclick="showHome()">Message Board</td>
+  <td align='center' width='14%' onmouseover="this.style.backgroundColor = 'orange'" onmouseout="this.style.backgroundColor = 'rgba(0,0,0,0)'" onclick='showTwitch()'>Twitch Stream</td>
+  <td align='center' width='14%' onmouseover="this.style.backgroundColor = 'orange'" onmouseout="this.style.backgroundColor = 'rgba(0,0,0,0)'" onclick='showStats()'>Stats</td>
+  <td align='center' width='14%' onmouseover="this.style.backgroundColor = 'orange'" onmouseout="this.style.backgroundColor = 'rgba(0,0,0,0)'" onclick='showSchedule()'>Schedule</td>
+  <td align='center' width='14%' onmouseover="this.style.backgroundColor = 'orange'" onmouseout="this.style.backgroundColor = 'rgba(0,0,0,0)'" onclick='showReleases()'>Releases</td>
+  <td align='center' width='14%' onmouseover='this.style.backgroundColor = "orange"'  onmouseout="this.style.backgroundColor = 'rgba(0,0,0,0)'" onclick='showShowInfo()'>Show Resources</td>
+  <td align='center' width='14%' onmouseover="this.style.backgroundColor = 'orange'" onmouseout="this.style.backgroundColor = 'rgba(0,0,0,0)'" onclick='showRequest()'>Request Page</td>`
 ];
 const staff = [
-  `<td align='center' width='11%' onmouseover="this.style.backgroundColor = 'orange'" onmouseout="this.style.backgroundColor = 'rgba(0,0,0,0)'" onclick="showHome()">Message Board</td>
-  <td align='center' width='11%' onmouseover="this.style.backgroundColor = 'orange'" onmouseout="this.style.backgroundColor = 'rgba(0,0,0,0)'" onclick='showTGSArticles()'>TGS Articles</td>
-  <td align='center' width='11%' onmouseover="this.style.backgroundColor = 'orange'" onmouseout="this.style.backgroundColor = 'rgba(0,0,0,0)'" onclick='showTwitch()'>Twitch Stream</td>
-  <td align='center' width='11%' onmouseover="this.style.backgroundColor = 'orange'" onmouseout="this.style.backgroundColor = 'rgba(0,0,0,0)'" onclick='showStats()'>Stats</td>
-  <td align='center' width='11%' onmouseover="this.style.backgroundColor = 'orange'" onmouseout="this.style.backgroundColor = 'rgba(0,0,0,0)'" onclick='showSchedule()'>Schedule</td>
-  <td align='center' width='11%' onmouseover="this.style.backgroundColor = 'orange'" onmouseout="this.style.backgroundColor = 'rgba(0,0,0,0)'" onclick='showReleases()'>Releases</td>
-  <td align='center' width='11%' onmouseover="this.style.backgroundColor = 'orange'" onmouseout="this.style.backgroundColor = 'rgba(0,0,0,0)'" onclick='showTGSR()'>TGSR Videos</td>
-  <td align='center' width='10%' onmouseover="this.style.backgroundColor = 'orange'" onmouseout="this.style.backgroundColor = 'rgba(0,0,0,0)'" onclick='showTVSVids()'>TVS Videos</td>
-  <td align='center' width='12%' onmouseover="this.style.backgroundColor = 'orange'" onmouseout="this.style.backgroundColor = 'rgba(0,0,0,0)'" onclick='showRequest()'>Request Access</td>`
+  `<td align='center' width='14%' onmouseover="this.style.backgroundColor = 'orange'" onmouseout="this.style.backgroundColor = 'rgba(0,0,0,0)'" onclick="showHome()">Message Board</td>
+  <td align='center' width='14%' onmouseover="this.style.backgroundColor = 'orange'" onmouseout="this.style.backgroundColor = 'rgba(0,0,0,0)'" onclick='showTwitch()'>Twitch Stream</td>
+  <td align='center' width='14%' onmouseover="this.style.backgroundColor = 'orange'" onmouseout="this.style.backgroundColor = 'rgba(0,0,0,0)'" onclick='showStats()'>Stats</td>
+  <td align='center' width='14%' onmouseover="this.style.backgroundColor = 'orange'" onmouseout="this.style.backgroundColor = 'rgba(0,0,0,0)'" onclick='showSchedule()'>Schedule</td>
+  <td align='center' width='14%' onmouseover="this.style.backgroundColor = 'orange'" onmouseout="this.style.backgroundColor = 'rgba(0,0,0,0)'" onclick='showReleases()'>Releases</td>
+  <td align='center' width='14%' onmouseover='this.style.backgroundColor = "orange"'  onmouseout="this.style.backgroundColor = 'rgba(0,0,0,0)'" onclick='showShowInfo()'>Show Resources</td>
+  <td align='center' width='14%' onmouseover="this.style.backgroundColor = 'orange'" onmouseout="this.style.backgroundColor = 'rgba(0,0,0,0)'" onclick='showRequest()'>Request Access</td>`
 ];
 const newStaff = [
   `<td align='center' width='20%' onmouseover="this.style.backgroundColor = 'orange'" onmouseout="this.style.backgroundColor = 'rgba(0,0,0,0)'" onclick="showHome()">Message Board</td>
@@ -177,99 +173,6 @@ function showHome(){
     </table>`
   ];
   sessionStorage.setItem('page','home');
-}
-
-/*TGS Articles*/
-function showTGSArticles(){
-
-  sessionStorage.setItem('page','tgsArticles');
-  //Initialize Values
-  const app = firebase.app();
-  const db = firebase.firestore();
-  const tgsArticles = db.collection('tgs').doc('articles');
-
-  //Get Articles Link
-  tgsArticles.onSnapshot(doc => {
-    const data = doc.data();
-    var link = data.link;
-    var staffLink = data.staffLink;
-    var length = data.link.length;
-    var trunc = length - 5;
-
-    //Determine what to show
-    var uEmail = sessionStorage.getItem('userEmail');
-    var uid = sessionStorage.getItem('user');
-    var position = '';
-    if (tgsnCoordinators.includes(uEmail)){
-      position = 'TGSN Coordinator';
-    } else if (tgsnStaff.includes(uEmail)) {
-      position = 'TGSN Staff';
-    } else {
-      position = 'Staff';
-    }
-
-    //Fill information
-    if (position == 'TGSN Coordinator' && tgsnCoordUID.includes(uid)){
-      document.getElementById('staffBody').innerHTML = [`
-      <table width='100%'>
-        <tr>
-          <td align='center' valign='top' colspan='3'>
-            <h3><u>TGS Resources</u></h3>
-            <h6>Changes can only be made by a Network Admin or TGSN Coordinator</h6>
-          </td>
-        </tr>
-        <tr>
-          <td align='center'>
-            <div id='body'>Current TGS Articles (Viewer Facing):<h5>(Only the document part of the URL is shown here)</h5><font size='2'><a href='` + link + `' target='_blank'>`/*Click Here (Opens in new tab)*/ + link.substring(35, trunc) + `</a></font></div>
-          </td>
-          <td align='center'>
-            <div id='body'>Current TGS Articles (Staff Facing [Shown Below]):<h5>(Only the document part of the URL is shown here)</h5><font size='2'><a href='` + staffLink + `' target='_blank'>`/*Click Here (Opens in new tab)*/ + staffLink.substring(35, trunc) + `</a></font></div>
-          </td>
-          <td align='center'>
-            Enter the new link for TGS Articles<br>
-            <input id='tgsArticleLink'><br>
-            <button onclick='updateTGSArticles()'>Update Viewer Articles</button>
-            <button onclick='updateStaffArticles()'>Update Staff Articles</button>
-            <button onclick='clearTGSArticles()'>Clear Link Field</button>
-          </td>
-        </tr>
-        <tr>
-          <td colspan='3' align='center'>
-            <iframe src='` + staffLink + `' id='articlesWin'></iframe>
-          </td>
-        </tr>
-      </table>`]
-    } else {
-      document.getElementById('staffBody').innerHTML = [`
-
-        <table width='100%'>
-          <tr>
-            <td align='center' valign='top' colspan='2'>
-              <h3><u>TGS Resources</u></h3>
-              <h6>Changes can only be made by a Network Admin or TGSN Coordinator</h6>
-            </td>
-          </tr>
-          <tr>
-            <td align='center'>
-              <div id='body'>Current TGS Articles (Viewer Facing):<h5>(Only the document part of the URL is shown here)</h5><font size='2'><a href='` + link + `' target='_blank'>`/*Click Here (Opens in new tab)*/ + link.substring(35, trunc) + `</a></font></div>
-            </td>
-            <td align='center'>
-              <div id='body'>Current TGS Articles (Staff Facing [Shown Below]):<h5>(Only the document part of the URL is shown here)</h5><font size='2'><a href='` + staffLink + `' target='_blank'>`/*Click Here (Opens in new tab)*/ + staffLink.substring(35, trunc) + `</a></font></div>
-            </td>
-          </tr>
-          <tr>
-            <td colspan='2' align='center'>
-              <iframe src='` + staffLink + `' id='articlesWin'></iframe>
-            </td>
-          </tr>
-        </table>`]
-    }
-
-    var playerWidth = window.innerWidth-50;
-    var playerHeight = window.innerHeight-450;
-    $('#articlesWin').css('width', playerWidth +'px');
-    $('#articlesWin').css('height', playerHeight +'px');
-  })
 }
 
 /*Twitch Stream*/
@@ -1410,7 +1313,121 @@ function results(apiReleases, start){
   });
 }
 
-/*TGSR Videos*/
+/*Show Resources*/
+function showShowInfo(){
+  document.getElementById('staffBody').innerHTML = [`
+    <table width='100%'>
+      <tr>
+        <td>
+          <table width='100%' border='1'>
+            <tr>
+              <td align='center' width='33%' onmouseover="this.style.backgroundColor = 'orange'" onmouseout="this.style.backgroundColor = 'rgba(0,0,0,0)'" onclick='showTGSArticles()'>TGS Articles</td>
+              <td align='center' width='33%' onmouseover="this.style.backgroundColor = 'orange'" onmouseout="this.style.backgroundColor = 'rgba(0,0,0,0)'" onclick='showTGSR()'>TGSR Videos</td>
+              <td align='center' width='33%' onmouseover="this.style.backgroundColor = 'orange'" onmouseout="this.style.backgroundColor = 'rgba(0,0,0,0)'" onclick='showTVSVids()'>TVS Videos</td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+      <tr>
+        <td id='showBody'></td>
+      </tr>
+    </table>
+  `];
+  showTGSArticles();
+}
+//TGS Articles//
+function showTGSArticles(){
+
+  sessionStorage.setItem('page','tgsArticles');
+  //Initialize Values
+  const app = firebase.app();
+  const db = firebase.firestore();
+  const tgsArticles = db.collection('tgs').doc('articles');
+
+  //Get Articles Link
+  tgsArticles.onSnapshot(doc => {
+    const data = doc.data();
+    var link = data.link;
+    var staffLink = data.staffLink;
+    var length = data.link.length;
+    var trunc = length - 5;
+
+    //Determine what to show
+    var uEmail = sessionStorage.getItem('userEmail');
+    var uid = sessionStorage.getItem('user');
+    var position = '';
+    if (tgsnCoordinators.includes(uEmail)){
+      position = 'TGSN Coordinator';
+    } else if (tgsnStaff.includes(uEmail)) {
+      position = 'TGSN Staff';
+    } else {
+      position = 'Staff';
+    }
+
+    //Fill information
+    if (position == 'TGSN Coordinator' && tgsnCoordUID.includes(uid)){
+      document.getElementById('showBody').innerHTML = [`
+      <table width='100%'>
+        <tr>
+          <td align='center' valign='top' colspan='3'>
+            <h3><u>TGS Resources</u></h3>
+            <h6>Changes can only be made by a Network Admin or TGSN Coordinator</h6>
+          </td>
+        </tr>
+        <tr>
+          <td align='center'>
+            <div id='body'>Current TGS Articles (Viewer Facing):<h5>(Only the document part of the URL is shown here)</h5><font size='2'><a href='` + link + `' target='_blank'>`/*Click Here (Opens in new tab)*/ + link.substring(35, trunc) + `</a></font></div>
+          </td>
+          <td align='center'>
+            <div id='body'>Current TGS Articles (Staff Facing [Shown Below]):<h5>(Only the document part of the URL is shown here)</h5><font size='2'><a href='` + staffLink + `' target='_blank'>`/*Click Here (Opens in new tab)*/ + staffLink.substring(35, trunc) + `</a></font></div>
+          </td>
+          <td align='center'>
+            Enter the new link for TGS Articles<br>
+            <input id='tgsArticleLink'><br>
+            <button onclick='updateTGSArticles()'>Update Viewer Articles</button>
+            <button onclick='updateStaffArticles()'>Update Staff Articles</button>
+            <button onclick='clearTGSArticles()'>Clear Link Field</button>
+          </td>
+        </tr>
+        <tr>
+          <td colspan='3' align='center'>
+            <iframe src='` + staffLink + `' id='articlesWin'></iframe>
+          </td>
+        </tr>
+      </table>`]
+    } else {
+      document.getElementById('staffBody').innerHTML = [`
+
+        <table width='100%'>
+          <tr>
+            <td align='center' valign='top' colspan='2'>
+              <h3><u>TGS Resources</u></h3>
+              <h6>Changes can only be made by a Network Admin or TGSN Coordinator</h6>
+            </td>
+          </tr>
+          <tr>
+            <td align='center'>
+              <div id='body'>Current TGS Articles (Viewer Facing):<h5>(Only the document part of the URL is shown here)</h5><font size='2'><a href='` + link + `' target='_blank'>`/*Click Here (Opens in new tab)*/ + link.substring(35, trunc) + `</a></font></div>
+            </td>
+            <td align='center'>
+              <div id='body'>Current TGS Articles (Staff Facing [Shown Below]):<h5>(Only the document part of the URL is shown here)</h5><font size='2'><a href='` + staffLink + `' target='_blank'>`/*Click Here (Opens in new tab)*/ + staffLink.substring(35, trunc) + `</a></font></div>
+            </td>
+          </tr>
+          <tr>
+            <td colspan='2' align='center'>
+              <iframe src='` + staffLink + `' id='articlesWin'></iframe>
+            </td>
+          </tr>
+        </table>`]
+    }
+
+    var playerWidth = window.innerWidth-50;
+    var playerHeight = window.innerHeight-450;
+    $('#articlesWin').css('width', playerWidth +'px');
+    $('#articlesWin').css('height', playerHeight +'px');
+  })
+}
+//TGSR Videos//
 function showTGSR(){
   sessionStorage.setItem('page','request');
 
@@ -1426,8 +1443,8 @@ function loadTGSR(uid){
   var total;
 
   //Framework
-  document.getElementById('staffBody').innerHTML = [`
-    <table>
+  document.getElementById('showBody').innerHTML = [`
+    <table width='100%'>
       <tr colspan='3'>
         <td align='center'>During the run of Kamen Rider (1971), there will not be embeds. Please visit <a href='http://www.shoutfactorytv.com/series/kamen-rider' target='_blank'>Shout Factory TV</a> for the epsiodes.
       <tr>
@@ -1586,8 +1603,7 @@ function resizeTGSR(){
     }
   }
 }
-
-/*TVS Videos*/
+//TVS Videos//
 function showTVSVids(){
   sessionStorage.setItem('page','tvs');
 
@@ -1595,21 +1611,21 @@ function showTVSVids(){
   var uid = sessionStorage.getItem('user');
 
   if ((tgsnCoordinators.includes(uEmail) && tgsnCoordUID.includes(uid)) || (tgsnStaff.includes(uEmail) && tgsnStaffUID.includes(uid))){
-    document.getElementById('staffBody').innerHTML = [`<table>
+    document.getElementById('showBody').innerHTML = [`<table width='100%'>
       <tr>
         <td>
           <h3 align='center'>Please download the video before streaming.</h3>
         </td>
       </tr>
       <tr>
-        <td>
+        <td align='center'>
           <iframe id='tvsPlaylist' src="https://www.youtube.com/embed/videoseries?list=PLOMNn1DOI7zeP2oJcQgMxVQ1tUm06_Xsg" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
         </td>
       </tr>
     </table>`]
   }
-  var playerHeight = window.innerHeight-300;
-  var playerWidth = (((window.innerHeight-300)*16)/9);
+  var playerHeight = window.innerHeight-320;
+  var playerWidth = (((window.innerHeight-320)*16)/9);
   $('#tvsPlaylist').css('width', playerWidth +'px');
   $('#tvsPlaylist').css('height', playerHeight +'px');
 }

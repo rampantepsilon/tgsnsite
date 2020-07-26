@@ -1,8 +1,10 @@
 //Staff Information
 var tgsnStaff = [];
 var tgsnStaffUID = [];
+var tgsnStaffName = [];
 var tgsnCoordinators = [];
 var tgsnCoordUID = [];
+var tgsnCoordName = [];
 var tgsnAdminUName = ['RampantEpsilon', 'peacemaker2448'];
 
 //Document Load
@@ -15,6 +17,7 @@ document.addEventListener("DOMContentLoaded", event =>{
   const fsDB = firebase.firestore();
   const coord = fsDB.collection('users').doc("tgsnCoord");
   const staff = fsDB.collection('users').doc('tgsnStaff');
+  const usernames = fsDB.collection('users').doc('usernames');
 
   coord.onSnapshot(doc => {
     const coordData = doc.data();
@@ -40,17 +43,15 @@ document.addEventListener("DOMContentLoaded", event =>{
     .then(result => {
       var token = result.credential.accessToken;
       const user = result.user;
-      var userName = "";
-      if (user.email == 'tomjware@gmail.com' || user.email == 'tgs.rampantepsilon@gmail.com'){
-        userName = 'RampantEpsilon';
+      var userName;
+
+      for (i = 0; i < names.length; i++){
+        if (user.email == emails[i]){
+          userName = names[i];
+        }
       }
-      else if (user.email == 'peacemaker24482@gmail.com'){
-        userName = 'peacemaker2448';
-      }
-      else if (user.email == 'tgs.tommygun2442@gmail.com'){
-        userName = 'Tommygun2442';
-      }
-      else {
+
+      if (!userName) {
         userName = user.displayName;
       }
 
@@ -132,9 +133,15 @@ function reloadCheck(){
   var page = sessionStorage.getItem('page');
 
   if (uid){
-    document.querySelector('#topTitle').innerHTML = (`<a href='../staff' id='topLink'>` + position + ` HQ</a>`);
-    document.querySelector('#title').innerHTML = (`Hello ` + uName + `<br><button onclick='googleLogout()'>Logout</button>`);
-    document.querySelector('#userPic').innerHTML = (`<img src='` + uPhoto + `' width='60px' height='60px' id='profilePic' />`);
+    if (uName == 'RampantEpsilon' || uName == 'peacemaker2448' || uName == 'Tommygun2442'){
+      document.querySelector('#topTitle').innerHTML = (`<a href='../staff' id='topLink'>` + position + ` HQ</a><div style='position:absolute; top: 47px; right: 15px; z-index: 1000;'><img src='../images/founder.png' width='30px' height='30px' alt='Founding Member'/></div>`);
+      document.querySelector('#title').innerHTML = (`Hello ` + uName + `<br><button onclick='googleLogout()'>Logout</button>`);
+      document.querySelector('#userPic').innerHTML = (`<img src='` + uPhoto + `' width='60px' height='60px' id='profilePic' />`);
+    } else {
+      document.querySelector('#topTitle').innerHTML = (`<a href='../staff' id='topLink'>` + position + ` HQ</a>`);
+      document.querySelector('#title').innerHTML = (`Hello ` + uName + `<br><button onclick='googleLogout()'>Logout</button>`);
+      document.querySelector('#userPic').innerHTML = (`<img src='` + uPhoto + `' width='60px' height='60px' id='profilePic' />`);
+    }
   } else {
     document.querySelector('#title').innerHTML = (`Not Signed In <br><button onclick='googleLogin()'>Login with Google</button>`);
   }
