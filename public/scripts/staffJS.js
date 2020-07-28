@@ -274,255 +274,223 @@ function showStats(){
     position = 'Staff';
   }
 
-  if (position == 'TGSN Coordinator' && tgsnCoordUID.includes(uid)){
-    document.getElementById('staffBody').innerHTML = [`
-      <!--Start Stream Stats-->
-      <table>
-        <tr>
-          <td align='center' colspan="3">
-            <h3><u>Stream Statistics</u></h3>
-            <table align='center'>
-              <tr>
-                <td align='right' valign='top' style='border-right: 1px solid black;' width='185px'>
-                  <u>Stat</u>&nbsp;&nbsp;&nbsp;<br>
-                  Length&nbsp;&nbsp;&nbsp;</br>
-                  Min. Watched&nbsp;&nbsp;&nbsp;</br>
-                  Avg. Viewers&nbsp;&nbsp;&nbsp;</br>
-                  Max Viewers&nbsp;&nbsp;&nbsp;</br>
-                  Unique Viewers&nbsp;&nbsp;&nbsp;</br>
-                  New Followers&nbsp;&nbsp;&nbsp;</br>
-                  Total Followers&nbsp;&nbsp;&nbsp;</br>
-                  Goal Avg. Viewers&nbsp;&nbsp;&nbsp;</br>
-                </td>
-                <td align='center' valign='top' style='border-right: 1px solid black;' width='130px'>
-                  <u>Week to Date</u>
-                  <div id='ltw'></div>
-                  <div id='mtw'></div>
-                  <div id='atw'></div>
-                  <div id='maxtw'></div>
-                  <div id='utw'></div>
-                  <div id='ntw'></div>
-                  <div id='ftw'></div>
-                  <div id='gav'></div>
-                </td>
-                <td align='center' valign='top' style='border-right: 1px solid black;' width='130px'>
-                  <u>Last Week</u>
-                  <div id='llw'></div>
-                  <div id='mlw'></div>
-                  <div id='alw'></div>
-                  <div id='maxlw'></div>
-                  <div id='ulw'></div>
-                  <div id='nlw'></div>
-                  <div id='flw'></div>
-                  <div>---</div>
-                </td>
-                <td align='center' valign='top' style='border-right: 1px solid black;' width='130px'>
-                  <u>Change</u>
-                  <div id='lchange'></div>
-                  <div id='mchange'></div>
-                  <div id='achange'></div>
-                  <div id='maxchange'></div>
-                  <div id='uchange'></div>
-                  <div id='nchange'></div>
-                  <div id='fchange'></div>
-                  <div>---</div>
-                </td>
-                <td align='center' valign='top' width='130px' style='border-right: 1px solid black;'>
-                  <u>Goal</u><br>
-                  3:30<br>
-                  630<br>
-                  3<br>
-                  5<br>
-                  5<br>
-                  0<br>
-                  205<br>
-                  3
-                </td>
-                <td align='right' valign='top' rowspan="8" id='loggedIn' style='border-right: 1px solid black;' width='225px'>
-                  <u>Update W2D</u><br>
-                  Length: <input id='lengthutw' size='1'><br>
-                  Min. Watched: <input id='minutw' size='1'><br>
-                  Avg. Viewers: <input id='avgutw' size='1'><br>
-                  Max Viewers: <input id='maxutw' size='1'><br>
-                  Unique Viewers: <input id='uniqueutw' size='1'><br>
-                  New Followers: <input id='newFollowsutw' size='1'><br>
-                  Total Followers: <input id='followsutw' size='1'><br>
-                  Goal Avg. Viewers: <input id='goalAvgView' size='1'></br>
-                  <button onclick='updateTWValues()'>Update W2D Values</button>
-                </td>
-                <td align='center' valign='top' rowspan="8" id='updateLW' width='175px'>
-                  <u>Update LW</u><br>
-                  <input id='lengthulw' size='1'><br>
-                  <input id='minulw' size='1'><br>
-                  <input id='avgulw' size='1'><br>
-                  <input id='maxulw' size='1'><br>
-                  <input id='uniqueulw' size='1'><br>
-                  <input id='newFollowsulw' size='1'><br>
-                  <input id='followsulw' size='1'><br>
-                  <button onclick='updateLWValues()'>Update LW Values</button>
-                </td>
-              </tr>
-            </table>
-          </td>
-        </tr>
-        <tr>
-          <td align='center'>
-            <b><u>Excel Embed</u></b><br>
-            <iframe src='https://docs.google.com/spreadsheets/d/1EVVwG-oq4N6XrPmvIice9iYMTlx1Qwxqnjxs5RM8V7c/edit' id='statsView'></iframe>
-          </td>
-        </tr>
-      </table>
-      <!--End Stats-->`];
-  } else if (position == 'TGSN Staff' && tgsnStaffUID.includes(uid)) {
-    document.getElementById('staffBody').innerHTML = [`
-      <!--Start Stream Stats-->
-      <table>
-        <tr>
-          <td align='center' colspan="3">
-            <h3><u>Stream Statistics</u></h3>
-            <table align='center'>
-              <tr>
-                <td align='right' valign='top' style='border-right: 1px solid black;' width='185px'>
-                  <u>Stat</u>&nbsp;&nbsp;&nbsp;<br>
-                  Length&nbsp;&nbsp;&nbsp;</br>
-                  Min. Watched&nbsp;&nbsp;&nbsp;</br>
-                  Avg. Viewers&nbsp;&nbsp;&nbsp;</br>
-                  Max Viewers&nbsp;&nbsp;&nbsp;</br>
-                  Unique Viewers&nbsp;&nbsp;&nbsp;</br>
-                  New Followers&nbsp;&nbsp;&nbsp;</br>
-                  Total Followers&nbsp;&nbsp;&nbsp;</br>
-                  Goal Avg. Viewers&nbsp;&nbsp;&nbsp;</br>
-                </td>
-                <td align='center' valign='top' style='border-right: 1px solid black;' width='130px'>
-                  <u>Week to Date</u>
-                  <div id='ltw'></div>
-                  <div id='mtw'></div>
-                  <div id='atw'></div>
-                  <div id='maxtw'></div>
-                  <div id='utw'></div>
-                  <div id='ntw'></div>
-                  <div id='ftw'></div>
-                  <div id='gav'></div>
-                </td>
-                <td align='center' valign='top' style='border-right: 1px solid black;' width='130px'>
-                  <u>Last Week</u>
-                  <div id='llw'></div>
-                  <div id='mlw'></div>
-                  <div id='alw'></div>
-                  <div id='maxlw'></div>
-                  <div id='ulw'></div>
-                  <div id='nlw'></div>
-                  <div id='flw'></div>
-                  <div>---</div>
-                </td>
-                <td align='center' valign='top' style='border-right: 1px solid black;' width='130px'>
-                  <u>Change</u>
-                  <div id='lchange'></div>
-                  <div id='mchange'></div>
-                  <div id='achange'></div>
-                  <div id='maxchange'></div>
-                  <div id='uchange'></div>
-                  <div id='nchange'></div>
-                  <div id='fchange'></div>
-                  <div>---</div>
-                </td>
-                <td align='center' valign='top' width='130px' style='border-right: 1px solid black;'>
-                  <u>Goal</u><br>
-                  3:30<br>
-                  630<br>
-                  3<br>
-                  5<br>
-                  5<br>
-                  0<br>
-                  205<br>
-                  3
-                </td>
-              </tr>
-            </table>
-          </td>
-        </tr>
-      </table>
-      <!--End Stats-->`];
-    }
-    //Change Stats
-    $("#lengthutw").keyup(function(event) {
-      if (event.keyCode === 13){
-      updateTWValues();
-      }
-    });
-    $("#minutw").keyup(function(event) {
-      if (event.keyCode === 13){
-      updateTWValues();
-      }
-    });
-    $("#avgutw").keyup(function(event) {
-      if (event.keyCode === 13){
-      updateTWValues();
-      }
-    });
-    $("#maxutw").keyup(function(event) {
-      if (event.keyCode === 13){
-        updateTWValues();
-      }
-    });
-    $("#uniqueutw").keyup(function(event) {
-      if (event.keyCode === 13){
-        updateTWValues();
-      }
-    });
-    $("#newFollowsutw").keyup(function(event) {
-      if (event.keyCode === 13){
-        updateTWValues();
-      }
-    });
-    $("#followsutw").keyup(function(event) {
-      if (event.keyCode === 13){
-        updateTWValues();
-      }
-    });
-    $("#lengthulw").keyup(function(event) {
-      if (event.keyCode === 13){
-        updateLWValues();
-      }
-    });
-    $("#minulw").keyup(function(event) {
-      if (event.keyCode === 13){
-        updateLWValues();
-      }
-    });
-    $("#avgulw").keyup(function(event) {
-      if (event.keyCode === 13){
-        updateLWValues();
-      }
-    });
-    $("#maxulw").keyup(function(event) {
-      if (event.keyCode === 13){
-        updateLWValues();
-      }
-    });
-    $("#uniqueulw").keyup(function(event) {
-      if (event.keyCode === 13){
-        updateLWValues();
-      }
-    });
-    $("#newFollowsulw").keyup(function(event) {
-      if (event.keyCode === 13){
-        updateLWValues();
-      }
-    });
-    $("#followsulw").keyup(function(event) {
-      if (event.keyCode === 13){
-        updateLWValues();
-      }
-    });
-    $("#goalAvgView").keyup(function(event) {
-      if (event.keyCode === 13){
-        updateTWValues();
-      }
-    });
+  document.getElementById('staffBody').innerHTML = [`
+    <!--Start Stream Stats-->
+    <table>
+      <tr>
+        <td align='center' colspan="3">
+          <h3><u>Stream Statistics</u></h3>
+          <table align='center'>
+            <tr>
+              <td align='right' valign='top' style='border-right: 1px solid black;' width='185px'>
+                <u>Stat</u>&nbsp;&nbsp;&nbsp;<br>
+                Length&nbsp;&nbsp;&nbsp;</br>
+                Min. Watched&nbsp;&nbsp;&nbsp;</br>
+                Avg. Viewers&nbsp;&nbsp;&nbsp;</br>
+                Max Viewers&nbsp;&nbsp;&nbsp;</br>
+                Unique Viewers&nbsp;&nbsp;&nbsp;</br>
+                Goal Avg. Viewers&nbsp;&nbsp;&nbsp;</br>
+              </td>
+              <td align='center' valign='top' style='border-right: 1px solid black;' width='130px'>
+                <u>Week to Date</u>
+                <div id='ltw'></div>
+                <div id='mtw'></div>
+                <div id='atw'></div>
+                <div id='maxtw'></div>
+                <div id='utw'></div>
+                <div id='gav'></div>
+              </td>
+              <td align='center' valign='top' style='border-right: 1px solid black;' width='130px'>
+                <u>Last Week</u>
+                <div id='llw'></div>
+                <div id='mlw'></div>
+                <div id='alw'></div>
+                <div id='maxlw'></div>
+                <div id='ulw'></div>
+                <div>---</div>
+              </td>
+              <td align='center' valign='top' style='border-right: 1px solid black;' width='130px'>
+                <u>Change</u>
+                <div id='lchange'></div>
+                <div id='mchange'></div>
+                <div id='achange'></div>
+                <div id='maxchange'></div>
+                <div id='uchange'></div>
+                <div>---</div>
+              </td>
+              <td align='center' valign='top' width='130px' style='border-right: 1px solid black;'>
+                <u>Goal</u><br>
+                3:30<br>
+                630<br>
+                3<br>
+                5<br>
+                5<br>
+                3
+              </td>
+              <td id="updateInfoTW" align='right' valign='top' rowspan="6" id='loggedIn'></td>
+              <td id="updateInfoLW" align='center' valign='top' rowspan="6" id='updateLW'>
+            </tr>
+          </table>
+        </td>
+      </tr>
+      <tr>
+        <td id='excel' align='center'></td>
+      </tr>
+    </table>
+  `]
 
-    //Load Stats
-    loadStats();
+  //Add Editor
+  setTimeout(editMode, 1000);
+
+  //Change Stats
+  $("#lengthutw").keyup(function(event) {
+    if (event.keyCode === 13){
+    updateTWValues();
+    }
+  });
+  $("#minutw").keyup(function(event) {
+    if (event.keyCode === 13){
+    updateTWValues();
+    }
+  });
+  $("#avgutw").keyup(function(event) {
+    if (event.keyCode === 13){
+    updateTWValues();
+    }
+  });
+  $("#maxutw").keyup(function(event) {
+    if (event.keyCode === 13){
+      updateTWValues();
+    }
+  });
+  $("#uniqueutw").keyup(function(event) {
+    if (event.keyCode === 13){
+      updateTWValues();
+    }
+  });
+  $("#goalAvgView").keyup(function(event) {
+    if (event.keyCode === 13){
+      updateTWValues();
+    }
+  });
+  $("#lengthulw").keyup(function(event) {
+    if (event.keyCode === 13){
+      updateLWValues();
+    }
+  });
+  $("#minulw").keyup(function(event) {
+    if (event.keyCode === 13){
+      updateLWValues();
+    }
+  });
+  $("#avgulw").keyup(function(event) {
+    if (event.keyCode === 13){
+      updateLWValues();
+    }
+  });
+  $("#maxulw").keyup(function(event) {
+    if (event.keyCode === 13){
+      updateLWValues();
+    }
+  });
+  $("#uniqueulw").keyup(function(event) {
+    if (event.keyCode === 13){
+      updateLWValues();
+    }
+  });
+
+  //Load Stats
+  loadStats();
+}
+//Load Editor if Accessible
+function editMode(){
+  //Determine what to show
+  var uEmail = sessionStorage.getItem('userEmail');
+  var uid = sessionStorage.getItem('user');
+  var position = '';
+  if (tgsnCoordinators.includes(uEmail)){
+    position = 'TGSN Coordinator';
+  } else if (tgsnStaff.includes(uEmail)) {
+    position = 'TGSN Staff';
+  } else {
+    position = 'Staff';
+  }
+
+  if (position == 'TGSN Coordinator' && tgsnCoordUID.includes(uid)){
+    document.getElementById('updateInfoTW').innerHTML = [`
+      <u>Update W2D</u><br>
+      Length: <input id='lengthutw' size='1'><br>
+      Min. Watched: <input id='minutw' size='1'><br>
+      Avg. Viewers: <input id='avgutw' size='1'><br>
+      Max Viewers: <input id='maxutw' size='1'><br>
+      Unique Viewers: <input id='uniqueutw' size='1'><br>
+      Goal Avg. Viewers: <input id='goalAvgView' size='1'></br>
+      <button onclick='updateTWValues()'>Update W2D Values</button>
+    `];
+    document.getElementById('updateInfoLW').innerHTML = [`
+      <u>Update LW</u><br>
+      <input id='lengthulw' size='1'><br>
+      <input id='minulw' size='1'><br>
+      <input id='avgulw' size='1'><br>
+      <input id='maxulw' size='1'><br>
+      <input id='uniqueulw' size='1'><br>&nbsp;<br>
+      <button onclick='updateLWValues()'>Update LW Values</button>
+    `];
+    document.getElementById('excel').innerHTML = [`
+      <table width='100%' border='1'>
+        <tr>
+          <td align='center' width='33%' onmouseover="this.style.backgroundColor = 'orange'" onmouseout="this.style.backgroundColor = 'rgba(0,0,0,0)'" onclick='calcSheet("calc")'>Excel Embed</td>
+          <td align='center' width='33%' onmouseover="this.style.backgroundColor = 'orange'" onmouseout="this.style.backgroundColor = 'rgba(0,0,0,0)'" onclick='calcSheet("form")'>TGSN Stream Performance Form</td>
+          <td align='center' width='33%' onmouseover="this.style.backgroundColor = 'orange'" onmouseout="this.style.backgroundColor = 'rgba(0,0,0,0)'" onclick='calcSheet("results")'>TGSN Stream Performance Results</td>
+          </a>
+        </tr>
+        <tr>
+          <td align='center' id='iframe' colspan='3'>
+            <iframe src='https://docs.google.com/spreadsheets/d/1EVVwG-oq4N6XrPmvIice9iYMTlx1Qwxqnjxs5RM8V7c/edit' name='statsView' id='statsView'></iframe>
+          </td>
+        </tr>
+      </table>
+    `];
+
+    //Table Styles
+    $('updateInfoTW').css('width', '225px');
+    $('updateInfoLW').css('width', '175px');
+    document.getElementById('updateInfoTW').style.borderRight = '1px solid black';
+  }
+  if (position == 'TGSN Staff' && tgsnStaffUID.includes(uid)){
+    document.getElementById('excel').innerHTML = [`
+      <table width='100%' border='1'>
+        <tr>
+          <td align='center' width='50%' onmouseover="this.style.backgroundColor = 'orange'" onmouseout="this.style.backgroundColor = 'rgba(0,0,0,0)'" onclick='calcSheet("form")'>TGSN Stream Performance Form</td>
+          <td align='center' width='50%' onmouseover="this.style.backgroundColor = 'orange'" onmouseout="this.style.backgroundColor = 'rgba(0,0,0,0)'" onclick='calcSheet("results")'>TGSN Stream Performance Results</td>
+          </a>
+        </tr>
+        <tr>
+          <td align='center' id='iframe' colspan='2'>
+            <iframe src='https://docs.google.com/forms/d/e/1FAIpQLSdhWnTw2UR_bO310b8YYpLYGd52EZYicTFo88TMl7bBjb_z2A/viewform' name='statsView' id='statsView'></iframe>
+          </td>
+        </tr>
+      </table>
+    `];
+  }
+
+  //Resize Window
+  var playerWidth = window.innerWidth-50;
+  var playerHeight = window.innerHeight-500;
+  $('#statsView').css('width', playerWidth +'px');
+  $('#statsView').css('height', playerHeight +'px');
+}
+//Edit Mode Functions
+function calcSheet(frame){
+  if (frame == 'calc'){
+    $('#iframe').html(`<iframe src='https://docs.google.com/spreadsheets/d/1EVVwG-oq4N6XrPmvIice9iYMTlx1Qwxqnjxs5RM8V7c/edit' name='statsView' id='statsView'></iframe>`);
+  }
+  if (frame == 'form'){
+    $('#iframe').html(`<iframe src='https://docs.google.com/forms/d/e/1FAIpQLSdhWnTw2UR_bO310b8YYpLYGd52EZYicTFo88TMl7bBjb_z2A/viewform' name='statsView' id='statsView'></iframe>`);
+  }
+  if (frame == 'results'){
+    $('#iframe').html(`<iframe src='https://docs.google.com/spreadsheets/d/1chzC7UitHZ9KvcrmPutmwUIHFg_e392E4iwptH0RhLQ/edit#gid=4238686' name='statsView' id='statsView'></iframe>`);
+  }
 
   //Resize Window
   var playerWidth = window.innerWidth-50;
@@ -546,8 +514,6 @@ function loadStats(){
     document.querySelector('#alw').innerHTML = data.avgViewers;
     document.querySelector('#maxlw').innerHTML = data.maxViewers;
     document.querySelector('#ulw').innerHTML = data.uniqViewers;
-    document.querySelector('#nlw').innerHTML = data.newFollow;
-    document.querySelector('#flw').innerHTML = data.totalFollow;
     statChange();
   })
 
@@ -559,8 +525,6 @@ function loadStats(){
     document.querySelector('#atw').innerHTML = data.avgViewers;
     document.querySelector('#maxtw').innerHTML = data.maxViewers;
     document.querySelector('#utw').innerHTML = data.uniqViewers;
-    document.querySelector('#ntw').innerHTML = data.newFollow;
-    document.querySelector('#ftw').innerHTML = data.totalFollow;
     document.querySelector('#gav').innerHTML = data.goalAvgView;
     statChange();
   })
@@ -583,12 +547,6 @@ function statChange() {
   var uniqw2d = document.getElementById("utw");
   var uniqlw = document.getElementById("ulw");
   var uniqChange = document.getElementById("uchange");
-  var neww2d = document.getElementById("ntw");
-  var newlw = document.getElementById("nlw");
-  var newChange = document.getElementById("nchange");
-  var followsw2d = document.getElementById("ftw");
-  var followslw = document.getElementById("flw");
-  var followsChange = document.getElementById("fchange");
 
   //Get all data
   var ltw = lengthw2d.innerHTML;
@@ -601,10 +559,6 @@ function statChange() {
   var maxlw = parseFloat(maxlw.innerHTML);
   var utw = parseFloat(uniqw2d.innerHTML);
   var ulw = parseFloat(uniqlw.innerHTML);
-  var ntw = parseFloat(neww2d.innerHTML);
-  var nlw = parseFloat(newlw.innerHTML);
-  var ftw = parseFloat(followsw2d.innerHTML);
-  var flw = parseFloat(followslw.innerHTML);
 
   //Split length values into minutes and hours for calculation
   ltw.split(":");
@@ -643,8 +597,6 @@ function statChange() {
   avgChange.innerHTML = (atw - alw).toFixed(1);
   maxChange.innerHTML = (maxtw - maxlw).toFixed(1);
   uniqChange.innerHTML = (utw - ulw).toFixed(1);
-  newChange.innerHTML = (ntw - nlw).toFixed(0);
-  followsChange.innerHTML = (ftw - flw).toFixed(0);
 
   //Format
   if (lengthChange.innerHTML.includes('-')){
@@ -661,12 +613,6 @@ function statChange() {
   }
   if (uniqChange.innerHTML.includes('-')){
     uniqChange.innerHTML = '<font color="red">' + uniqChange.innerHTML + '</font>';
-  }
-  if (newChange.innerHTML.includes('-')){
-    newChange.innerHTML = '<font color="red">' + newChange.innerHTML + '</font>';
-  }
-  if (followsChange.innerHTML.includes('-')){
-    followsChange.innerHTML = '<font color="red">' + followsChange.innerHTML + '</font>';
   }
 }
 
