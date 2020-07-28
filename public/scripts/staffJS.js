@@ -439,7 +439,7 @@ function editMode(){
     document.getElementById('excel').innerHTML = [`
       <table width='100%' border='1'>
         <tr>
-          <td align='center' width='33%' onmouseover="this.style.backgroundColor = 'orange'" onmouseout="this.style.backgroundColor = 'rgba(0,0,0,0)'" onclick='calcSheet("calc")'>Excel Embed</td>
+          <td align='center' width='33%' onmouseover="this.style.backgroundColor = 'orange'" onmouseout="this.style.backgroundColor = 'rgba(0,0,0,0)'" onclick='calcSheet("calc")'>Stat Calculation</td>
           <td align='center' width='33%' onmouseover="this.style.backgroundColor = 'orange'" onmouseout="this.style.backgroundColor = 'rgba(0,0,0,0)'" onclick='calcSheet("form")'>TGSN Stream Performance Form</td>
           <td align='center' width='33%' onmouseover="this.style.backgroundColor = 'orange'" onmouseout="this.style.backgroundColor = 'rgba(0,0,0,0)'" onclick='calcSheet("results")'>TGSN Stream Performance Results</td>
           </a>
