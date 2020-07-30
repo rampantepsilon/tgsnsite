@@ -47,6 +47,13 @@ function init(){
   api();
   getFollowers();
 }
+//Secret Functions
+function founderSecret(){
+  window.alert("You've been here since the beginning. At least you found the secret.")
+}
+function userSecret(){
+  window.alert("You are now one of us! One of us! One Of Us! ONE Of Us! ONE OF Us! ONE OF US!")
+}
 
 //Bottom Links
 function showAll(){

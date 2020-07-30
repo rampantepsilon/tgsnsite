@@ -134,13 +134,13 @@ function reloadCheck(){
 
   if (uid){
     if (uName == 'RampantEpsilon' || uName == 'peacemaker2448' || uName == 'Tommygun2442'){
-      document.querySelector('#topTitle').innerHTML = (`<a href='../staff' id='topLink'>` + position + ` HQ</a><div style='position:absolute; top: 47px; right: 15px; z-index: 1000;'><img src='../images/founder.png' width='30px' height='30px' alt='Founding Member'/></div>`);
+      document.querySelector('#topTitle').innerHTML = (`<a href='../staff' id='topLink'>` + position + ` HQ</a><div style='position:absolute; top: 47px; right: 15px; z-index: 1000;'><img src='../images/founder.png' width='30px' height='30px' alt='Founding Member' onclick='founderSecret()'/></div>`);
       document.querySelector('#title').innerHTML = (`Hello ` + uName + `<br><button onclick='googleLogout()'>Logout</button>`);
       document.querySelector('#userPic').innerHTML = (`<img src='` + uPhoto + `' width='60px' height='60px' id='profilePic' />`);
     } else {
       document.querySelector('#topTitle').innerHTML = (`<a href='../staff' id='topLink'>` + position + ` HQ</a>`);
       document.querySelector('#title').innerHTML = (`Hello ` + uName + `<br><button onclick='googleLogout()'>Logout</button>`);
-      document.querySelector('#userPic').innerHTML = (`<img src='` + uPhoto + `' width='60px' height='60px' id='profilePic' />`);
+      document.querySelector('#userPic').innerHTML = (`<img src='` + uPhoto + `' width='60px' height='60px' id='profilePic' onclick='userSecret()'/>`);
     }
   } else {
     document.querySelector('#title').innerHTML = (`Not Signed In <br><button onclick='googleLogin()'>Login with Google</button>`);
