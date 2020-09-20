@@ -349,63 +349,6 @@ function showStats(){
   //Add Editor
   setTimeout(editMode, 1000);
 
-  //Change Stats
-  $("#lengthutw").keyup(function(event) {
-    if (event.keyCode === 13){
-    updateTWValues();
-    }
-  });
-  $("#minutw").keyup(function(event) {
-    if (event.keyCode === 13){
-    updateTWValues();
-    }
-  });
-  $("#avgutw").keyup(function(event) {
-    if (event.keyCode === 13){
-    updateTWValues();
-    }
-  });
-  $("#maxutw").keyup(function(event) {
-    if (event.keyCode === 13){
-      updateTWValues();
-    }
-  });
-  $("#uniqueutw").keyup(function(event) {
-    if (event.keyCode === 13){
-      updateTWValues();
-    }
-  });
-  $("#goalAvgView").keyup(function(event) {
-    if (event.keyCode === 13){
-      updateTWValues();
-    }
-  });
-  $("#lengthulw").keyup(function(event) {
-    if (event.keyCode === 13){
-      updateLWValues();
-    }
-  });
-  $("#minulw").keyup(function(event) {
-    if (event.keyCode === 13){
-      updateLWValues();
-    }
-  });
-  $("#avgulw").keyup(function(event) {
-    if (event.keyCode === 13){
-      updateLWValues();
-    }
-  });
-  $("#maxulw").keyup(function(event) {
-    if (event.keyCode === 13){
-      updateLWValues();
-    }
-  });
-  $("#uniqueulw").keyup(function(event) {
-    if (event.keyCode === 13){
-      updateLWValues();
-    }
-  });
-
   //Load Stats
   loadStats();
 }
@@ -463,6 +406,62 @@ function editMode(){
     $('updateInfoTW').css('width', '225px');
     $('updateInfoLW').css('width', '175px');
     document.getElementById('updateInfoTW').style.borderRight = '1px solid black';
+    //Change Stats
+    $("#lengthutw").keyup(function(event) {
+      if (event.keyCode === 13){
+      updateTWValues();
+      }
+    });
+    $("#minutw").keyup(function(event) {
+      if (event.keyCode === 13){
+      updateTWValues();
+      }
+    });
+    $("#avgutw").keyup(function(event) {
+      if (event.keyCode === 13){
+      updateTWValues();
+      }
+    });
+    $("#maxutw").keyup(function(event) {
+      if (event.keyCode === 13){
+        updateTWValues();
+      }
+    });
+    $("#uniqueutw").keyup(function(event) {
+      if (event.keyCode === 13){
+        updateTWValues();
+      }
+    });
+    $("#goalAvgView").keyup(function(event) {
+      if (event.keyCode === 13){
+        updateTWValues();
+      }
+    });
+    $("#lengthulw").keyup(function(event) {
+      if (event.keyCode === 13){
+        updateLWValues();
+      }
+    });
+    $("#minulw").keyup(function(event) {
+      if (event.keyCode === 13){
+        updateLWValues();
+      }
+    });
+    $("#avgulw").keyup(function(event) {
+      if (event.keyCode === 13){
+        updateLWValues();
+      }
+    });
+    $("#maxulw").keyup(function(event) {
+      if (event.keyCode === 13){
+        updateLWValues();
+      }
+    });
+    $("#uniqueulw").keyup(function(event) {
+      if (event.keyCode === 13){
+        updateLWValues();
+      }
+    });
   }
   if (position == 'TGSN Staff' && tgsnStaffUID.includes(uid)){
     document.getElementById('excel').innerHTML = [`

@@ -230,14 +230,6 @@ function updateTWValues(){
     lwUnique = document.getElementById('uniqueutw').value;
     tgsnLWStats.update ({ uniqViewers: lwUnique});
   }
-  if (document.getElementById('newFollowsutw').value != ""){
-    lwNewFollows = document.getElementById('newFollowsutw').value;
-    tgsnLWStats.update ({ newFollow: lwNewFollows});
-  }
-  if (document.getElementById('followsutw').value != ""){
-    lwFollows = document.getElementById('followsutw').value;
-    tgsnLWStats.update ({ totalFollow: lwFollows});
-  }
   if (document.getElementById('goalAvgView').value != ""){
     goalAvgView = document.getElementById('goalAvgView').value;
     tgsnLWStats.update ({ goalAvgView: goalAvgView });
@@ -276,14 +268,6 @@ function updateLWValues(){
   if (document.getElementById('uniqueulw').value != ""){
     lwUnique = document.getElementById('uniqueulw').value;
     tgsnLWStats.update ({ uniqViewers: lwUnique});
-  }
-  if (document.getElementById('newFollowsulw').value != ""){
-    lwNewFollows = document.getElementById('newFollowsulw').value;
-    tgsnLWStats.update ({ newFollow: lwNewFollows});
-  }
-  if (document.getElementById('followsulw').value != ""){
-    lwFollows = document.getElementById('followsulw').value;
-    tgsnLWStats.update ({ totalFollow: lwFollows});
   }
 }
 
