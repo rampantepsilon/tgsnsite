@@ -4,7 +4,8 @@ var apiReleases, startDate;
 
 //Notices
 const notice1 = `<p>Welcome to The Gaming Saloon Network Staff HQ!<br />This location will hold important information regarding TGSN Staff</p><p><font color='red'>Please Note: All Staff must log into this page at least once and use the Request Page to request permissions.</font></p>`;
-const notice2 = `<p>TheVoicelessSaloon is looking for people interested in helping. This can be providing gameplay, streaming content, or even help coordinating better methods of sharing runs. If you are interested, please reach out to RampantEpsilon#7868 on Discord.</p>`;
+//const notice2 = `<p>TheVoicelessSaloon is looking for people interested in helping. This can be providing gameplay, streaming content, or even help coordinating better methods of sharing runs. If you are interested, please reach out to RampantEpsilon#7868 on Discord.</p>`;
+const notice2 = `<p>New Staff HQ application in the works. As a result, the Staff HQ will not be updated further. Please see Discord to find out when the new app is live.</p>`
 const notice3 = [`<p>Want to provide feedback for the Staff HQ page?<br>Use the form <a href='https://forms.gle/PescTWy6oEDd6e6R7' target='_blank'>HERE</a></p>`];
 const notice4 = [`<p>There's a new lightweight Twitch Chat client for only viewing chat. If you want to use this there is no support for emotes currently. You can find it <a href='./chat'>HERE</a></p>`]
 
@@ -80,7 +81,7 @@ function api(){
     datatype: 'json',
     url: 'https://api.twitch.tv/helix/users/follows?to_id=43584807',
     headers: {
-      "Authorization": 'Bearer d9phpw1r24jhls7l9i0fugyrf9eedo',
+      "Authorization": 'Bearer wpha9gfmm02k0uq8nxq5bb4fdbpbz8',
       "Client-ID": 'o118lfy65junb52nuye0weh4xbvn11',
     },
     success: function(channel)
@@ -1043,6 +1044,12 @@ function showReleases(){
   sessionStorage.setItem('page','releases');
 
   document.getElementById('staffBody').innerHTML = [`
+    <h2 align='center'>
+      Releases are disabled through the site.<br>
+      A new app will be developed to handle this at a later time.
+    </h2>`]
+
+  /*document.getElementById('staffBody').innerHTML = [`
     <!--Start Body-->
     <table width='100%' border='1px'>
       <tr>
@@ -1072,7 +1079,7 @@ function showReleases(){
           <table id='releases' width='100%'>
         </td>
       </tr>
-    </table>`];
+    </table>`];*/
   loadReleases();
 }
 //Load Releases
@@ -1192,8 +1199,8 @@ function getReleases(){
 
   $.ajax({
     datatype: 'json',
-    origin: 'https://www.gamespot.com',
-    url: 'https://cors-anywhere.herokuapp.com/https://www.gamespot.com/api/releases/?api_key=' + apiReleases + '&offset=' + offset +'&sort=release_date:asc&filter=release_date:' + start + '&format=json',
+    headers: {"Origin": "https://www.gamespot.com"},
+    url: 'https://www.gamespot.com/api/releases/?api_key=' + apiReleases + '&offset=' + offset +'&sort=release_date:asc&filter=release_date:' + start + '&format=json',
     success: function(data)
     {
       var offsetCheck = offset;
@@ -1251,8 +1258,8 @@ function getReleases(){
 function results(apiReleases, start){
   $.ajax({
     datatype: 'json',
-    origin: 'https://www.gamespot.com',
-    url: 'https://cors-anywhere.herokuapp.com/https://www.gamespot.com/api/releases/?api_key=' + apiReleases + '&sort=release_date:asc&filter=release_date:' + start + '&format=json',
+    headers: {"Access-Control-Allow-Origin": "https://www.gamespot.com"},
+    url: 'https://www.gamespot.com/api/releases/?api_key=' + apiReleases + '&sort=release_date:asc&filter=release_date:' + start + '&format=json',
     success: function(channel)
     {
       console.log(channel.number_of_total_results);

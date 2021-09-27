@@ -156,13 +156,16 @@ window.open('http://site.tgsnetwork.org', '_blank')">TGS Archives</td>
               x.style.backgroundColor = 'black';
               x.style.cursor = "pointer";
             }
+            function resizeIFrame(iframe){
+              iframe.height = window.innerHeight-200 + "px";
+            }
         </script>
       </td>
-      <td width="350px" rowspan='2'>
+      <td width="350px" height="96.5%" rowspan='2'>
         &nbsp;<br>
 
         <div id='rvTitle'>Recent Videos</div>
-        <iframe src="./videos.html" frameborder='0' width="350px" height="96.5%" />
+        <iframe src="./videos.html" frameborder='0' width="350px" height="96.5%" onload='resizeIFrame(this)' />
       </td>
     </tr>
   </table>
