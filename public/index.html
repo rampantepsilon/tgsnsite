@@ -3,14 +3,25 @@
   <title>The Gaming Saloon Network - Home Page</title>
 
   <!-- update the version number as needed -->
-  <script defer src="/__/firebase/6.3.4/firebase-app.js"></script>
-  <!-- include only the Firebase features as you need -->
-  <script defer src="/__/firebase/6.3.4/firebase-auth.js"></script>
-  <script defer src="/__/firebase/6.3.4/firebase-firestore.js"></script>
-  <script defer src="/__/firebase/6.3.4/firebase-messaging.js"></script>
-  <script defer src="/__/firebase/6.3.4/firebase-storage.js"></script>
-  <!-- initialize the SDK after all desired features are loaded -->
-  <script defer src="/__/firebase/init.js"></script>
+  <!--<script defer src="/__/firebase/8.6.1/firebase-app.js"></script>
+  <!-- include only the Firebase features as you need --
+  <script defer src="/__/firebase/8.6.1/firebase-auth.js"></script>
+  <script defer src="/__/firebase/8.6.1/firebase-firestore.js"></script>
+  <script defer src="/__/firebase/8.6.1/firebase-messaging.js"></script>
+  <script defer src="/__/firebase/8.6.1/firebase-storage.js"></script>
+  <!-- initialize the SDK after all desired features are loaded --
+  <script defer src="/__/firebase/init.js?useEmulator=true"></script>-->
+  <!-- The core Firebase JS SDK is always required and must be listed first -->
+  <script src="https://www.gstatic.com/firebasejs/8.6.1/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.6.1/firebase-firestore.js"></script>
+  <script>
+    // Your web app's Firebase configuration
+    var firebaseConfig = {
+    };
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+  </script>
+  <script src='./scripts/schedule.js'></script>
 
    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
    <link href="https://fonts.googleapis.com/css?family=Raleway:600|Sancreek&display=swap" rel="stylesheet">
@@ -84,6 +95,34 @@
        color: white;
        text-decoration: none;
      }
+     h3 {
+       background-color: rgba(0, 0, 0, 0.5);
+       color: white;
+       text-shadow: 2px 2px black;
+       padding-right: 4px;
+     }
+     #upcomingEvents div{
+       background-color: rgba(255, 255, 255, 0.5)
+     }
+     /* width */
+     ::-webkit-scrollbar {
+       width: 7px;
+     }
+
+     /* Track */
+     ::-webkit-scrollbar-track {
+       background: #333;
+     }
+
+     /* Handle */
+     ::-webkit-scrollbar-thumb {
+       background: orange;
+     }
+
+     /* Handle on hover */
+     ::-webkit-scrollbar-thumb:hover {
+       background: darkorange;
+     }
    </style>
  </head>
 
@@ -99,7 +138,7 @@
       <a href='https://youtube.com/tgsaloon' target='_blank'><img src='images/youtube.png' width='18px' height='18px' /></a>
     </div>
     <tr id='nav'>
-      <td colspan='2'>
+      <td colspan='3'>
         <table>
           <tr>
             <td width="86px"><a href="./index.html"><img src='images/tgsn.jpg' height="86px" width="86px"></a></td>
@@ -111,9 +150,9 @@
   window.location='./mm.html'">SMM/SMM2 Level Submissions</td>-->
                     <td id='linkButton' onmouseover='linkHover(this)' onmouseout="linkExit(this)" onclick="
 window.open('https://streamlabs.com/thegamingsaloonnetwork/v2/tip?sl=169&t=42', '_blank')">Tips</td>
-                    <td id='linkButton' onmouseover='linkHover(this)' onmouseout="linkExit(this)" onclick="
-window.open('schedule', '_blank')">Schedule</td>
-                    <td id='linkButton' onmouseover='linkHover(this)' onmouseout="linkExit(this)"><a href='tgsarticles' target='_blank'>TGS Articles</a></td>
+                    <!--<td id='linkButton' onmouseover='linkHover(this)' onmouseout="linkExit(this)" onclick="
+window.open('schedule', '_blank')">Schedule</td>-->
+                    <td id='linkButton' onmouseover='linkHover(this)' onmouseout="linkExit(this)"><a href='tgsarticles.html' target='_blank'>TGS Articles</a></td>
                     <td id='linkButton' onmouseover='linkHover(this)' onmouseout="linkExit(this)" onclick="
 window.open('http://site.tgsnetwork.org', '_blank')">TGS Archives</td>
                   </tr>
@@ -124,6 +163,12 @@ window.open('http://site.tgsnetwork.org', '_blank')">TGS Archives</td>
       </td>
     </tr>
     <tr id='body'>
+      <td width="250px" valign='top' style='padding-right: 25px;'>
+        &nbsp;<br>
+        <div id='rvTitle' style='width: 243px;'>Upcoming Streams</div>
+        <div id='upcomingEvents' style='height: 81vh; overflow:auto;'>
+        </div>
+      </td>
       <td id="videos" valign='top'>
         &nbsp;<br>
         <div id="twitch-embed" style="height: 99%"></div>
@@ -161,11 +206,11 @@ window.open('http://site.tgsnetwork.org', '_blank')">TGS Archives</td>
             }
         </script>
       </td>
-      <td width="350px" height="96.5%" rowspan='2'>
+      <td width="350px" valign='top'>
         &nbsp;<br>
 
         <div id='rvTitle'>Recent Videos</div>
-        <iframe src="./videos.html" frameborder='0' width="350px" height="96.5%" onload='resizeIFrame(this)' />
+        <iframe src="./videos.html" frameborder='0' width="350px" height="100%" onload='resizeIFrame(this)' />
       </td>
     </tr>
   </table>
