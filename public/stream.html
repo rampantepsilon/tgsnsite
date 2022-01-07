@@ -1,0 +1,21 @@
+<script src="https://embed.twitch.tv/embed/v1.js"></script>
+<div id='twitchLight'></div>
+<script type="text/javascript">
+  var embed = new Twitch.Embed("twitchLight", {
+      width: '100%',
+      height: '100%',
+      channel: 'thegamingsaloonnetwork',
+      chat: "default",
+      allowfullscreen: "true",
+      theme: "dark",
+      autoplay: "true",
+      parent: ['tgsnetwork.org','localhost']
+  });
+
+  embed.addEventListener(Twitch.Embed.VIDEO_READY, () => {
+      var player = embed.getPlayer();
+      player.setVolume(0.9);
+      player.setMuted(false);
+      player.play();
+  });
+</script>
