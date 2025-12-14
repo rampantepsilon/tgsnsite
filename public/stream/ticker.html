@@ -1,98 +1,119 @@
 <html>
-  <head>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-    <!-- The core Firebase JS SDK is always required and must be listed first -->
-    <script src="https://www.gstatic.com/firebasejs/8.6.1/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/8.6.1/firebase-firestore.js"></script>
 
-    <script>
-      // Your web app's Firebase configuration
-      var firebaseConfig = {
-        apiKey: "AIzaSyBAF1jevSp8_E5Okk9z6sMi-t4eRS4N9DE",
-        authDomain: "tgsn-site-v7.firebaseapp.com",
-        databaseURL: "https://tgsn-site-v7.firebaseio.com",
-        projectId: "tgsn-site-v7",
-        storageBucket: "tgsn-site-v7.appspot.com",
-        messagingSenderId: "565689666494",
-        appId: "1:565689666494:web:fc488b17f5018f569547ef"
-      };
-      // Initialize Firebase
-      firebase.initializeApp(firebaseConfig);
-    </script>
-    <link href="https://fonts.googleapis.com/css?family=Raleway:600|Sancreek&display=swap" rel="stylesheet">
-    <style>
-      body{
-        font-family: Sancreek;
-        background-color: rgba(255,156,52,1);
-      }
-      table{
-        color: #fff;
-        border-radius: 10%;
-      }
-      #plug {
-          background-image: url("bricks.jpg");
-          background-blend-mode: overlay;
-          background-color: rgba(30,30,30,0.75);
-          background-size: 480px auto;
-      }
-      .title {
-        font-size: 32px;
-        color: rgba(255,156,52,1);
-        position: relative;
-        top: 15px;
-        left: 15px;
-        text-shadow: rgb(51, 51, 51) 2px 0px 0px, rgb(51, 51, 51) 1.75517px 0.958851px 0px, rgb(51, 51, 51) 1.0806px 1.68294px 0px, rgb(51, 51, 51) 0.141474px 1.99499px 0px, rgb(51, 51, 51) -0.832294px 1.81859px 0px, rgb(51, 51, 51) -1.60229px 1.19694px 0px, rgb(51, 51, 51) -1.97998px 0.28224px 0px, rgb(51, 51, 51) -1.87291px -0.701566px 0px, rgb(51, 51, 51) -1.30729px -1.5136px 0px, rgb(51, 51, 51) -0.421592px -1.95506px 0px, rgb(51, 51, 51) 0.567324px -1.91785px 0px, rgb(51, 51, 51) 1.41734px -1.41108px 0px, rgb(51, 51, 51) 1.92034px -0.558831px 0px;
-      }
-      .body {
-        font-size: 22px;
-        color: rgba(255,255,255,1);
-        position: relative;
-        top: 15px;
-        text-align: center;
-        text-shadow: rgb(0, 0, 0) 2px 0px 0px, rgb(0, 0, 0) 1.75517px 0.958851px 0px, rgb(0, 0, 0) 1.0806px 1.68294px 0px, rgb(0, 0, 0) 0.141474px 1.99499px 0px, rgb(0, 0, 0) -0.832294px 1.81859px 0px, rgb(0, 0, 0) -1.60229px 1.19694px 0px, rgb(0, 0, 0) -1.97998px 0.28224px 0px, rgb(0, 0, 0) -1.87291px -0.701566px 0px, rgb(0, 0, 0) -1.30729px -1.5136px 0px, rgb(0, 0, 0) -0.421592px -1.95506px 0px, rgb(0, 0, 0) 0.567324px -1.91785px 0px, rgb(0, 0, 0) 1.41734px -1.41108px 0px, rgb(0, 0, 0) 1.92034px -0.558831px 0px;
-      }
-    </style>
-  </head>
-
-  <body valign='top' align='center'>
-    <table width='470px' height='155px' id='plug'>
-      <tr>
-        <td valign='top' height='45px'>
-          <p id='title' class='title'>Discord</p>
-        </td>
-      </tr>
-      <tr>
-        <td valign='middle'>
-          <h3 id='body' class='body'>Use !discord in chat to join our Discord server!</h3>
-        </td>
-      </tr>
-    </table>
-  </body>
+<head>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+    integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+  <!-- The core Firebase JS SDK is always required and must be listed first -->
+  <script src="https://www.gstatic.com/firebasejs/8.6.1/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.6.1/firebase-firestore.js"></script>
 
   <script>
-    var title = document.getElementById('title');
-    var body = document.getElementById('body');
-    var position = 0;
-
-    var titles = ['Discord', 'Website', 'Twitter']
-    var bodies = ['Use !discord in chat to join our Discord server!', 'Visit https://tgsnetwork.org for all show resources!', 'Follow @tgsaloon on Twitter to know when we go live!']
-
-    function change(){
-      $("#title").fadeOut();
-      $("#body").fadeOut();
-      $("#body").promise().done(function(){
-        title.innerHTML = titles[position];
-        body.innerHTML = bodies[position];
-        $("#title").fadeIn();
-        $("#body").fadeIn();
-      });
-      if (position < (titles.length - 1)){
-        position += 1;
-      } else {
-        position = 0;
-      }
+    // Your web app's Firebase configuration
+    var firebaseConfig = {
+      apiKey: "AIzaSyBAF1jevSp8_E5Okk9z6sMi-t4eRS4N9DE",
+      authDomain: "tgsn-site-v7.firebaseapp.com",
+      databaseURL: "https://tgsn-site-v7.firebaseio.com",
+      projectId: "tgsn-site-v7",
+      storageBucket: "tgsn-site-v7.appspot.com",
+      messagingSenderId: "565689666494",
+      appId: "1:565689666494:web:fc488b17f5018f569547ef"
+    };
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+  </script>
+  <link href="https://fonts.googleapis.com/css?family=Raleway:600|Sancreek&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: Sancreek;
+      background-color: rgba(255, 156, 52, 1);
     }
 
-    setInterval(change, 10000);
-  </script>
+    table {
+      color: #fff;
+      border-radius: 10%;
+    }
+
+    #plug {
+      background-image: url("bricks.jpg");
+      background-blend-mode: overlay;
+      background-color: rgba(30, 30, 30, 0.75);
+      background-size: 480px auto;
+    }
+
+    .title {
+      font-size: 32px;
+      color: rgba(255, 156, 52, 1);
+      position: relative;
+      top: 15px;
+      left: 15px;
+      text-shadow: rgb(51, 51, 51) 2px 0px 0px, rgb(51, 51, 51) 1.75517px 0.958851px 0px, rgb(51, 51, 51) 1.0806px 1.68294px 0px, rgb(51, 51, 51) 0.141474px 1.99499px 0px, rgb(51, 51, 51) -0.832294px 1.81859px 0px, rgb(51, 51, 51) -1.60229px 1.19694px 0px, rgb(51, 51, 51) -1.97998px 0.28224px 0px, rgb(51, 51, 51) -1.87291px -0.701566px 0px, rgb(51, 51, 51) -1.30729px -1.5136px 0px, rgb(51, 51, 51) -0.421592px -1.95506px 0px, rgb(51, 51, 51) 0.567324px -1.91785px 0px, rgb(51, 51, 51) 1.41734px -1.41108px 0px, rgb(51, 51, 51) 1.92034px -0.558831px 0px;
+    }
+
+    .body {
+      font-size: 22px;
+      color: rgba(255, 255, 255, 1);
+      position: relative;
+      top: 15px;
+      text-align: center;
+      text-shadow: rgb(0, 0, 0) 2px 0px 0px, rgb(0, 0, 0) 1.75517px 0.958851px 0px, rgb(0, 0, 0) 1.0806px 1.68294px 0px, rgb(0, 0, 0) 0.141474px 1.99499px 0px, rgb(0, 0, 0) -0.832294px 1.81859px 0px, rgb(0, 0, 0) -1.60229px 1.19694px 0px, rgb(0, 0, 0) -1.97998px 0.28224px 0px, rgb(0, 0, 0) -1.87291px -0.701566px 0px, rgb(0, 0, 0) -1.30729px -1.5136px 0px, rgb(0, 0, 0) -0.421592px -1.95506px 0px, rgb(0, 0, 0) 0.567324px -1.91785px 0px, rgb(0, 0, 0) 1.41734px -1.41108px 0px, rgb(0, 0, 0) 1.92034px -0.558831px 0px;
+    }
+  </style>
+</head>
+
+<body valign='top' align='center'>
+  <table width='470px' height='155px' id='plug'>
+    <tr>
+      <td valign='top' height='45px'>
+        <p id='title' class='title'>Discord</p>
+      </td>
+    </tr>
+    <tr>
+      <td valign='middle'>
+        <h3 id='body' class='body'>Use !discord in chat to join our Discord server!</h3>
+      </td>
+    </tr>
+  </table>
+</body>
+
+<script>
+  var title = document.getElementById('title');
+  var body = document.getElementById('body');
+  var position = 0;
+
+  var titles = ['Discord', 'Website', 'Mastodon']
+  var bodies = ['Use !discord in chat to join our Discord server!', 'Visit https://tgsnetwork.org for all show resources!', 'Follow @tgsnetwork on @mastodon.social to know when we go live!']
+
+  /* Add Custom Tiles */
+  /*Year-End Start */
+  //Get Current Date
+  const today = new Date();
+  const year = today.getFullYear();
+  const month = today.getMonth() + 1;
+  if (year == 2025 && month == 12) {
+    titles.push("Year-End Extravaganza '25");
+    bodies.push("Check out our Year-End Extravaganza line up by using !ye25 in chat!");
+  }
+  /*Year-End End*/
+
+  function change() {
+    //Handle Fade Effect
+    $("#title").fadeOut();
+    $("#body").fadeOut();
+    $("#body").promise().done(function () {
+      title.innerHTML = titles[position];
+      body.innerHTML = bodies[position];
+      $("#title").fadeIn();
+      $("#body").fadeIn();
+    });
+
+    if (position < (titles.length - 1)) {
+      position += 1;
+    } else {
+      position = 0;
+    }
+  }
+
+  setInterval(change, 10000);
+</script>
+
 </html>
