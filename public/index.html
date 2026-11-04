@@ -254,17 +254,31 @@ window.open('http://site.tgsnetwork.org', '_blank')">TGS Archives</td>
           const today = new Date();
           const year = today.getFullYear();
           const month = today.getMonth() + 1;
-          if (year == 2025 && month == 12) {
-            document.getElementById('linkButtonsList').innerHTML += `<td id='specialButton' onmouseout='linkHover(this)' onmouseover="linkExit(this)">Current
-                Event:<br>Year-End Extravaganza 2025</td>`;
+          if (year == 2026) {
+            if (month == 2 || month == 3) {
+              document.getElementById('linkButtonsList').innerHTML += `<td id='specialButton' onmouseout='linkHover(this)' onmouseover="linkExit(this)">Current
+                Event:<br>Co-Op Multiworld Madness</td>`;
+            }
+            /*if (month == 5 || month == 6) {
+              document.getElementById('linkButtonsList').innerHTML += `<td id='specialButton' onmouseout='linkHover(this)' onmouseover="linkExit(this)">Current
+                Event:<br>RandoMania 2026</td>`;
+            }
+            if (month == 8 || month == 9) {
+              document.getElementById('linkButtonsList').innerHTML += `<td id='specialButton' onmouseout='linkHover(this)' onmouseover="linkExit(this)">Current
+                Event:<br>Speedrun Bootcamp 2026</td>`;
+            }
+            if (month == 12) {
+              document.getElementById('linkButtonsList').innerHTML += `<td id='specialButton' onmouseout='linkHover(this)' onmouseover="linkExit(this)">Current
+                Event:<br>Year-End Extravaganza 2026</td>`;
+            }*/
           }
         </script>
       </td>
-      <td width="350px" valign='top'>
+      <td width="310px" valign='top'>
         &nbsp;<br>
 
-        <div id='rvTitle'>Recent Videos</div>
-        <iframe src="./videos.html" frameborder='0' width="350px" height="100%" onload='resizeIFrame(this)' />
+        <div id='rvTitle'>Recent Videos<br>YouTube Playlist & Twitch Clips</div>
+        <iframe src="./videos.html" frameborder='0' width="310px" height="100%" onload='resizeIFrame(this)' />
       </td>
     </tr>
   </table>

@@ -84,16 +84,29 @@
   var bodies = ['Use !discord in chat to join our Discord server!', 'Visit https://tgsnetwork.org for all show resources!', 'Follow @tgsnetwork on @mastodon.social to know when we go live!']
 
   /* Add Custom Tiles */
-  /*Year-End Start */
+
   //Get Current Date
   const today = new Date();
   const year = today.getFullYear();
   const month = today.getMonth() + 1;
-  if (year == 2025 && month == 12) {
-    titles.push("Year-End Extravaganza '25");
-    bodies.push("Check out our Year-End Extravaganza line up by using !ye25 in chat!");
+  if (year == 2026) {
+    /*if (month == 2 || month == 3) {
+      titles.push("Co-Op Multiworld Madness");
+      bodies.push("Rouge-like Archipelago in 2026?!? Learn more with !cmm in chat!");
+    }
+    if (month == 4 || month == 5 || month == 6) {
+      titles.push("Randomania 2026");
+      bodies.push("Randomania is back in May & June! Learn more with !randovania in chat!");
+    }
+    if (month == 7 || month == 8 || month == 9) {
+      titles.push("Speedrun Bootcamp 2026");
+      bodies.push("We're learning more runs this year during August & September!");
+    }*/
+    if (month == 11 || month == 12) {
+      titles.push("Year-End Extravaganza '26");
+      bodies.push("Year-End Extravaganza returns in December! Full lineup coming soon!");
+    }
   }
-  /*Year-End End*/
 
   function change() {
     //Handle Fade Effect
